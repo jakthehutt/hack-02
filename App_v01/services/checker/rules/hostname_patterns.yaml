@@ -1,0 +1,15 @@
+# IO-style hostname patterns (extend during hackathon)
+version: "2025-09-26"
+patterns:
+  - id: portal_kombat_pravda_subdomain
+    regex: "^[a-z0-9-]+\\.news-pravda\\.com$"
+    weight: 35
+    summary: "Hostname matches Portal Kombat / Pravda subdomain pattern"
+  - id: portal_kombat_pravda_legacy
+    regex: "^pravda-[a-z]{2}\\.com$"
+    weight: 35
+    summary: "Hostname matches legacy pravda-XX.com pattern"
+  - id: portal_kombat_phase4
+    regex: "^[a-z]{2}-[a-z]{2}\\.news-pravda\\.com$"
+    weight: 30
+    summary: "Hostname matches Pravda phase-4 language-country pattern"
