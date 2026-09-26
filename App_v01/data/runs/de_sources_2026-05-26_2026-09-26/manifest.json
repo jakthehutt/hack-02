@@ -2,7 +2,6 @@
   "extractor": "trafilatura 2.2.0",
   "download": "gzip via urllib; trafilatura.extract for the article body",
   "cutoff": "2026-05-26",
-  "excluded": "rt_de",
   "results": {
     "anti_spiegel": {
       "discovered": 502,
@@ -39,13 +38,16 @@
       "ok": 0,
       "reject": 0,
       "error": 0
+    },
+    "rt_de": {
+      "discovered": 3863,
+      "ok": 3729,
+      "reject": 134,
+      "error": 0,
+      "note": "collected by crawler/rt_de.py; same files as crawler/data/rt_de"
     }
   },
   "skipped": [
-    {
-      "id": "rt_de",
-      "reason": "excluded for this run"
-    },
     {
       "id": "ria",
       "reason": "upstream Russian wire, not a German edition"
