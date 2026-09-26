@@ -1,0 +1,645 @@
+{
+  "version": "2026-09-26",
+  "disclaimer": "A listing is a provenance signal for journalists and researchers. It is not a verdict that every item from that source is false. Domestic German or Austrian outlets are included only where investigators have documented systematic republication of Russian state content or personal operational ties. Narrative disagreement with the German government is not, by itself, a reason for inclusion.",
+  "entries": [
+    {
+      "domain": "de.rt.com",
+      "match": "exact",
+      "category": "state_media",
+      "network": "rt_de",
+      "confidence": 0.95,
+      "source": "sources.json",
+      "role": "primary"
+    },
+    {
+      "domain": "deutsch.rt.com",
+      "match": "exact",
+      "category": "state_media",
+      "network": "rt_de",
+      "confidence": 0.95,
+      "source": "sources.json",
+      "role": "primary"
+    },
+    {
+      "domain": "rt.com",
+      "match": "exact",
+      "category": "state_media",
+      "network": "rt_de",
+      "confidence": 0.95,
+      "source": "sources.json",
+      "role": "parent"
+    },
+    {
+      "domain": "rtde.xyz",
+      "match": "exact",
+      "category": "state_media",
+      "network": "rt_de",
+      "confidence": 0.95,
+      "source": "sources.json",
+      "role": "sanctioned_mirror"
+    },
+    {
+      "domain": "rtde.site",
+      "match": "exact",
+      "category": "state_media",
+      "network": "rt_de",
+      "confidence": 0.95,
+      "source": "sources.json",
+      "role": "sanctioned_mirror_suffix"
+    },
+    {
+      "domain": "rtde.team",
+      "match": "exact",
+      "category": "state_media",
+      "network": "rt_de",
+      "confidence": 0.95,
+      "source": "sources.json",
+      "role": "sanctioned_mirror_suffix"
+    },
+    {
+      "domain": "rtde.live",
+      "match": "exact",
+      "category": "state_media",
+      "network": "rt_de",
+      "confidence": 0.95,
+      "source": "sources.json",
+      "role": "sanctioned_mirror_suffix"
+    },
+    {
+      "domain": "rtde.life",
+      "match": "exact",
+      "category": "state_media",
+      "network": "rt_de",
+      "confidence": 0.95,
+      "source": "sources.json",
+      "role": "sanctioned_mirror_suffix"
+    },
+    {
+      "domain": "rtde.website",
+      "match": "exact",
+      "category": "state_media",
+      "network": "rt_de",
+      "confidence": 0.95,
+      "source": "sources.json",
+      "role": "sanctioned_mirror_suffix"
+    },
+    {
+      "domain": "freede.tech",
+      "match": "exact",
+      "category": "state_media",
+      "network": "rt_de",
+      "confidence": 0.95,
+      "source": "sources.json",
+      "role": "observed_mirror"
+    },
+    {
+      "domain": "sputniknews.com",
+      "match": "exact",
+      "category": "state_media",
+      "network": "sputnik_de",
+      "confidence": 0.95,
+      "source": "sources.json",
+      "role": "parent"
+    },
+    {
+      "domain": "de.sputniknews.com",
+      "match": "exact",
+      "category": "state_media",
+      "network": "sputnik_de",
+      "confidence": 0.95,
+      "source": "sources.json",
+      "role": "pre_ban_german_edition"
+    },
+    {
+      "domain": "snanews.de",
+      "match": "exact",
+      "category": "state_media",
+      "network": "sputnik_de",
+      "confidence": 0.95,
+      "source": "sources.json",
+      "role": "successor"
+    },
+    {
+      "domain": "mid.ru",
+      "match": "exact",
+      "category": "official",
+      "network": "mid_embassy_de",
+      "confidence": 0.95,
+      "source": "sources.json",
+      "role": "ministry"
+    },
+    {
+      "domain": "germany.mid.ru",
+      "match": "exact",
+      "category": "official",
+      "network": "mid_embassy_de",
+      "confidence": 0.95,
+      "source": "sources.json",
+      "role": "embassy"
+    },
+    {
+      "domain": "rrn.media",
+      "match": "suffix",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "multilingual_hub"
+    },
+    {
+      "domain": "bild.pics",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "clone"
+    },
+    {
+      "domain": "bild.beauty",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "alias"
+    },
+    {
+      "domain": "bild.eu.com",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "alias"
+    },
+    {
+      "domain": "bild.ws",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "alias"
+    },
+    {
+      "domain": "spiegel.ltd",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "clone"
+    },
+    {
+      "domain": "spiegel.ink",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "alias"
+    },
+    {
+      "domain": "spiegel.work",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "alias"
+    },
+    {
+      "domain": "spiegel.life",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "alias"
+    },
+    {
+      "domain": "spiegel.live",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "alias"
+    },
+    {
+      "domain": "welt.ltd",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "clone"
+    },
+    {
+      "domain": "welt.pm",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "alias"
+    },
+    {
+      "domain": "welt.media",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "alias"
+    },
+    {
+      "domain": "welt.ws",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "alias"
+    },
+    {
+      "domain": "faz.ltd",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "clone"
+    },
+    {
+      "domain": "faz.lol",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "alias"
+    },
+    {
+      "domain": "faz.life",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "alias"
+    },
+    {
+      "domain": "faz.agency",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "alias"
+    },
+    {
+      "domain": "sueddeutsche.ltd",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "clone"
+    },
+    {
+      "domain": "sueddeutsche.co",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "alias"
+    },
+    {
+      "domain": "sueddeutsche.cc",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "alias"
+    },
+    {
+      "domain": "sueddeutsche.online",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "alias"
+    },
+    {
+      "domain": "sueddeutsche.me",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "alias"
+    },
+    {
+      "domain": "t-online.life",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "clone"
+    },
+    {
+      "domain": "t-online.cfd",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "alias"
+    },
+    {
+      "domain": "t-online.today",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "alias"
+    },
+    {
+      "domain": "t-online.online",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "alias"
+    },
+    {
+      "domain": "morgenpost.ltd",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "clone"
+    },
+    {
+      "domain": "tagesspiegel.ltd",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "clone"
+    },
+    {
+      "domain": "tagesspiegel.co",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "alias"
+    },
+    {
+      "domain": "nd-aktuell.net",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "clone"
+    },
+    {
+      "domain": "nd-aktuell.co",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "alias"
+    },
+    {
+      "domain": "nd-aktuell.pro",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "alias"
+    },
+    {
+      "domain": "nd-aktuell.lol",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "alias"
+    },
+    {
+      "domain": "meisterurian.io",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "fake_portal"
+    },
+    {
+      "domain": "arbeitspause.org",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "fake_portal"
+    },
+    {
+      "domain": "wanderfalke.net",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "fake_portal"
+    },
+    {
+      "domain": "grenzezank.com",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "fake_portal"
+    },
+    {
+      "domain": "besuchszweck.org",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "fake_portal"
+    },
+    {
+      "domain": "derbayerischelowe.info",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "fake_portal"
+    },
+    {
+      "domain": "grunehummel.com",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "fake_portal"
+    },
+    {
+      "domain": "miastagebuch.com",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "fake_portal"
+    },
+    {
+      "domain": "derglaube.com",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "fake_portal"
+    },
+    {
+      "domain": "kaputteampel.com",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "fake_portal"
+    },
+    {
+      "domain": "deintelligenz.com",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "fake_portal"
+    },
+    {
+      "domain": "hauynescherben.net",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "fake_portal"
+    },
+    {
+      "domain": "brennendefrage.com",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "fake_portal"
+    },
+    {
+      "domain": "derleitstern.com",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "fake_portal"
+    },
+    {
+      "domain": "derrattenfanger.net",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "fake_portal"
+    },
+    {
+      "domain": "news-pravda.com",
+      "match": "suffix",
+      "category": "known_io_domain",
+      "network": "pravda_de",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "network_suffix"
+    },
+    {
+      "domain": "germany.news-pravda.com",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "pravda_de",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "german_edition"
+    },
+    {
+      "domain": "pravda-de.com",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "pravda_de",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "earlier_german_domain"
+    },
+    {
+      "domain": "news-front.su",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "newsfront_de",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "eu_listed"
+    },
+    {
+      "domain": "news-front.info",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "newsfront_de",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "older_apex"
+    },
+    {
+      "domain": "de.news-front.info",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "newsfront_de",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "german_edition"
+    },
+    {
+      "domain": "voiceofeurope.com",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "voice_of_europe",
+      "confidence": 0.85,
+      "source": "sources.json",
+      "role": "primary"
+    }
+  ]
+}

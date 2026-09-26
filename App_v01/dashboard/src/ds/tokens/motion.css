@@ -1,0 +1,12 @@
+:root{
+/* snappy, slightly overshot — reads as physical/haptic, never floaty */
+--ease-standard:cubic-bezier(.2,.9,.2,1); /* @kind other */
+--ease-out-back:cubic-bezier(.34,1.56,.64,1); /* @kind other */
+--ease-in:cubic-bezier(.6,0,1,.4); /* @kind other */
+--duration-instant:80ms; /* @kind other */
+--duration-fast:130ms; /* @kind other */
+--duration-base:180ms; /* @kind other */
+--duration-slow:280ms; /* @kind other */
+--press-scale:0.96; /* @kind other */
+--press-translate:2px;
+}

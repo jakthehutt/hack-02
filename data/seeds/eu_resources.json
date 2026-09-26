@@ -1,0 +1,38 @@
+{
+  "version": "2026-09-26",
+  "default": [
+    {
+      "country": "EU",
+      "label": "EEAS — Tackling disinformation",
+      "url": "https://www.eeas.europa.eu/eeas/disinformation_en"
+    },
+    {
+      "country": "EU",
+      "label": "EUvsDisinfo",
+      "url": "https://euvsdisinfo.eu/"
+    },
+    {
+      "country": "EU",
+      "label": "EDMO hub network",
+      "url": "https://edmo.eu/about/edmo-european-hub-network/"
+    }
+  ],
+  "by_country": {
+    "DE": [
+      {
+        "label": "Correctiv (EFCSN)",
+        "url": "https://correctiv.org/"
+      },
+      {
+        "label": "ARD Faktenfinder",
+        "url": "https://www.tagesschau.de/faktenfinder"
+      }
+    ],
+    "FR": [
+      {
+        "label": "VIGINUM",
+        "url": "https://www.sgdsn.gouv.fr/viginum"
+      }
+    ]
+  }
+}
