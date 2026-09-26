@@ -168,9 +168,9 @@ export function VolumeShareChart({ model, seriesLabel }) {
   return (
     <Card padding={28}>
       <CardHead
-        title="Volume under the share"
+        title="Articles published, and the share that matched"
         sub={model.observed
-          ? `Bars are articles published that week. The line is the share that matched ${seriesLabel}. A high share in a thin week is a small count.`
+          ? 'A high share in a thin week is a small count.'
           : 'This outlet’s week-by-week shape was not crawled. The figure is the crawled total for the whole window.'}
       >
         {model.observed && <TableToggle value={table} onChange={setTable} />}
@@ -179,12 +179,12 @@ export function VolumeShareChart({ model, seriesLabel }) {
         <div className="empty">
           {model.total?.total
             ? <>Crawled total: <strong className="mono">{fmtNum(model.total.n)}</strong> matching articles, {fmtPct(model.total.share, 2)} of {fmtNum(model.total.total)}.</>
-            : 'No crawled total for this frame.'}
+            : 'No crawled total for this narrative.'}
         </div>
       ) : table ? (
         <div className="table-scroll">
           <table className="data-table">
-            <thead><tr><th>Week</th><th className="num">Articles</th><th className="num">Hits</th><th className="num">Share</th></tr></thead>
+            <thead><tr><th>Week</th><th className="num">Articles</th><th className="num">Matching</th><th className="num">Share</th></tr></thead>
             <tbody>
               {points.map(p => (
                 <tr key={p.week.week}>
@@ -228,9 +228,15 @@ export function VolumeShareChart({ model, seriesLabel }) {
           {hover != null && points[hover] && (
             <ChartTip x={Math.min(Math.max(x(hover), 110), width - 110)} y={M.t + 8} title={`${points[hover].week.week} · ${fmtWeek(points[hover].week)}`}>
               <div className="tip-row"><span className="v">{fmtNum(points[hover].total)}</span><span className="k">articles</span></div>
-              <div className="tip-row"><span className="v">{fmtNum(points[hover].n)}</span><span className="k">frame hits</span></div>
+              <div className="tip-row"><span className="v">{fmtNum(points[hover].n)}</span><span className="k">matching articles</span></div>
               <div className="tip-row is-focus"><span className="v">{points[hover].share == null ? '–' : fmtPct(points[hover].share, 2)}</span><span className="k">share</span></div>
             </ChartTip>
+          )}
+          {model.observed && (
+            <div className="stat-legend">
+              <span><i className="stat-swatch stat-swatch-bar" />Articles published that week</span>
+              <span><i className="stat-swatch stat-swatch-line" />Share that matched {seriesLabel}</span>
+            </div>
           )}
         </div>
       )}
@@ -381,15 +387,15 @@ export function LagEcdf({ ecdf }) {
   return (
     <Card padding={28}>
       <CardHead
-        title="Pickup lag"
-        sub="Cumulative share of cross-outlet edges by absolute lag. The accent curve is observed. Grey is generated. Marks sit on each median."
+        title="Delay"
+        sub="How long until another outlet repeats it. Marks sit on each median."
       >
         <TableToggle value={table} onChange={setTable} />
       </CardHead>
       {table ? (
         <div className="table-scroll">
           <table className="data-table">
-            <thead><tr><th>Set</th><th className="num">Edges</th><th className="num">Median</th><th className="num">Shortest</th><th className="num">Longest</th></tr></thead>
+            <thead><tr><th>Set</th><th className="num">Pickups</th><th className="num">Median</th><th className="num">Shortest</th><th className="num">Longest</th></tr></thead>
             <tbody>
               {curves.map(c => (
                 <tr key={c.id}>
@@ -405,7 +411,7 @@ export function LagEcdf({ ecdf }) {
         </div>
       ) : (
         <div className="chart" ref={ref}>
-          <svg height={H} role="img" aria-label="Empirical distribution of pickup lag">
+          <svg height={H} role="img" aria-label="Delay before another outlet repeats it">
             {[0, 0.25, 0.5, 0.75, 1].map(p => (
               <g key={p}>
                 <line className="grid-line" x1={M.l} x2={width - M.r} y1={y(p)} y2={y(p)} />

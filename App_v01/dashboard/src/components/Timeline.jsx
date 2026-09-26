@@ -78,7 +78,7 @@ export function Timeline({ data, series, metric, lo, hi, focus, onFocus }) {
     <Card padding={28}>
       <CardHead
         title={series.label}
-        sub={`Weekly ${metric === 'share' ? 'share of articles' : 'article count'} · ${fmtWeek(weeks[0])} – ${fmtWeek(weeks[n - 1])}. Lines are drawn only where weekly counts were observed. Gaps are weeks with no crawled volume.`}
+        sub={`Weekly ${metric === 'share' ? 'share of articles' : 'article count'} · ${fmtWeek(weeks[0])} – ${fmtWeek(weeks[n - 1])}. Lines show outlets crawled week by week. Gaps are weeks with nothing crawled.`}
       >
         <TableToggle value={table} onChange={setTable} />
       </CardHead>

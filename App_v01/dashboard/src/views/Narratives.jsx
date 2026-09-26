@@ -3,8 +3,9 @@ import { ExternalLink, Quote } from 'lucide-react';
 import { Card, Badge, Tag } from '../ds/index.js';
 import { CardHead, Highlighted, Sparkline } from '../components/shared.jsx';
 import { Timeline } from '../components/Timeline.jsx';
+import { VolumeShareChart } from '../components/StatCharts.jsx';
 import { shortName } from '../components/Heatmap.jsx';
-import { cell, visibleSeries, rankedSources, fmtDate, fmtPct, fmtNum, fmtWeek, movers, focusTrailing, weeklyObserved } from '../data/derive.js';
+import { cell, visibleSeries, rankedSources, fmtDate, fmtPct, fmtNum, fmtWeek, movers, focusTrailing, weeklyObserved, volumeShare } from '../data/derive.js';
 
 function NarrativeRail({ data, kind, lo, hi, value, onChange }) {
   const mv = Object.fromEntries(movers(data, kind, lo, hi).map(m => [m.series.id, m]));
@@ -24,7 +25,7 @@ function NarrativeRail({ data, kind, lo, hi, value, onChange }) {
               transition: 'transform var(--duration-fast) var(--ease-out-back), box-shadow var(--duration-fast) var(--ease-standard), background var(--duration-fast) var(--ease-standard)',
               display: 'flex', flexDirection: 'column', gap: 'var(--space-2)',
             }}>
-            <span className="eyebrow">{se.kind} · {se.target}</span>
+            <span className="eyebrow">{se.target}</span>
             <span className="row-title">{se.label}</span>
             {m && <Sparkline values={m.spark} width={150} height={26} />}
           </button>
@@ -39,7 +40,7 @@ function Carriers({ data, series, lo, hi, focus, onFocus }) {
   const max = Math.max(0.01, ...rows.map(r => r.share || 0));
   return (
     <Card padding={28}>
-      <CardHead title="Who carries it" sub="Share of each outlet’s articles in range. Click to focus." />
+      <CardHead title="Which outlets are running it" sub="Share of each outlet’s articles in range. Click to focus." />
       <div className="list">
         {rows.map((r, k) => {
           const on = r.src.id === focus;
@@ -72,7 +73,7 @@ function Evidence({ data, series, focus, onlyFocus, setOnlyFocus }) {
   const focusSrc = data.sources.find(s => s.id === focus);
   return (
     <Card padding={28}>
-      <CardHead title="Evidence" sub="Sentences that matched the frame pattern. Matches are highlighted.">
+      <CardHead title="Evidence" sub="Sentences that matched this narrative. Matches are highlighted.">
         {onlyFocus
           ? <Tag onRemove={() => setOnlyFocus(false)}>{shortName(focusSrc)}</Tag>
           : <button className="chip" onClick={() => setOnlyFocus(true)}>Only {shortName(focusSrc)}</button>}
@@ -102,30 +103,32 @@ export function Narratives({ data, filters, focus, setFocus }) {
   const [onlyFocus, setOnlyFocus] = React.useState(false);
   const list = visibleSeries(data, kind);
   const series = list.find(s => s.id === focus.series) || list[0];
-  if (!series) return <div className="empty">No series of this kind.</div>;
-  const peakSrc = data.sources.find(s => s.id === focus.source);
+  if (!series) return <div className="empty">No narratives to show.</div>;
+  const peakSrc = data.sources.find(s => s.id === focus.source) || rankedSources(data)[0];
   const observed = peakSrc && weeklyObserved(peakSrc);
   const trail = observed ? focusTrailing(data, focus.source, series.id, lo, hi) : null;
+  const volume = volumeShare(data, peakSrc, series.id, lo, hi);
 
   return (
     <>
       <NarrativeRail data={data} kind={kind} lo={lo} hi={hi} value={series.id} onChange={id => setFocus({ ...focus, series: id })} />
       {observed && trail && (
         <p className="note" style={{ margin: 0 }}>
-          Trailing eight-week z for {shortName(peakSrc)}: week of <strong className="mono" style={{ color: 'var(--text-primary)' }}>{fmtWeek(trail.week)}</strong>, {fmtNum(trail.n)} articles, {fmtPct(trail.share, 2)} share, z {trail.z.toFixed(2)} against a {fmtPct(trail.baseline, 2)} baseline.
+          Loudest week for {shortName(peakSrc)}: week of <strong className="mono" style={{ color: 'var(--text-primary)' }}>{fmtWeek(trail.week)}</strong>, {fmtNum(trail.n)} matching articles, {fmtPct(trail.share, 2)} of what it published.
         </p>
       )}
       {observed && !trail && (
         <p className="note" style={{ margin: 0 }}>
-          No trailing z yet for {shortName(peakSrc)} in this range. The score needs eight earlier weeks and at least five matching articles.
+          Not enough earlier weeks to compare {shortName(peakSrc)} with its usual level.
         </p>
       )}
       {!observed && peakSrc && (
         <p className="note" style={{ margin: 0 }}>
-          Week-by-week counts for {shortName(peakSrc)} are generated. Shares use the crawled total when the range is all weeks.
+          Week-by-week counts for {shortName(peakSrc)} are estimated. Shares use the crawled total when the range is all weeks.
         </p>
       )}
       <Timeline data={data} series={series} metric={metric} lo={lo} hi={hi} focus={focus.source} onFocus={id => setFocus({ ...focus, source: id })} />
+      <VolumeShareChart model={volume} seriesLabel={series.label} />
       <div className="grid grid-2">
         <Evidence data={data} series={series} focus={focus.source} onlyFocus={onlyFocus} setOnlyFocus={setOnlyFocus} />
         <Carriers data={data} series={series} lo={lo} hi={hi} focus={focus.source} onFocus={id => setFocus({ ...focus, source: id })} />

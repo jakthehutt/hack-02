@@ -63,7 +63,7 @@ export function PropagationMap({ nodes, links, selected, onSelect }) {
 
   return (
     <div className="chart" ref={ref}>
-      <svg height={H} role="img" aria-label="Propagation map between outlets">
+      <svg height={H} role="img" aria-label="Who influences whom">
         {COLUMNS.map((c, k) => (
           <text key={c.label} className="col-label" x={colX(k) + NODE_W / 2} y={16} textAnchor="middle">{c.label}</text>
         ))}
@@ -107,7 +107,7 @@ export function PropagationMap({ nodes, links, selected, onSelect }) {
               <g transform={sel ? 'translate(2,2)' : undefined}>
                 <text x={12} y={19} style={{ font: '600 13px var(--font-body)', fill: sel ? 'var(--white)' : 'var(--black)' }}>{fit(shortName(n), NODE_W)}<title>{n.name}</title></text>
                 <text x={12} y={35} style={{ font: '500 11px var(--font-mono)', fill: sel ? 'var(--white)' : 'var(--text-muted)' }}>
-                  {d.out ? `↗ ${d.out}` : ''}{d.out && d.in ? '  ' : ''}{d.in ? `↘ ${d.in}` : ''}{!d.in && !d.out ? 'no links' : ''}
+                  {d.out ? `↗ ${d.out}` : ''}{d.out && d.in ? '  ' : ''}{d.in ? `↘ ${d.in}` : ''}{!d.in && !d.out ? 'no pickups' : ''}
                 </text>
               </g>
             </g>
@@ -127,7 +127,7 @@ export function LagHistogram({ bins, highlight }) {
   const label = b => (b.to === Infinity ? `${fmtHours(b.from)}+` : `<${fmtHours(b.to)}`);
   return (
     <div className="chart" ref={ref} onMouseLeave={() => setHover(null)}>
-      <svg height={h} role="img" aria-label="Lag between origin and pickup">
+      <svg height={h} role="img" aria-label="Delay before another outlet repeats it">
         <line className="axis-line" x1={m.l} x2={width - m.r} y1={h - m.b} y2={h - m.b} />
         {bins.map((b, k) => {
           const bh = (b.count / max) * (h - m.t - m.b);

@@ -31,6 +31,12 @@
 .eyebrow { font: var(--font-label); text-transform: uppercase; letter-spacing: var(--tracking-widest); color: var(--text-muted); font-size: var(--text-2xs); }
 .page-title { font: var(--font-h3); letter-spacing: var(--tracking-tight); margin: var(--space-1) 0 0; }
 .page-lede { color: var(--text-secondary); margin: var(--space-2) 0 0; max-width: 64ch; }
+.story-beat { display: flex; flex-direction: column; gap: var(--space-4); }
+.story-title { font: var(--font-h4); letter-spacing: var(--tracking-tight); margin: 0; }
+.story-lead { font: var(--font-body-lg); color: var(--text-primary); max-width: 68ch; margin: 0; }
+.story-copy { font: var(--font-body-md); color: var(--text-secondary); max-width: 68ch; margin: 0; }
+.text-link { background: none; border: none; padding: 0; font: inherit; font-weight: 700; color: var(--text-link); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.text-link:hover { color: var(--text-link-hover); }
 .filters { display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; }
 .filter-group { display: flex; flex-direction: column; gap: var(--space-2); }
 .filter-label { font: var(--font-label); color: var(--text-secondary); }
@@ -122,6 +128,9 @@
 .stat-legend { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-4); margin-top: var(--space-4); }
 .stat-legend span { display: inline-flex; align-items: center; gap: 6px; font: var(--font-body-sm); color: var(--text-secondary); }
 .stat-dot { width: 10px; height: 10px; border-radius: 99px; border: 1.5px solid var(--black); display: inline-block; }
+.stat-swatch { display: inline-block; flex-shrink: 0; }
+.stat-swatch-bar { width: 12px; height: 10px; border-radius: 2px; background: var(--grey-200); border: 1.5px solid var(--grey-300); }
+.stat-swatch-line { width: 16px; height: 3px; border-radius: 2px; background: var(--accent-primary); }
 .comp-total { position: relative; height: 36px; background: var(--grey-50); border-radius: var(--radius-sm); }
 .comp-volume { position: absolute; inset: 6px auto 6px 0; background: var(--grey-200); border-radius: 4px; }
 .comp-stack { position: absolute; inset: 11px 0; }
