@@ -1,5 +1,6 @@
 {
-  "article_path_re": "/(artikel|news|kurzvideos|meinung|video|wirtschaft|sport|inland|ausland)/",
+  "article_path_re": "/(artikel|news|kurzvideos|meinung|video|wirtschaft|sport|inland|ausland|international|gesellschaft|europa|russland|ukraine)/\\d{4,}",
   "homepage_paths": ["/", "/listing/nachrichten.amp"],
+  "feed_paths": ["/rss"],
   "min_chars": 400
 }

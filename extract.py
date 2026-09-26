@@ -5,32 +5,34 @@ from __future__ import annotations
 import argparse
 import json
 import re
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
 from lxml import html as lxml_html
 
-from catalogue import DATA_DIR, host_index
+from catalogue import DATA_DIR, LOOKBACK_DAYS, host_index
 from simhash import as_hex, simhash64
-from urls import article_id_for, host_from_url, normalize_url, sha256_text
+from urls import article_id_for, host_from_url, looks_like_article_url, normalize_url, sha256_text, url_published_at
 
 RAW_DIR = DATA_DIR / "raw"
 ARTICLES_DIR = DATA_DIR / "articles"
 MIN_CHARS = 400
-URL_DATE_RE = re.compile(r"/(20\d{2})[/-](\d{1,2})[/-](\d{1,2})(?:/|$)")
-TIME_RE = re.compile(
-    r'<time[^>]+datetime=["\']([^"\']+)["\']',
-    re.I,
-)
-META_DATE_RE = re.compile(
-    r'<meta[^>]+(?:property|name)=["\'](?:article:published_time|og:updated_time|pubdate|publish-date|date)["\'][^>]+content=["\']([^"\']+)["\']',
-    re.I,
-)
 CREDIT_RE = re.compile(
-    r"(?:Quelle|Source|Источник)\s*[:：]\s*([^\n.]{2,80})",
+    r"(?:Quelle|Source|Источник)\s*[:：]\s*([^\n.|]{2,80})",
     re.I,
 )
+PUBLISHED_META = {
+    "article:published_time",
+    "og:published_time",
+    "pubdate",
+    "publish-date",
+    "date",
+    "dc.date",
+    "dc.date.issued",
+    "sailthru.date",
+    "parsely-pub-date",
+}
 
 
 def _load_fetches() -> dict[str, dict[str, Any]]:
@@ -74,59 +76,106 @@ def _parse_date(value: str | None) -> datetime | None:
         return None
 
 
-def resolve_published_at(html: str, extracted_date: str | None, url: str) -> tuple[str | None, str, str]:
-    html_match = TIME_RE.search(html)
-    if html_match:
-        parsed = _parse_date(html_match.group(1))
-        if parsed:
-            return parsed.isoformat(), "html_time", "high"
-    meta_match = META_DATE_RE.search(html)
-    if meta_match:
-        parsed = _parse_date(meta_match.group(1))
-        if parsed:
-            return parsed.isoformat(), "meta", "high"
-    parsed = _parse_date(extracted_date)
-    if parsed:
-        return parsed.isoformat(), "trafilatura", "high"
-    url_match = URL_DATE_RE.search(url)
-    if url_match:
-        try:
-            parsed = datetime(
-                int(url_match.group(1)),
-                int(url_match.group(2)),
-                int(url_match.group(3)),
-                tzinfo=timezone.utc,
-            )
-            return parsed.isoformat(), "url", "low"
-        except ValueError:
-            pass
-    return None, "missing", "low"
+def _json_nodes(node: Any) -> list[dict[str, Any]]:
+    found: list[dict[str, Any]] = []
+    if isinstance(node, dict):
+        found.append(node)
+        for value in node.values():
+            found.extend(_json_nodes(value))
+    elif isinstance(node, list):
+        for item in node:
+            found.extend(_json_nodes(item))
+    return found
 
 
-def outbound_links(html: str, page_url: str, index: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
-    links: list[dict[str, Any]] = []
-    seen: set[str] = set()
+def _html_published(html: str) -> tuple[datetime | None, str]:
     try:
         tree = lxml_html.fromstring(html.encode("utf-8", errors="ignore"))
     except Exception:
-        return links
-    try:
-        tree.make_links_absolute(page_url)
-    except Exception:
-        pass
-    for node in tree.xpath("//a[@href]"):
-        href = normalize_url(str(node.get("href") or ""))
-        if not href or href in seen:
+        return None, "missing"
+    for node in tree.xpath("//time[@datetime]"):
+        parsed = _parse_date(str(node.get("datetime") or ""))
+        if parsed:
+            return parsed, "html_time"
+    for node in tree.xpath("//meta[@content]"):
+        key = str(node.get("property") or node.get("name") or "").lower()
+        if key in PUBLISHED_META:
+            parsed = _parse_date(str(node.get("content") or ""))
+            if parsed:
+                return parsed, "meta"
+    for node in tree.xpath("//script[@type='application/ld+json']"):
+        raw = node.text or ""
+        try:
+            payload = json.loads(raw)
+        except json.JSONDecodeError:
+            continue
+        for item in _json_nodes(payload):
+            parsed = _parse_date(str(item.get("datePublished") or ""))
+            if parsed:
+                return parsed, "meta"
+    return None, "missing"
+
+
+def resolve_published_at(html: str, extracted_date: str | None, url: str) -> tuple[str | None, str, str]:
+    parsed, source = _html_published(html)
+    if parsed:
+        return parsed.isoformat(), source, "high"
+    parsed = _parse_date(extracted_date)
+    if parsed:
+        return parsed.isoformat(), "trafilatura", "high"
+    parts = url_published_at(url)
+    if parts:
+        try:
+            parsed = datetime(*parts, tzinfo=timezone.utc)
+        except ValueError:
+            parsed = None
+        if parsed:
+            return parsed.isoformat(), "url", "low"
+    return None, "missing", "low"
+
+
+REF_RE = re.compile(r'<ref\s+target="([^"]+)"[^>]*>(.*?)</ref>', re.I | re.S)
+
+
+def guess_language(text: str) -> str:
+    cyrillic = sum(1 for ch in text if "\u0400" <= ch <= "\u04FF")
+    latin = sum(1 for ch in text if ("a" <= ch.lower() <= "z") or ch in "äöüÄÖÜß")
+    if cyrillic > latin and cyrillic > 20:
+        return "ru"
+    if latin > 20:
+        return "de"
+    return "und"
+
+
+def outbound_links(html: str, page_url: str, index: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
+    """Links inside the article body. Navigation and footers are not lineage."""
+    import trafilatura
+
+    xml = trafilatura.extract(
+        html,
+        url=page_url or None,
+        output_format="xml",
+        with_metadata=True,
+        include_links=True,
+        include_comments=False,
+        favor_precision=True,
+    ) or ""
+    links: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for target, inner in REF_RE.findall(xml):
+        href = normalize_url(target)
+        if not href or href in seen or not looks_like_article_url(href):
             continue
         seen.add(href)
         host = host_from_url(href)
         meta = index.get(host)
+        anchor = re.sub(r"<[^>]+>", "", inner)
         links.append(
             {
                 "url": href,
                 "host": host,
                 "resolved_source_id": meta["source_id"] if meta else None,
-                "anchor": " ".join((node.text_content() or "").split())[:240],
+                "anchor": " ".join(anchor.split())[:240],
             }
         )
     return links
@@ -159,10 +208,6 @@ def extract_credits(text: str, index: dict[str, dict[str, Any]]) -> list[dict[st
                 source_id = sid
                 break
         credits.append({"raw": raw, "resolved_source_id": source_id, "span": match.group(0)})
-    lower_lead = lead.lower()
-    for needle, sid in names.items():
-        if needle in lower_lead and not any(c.get("resolved_source_id") == sid for c in credits):
-            credits.append({"raw": needle, "resolved_source_id": sid, "span": needle})
     return credits
 
 
@@ -188,7 +233,20 @@ def extract_file(
         return None
     extracted = json.loads(dumped)
     text = extracted.get("text") or ""
+    page_url = extracted.get("source") or url
+    if page_url and not looks_like_article_url(page_url):
+        return None
     if len(text) < MIN_CHARS:
+        return None
+    published_at, date_source, date_confidence = resolve_published_at(
+        html, extracted.get("date"), page_url
+    )
+    published_dt = _parse_date(published_at)
+    if (
+        date_confidence == "high"
+        and published_dt is not None
+        and published_dt < datetime.now(timezone.utc) - timedelta(days=14)
+    ):
         return None
     pagetype = str(extracted.get("pagetype") or "article").lower()
     if pagetype in {"author", "category", "page", "list"}:
@@ -220,7 +278,7 @@ def extract_file(
             "fingerprint": extracted.get("fingerprint"),
             "excerpt": extracted.get("excerpt") or extracted.get("description"),
             "text": text,
-            "language": extracted.get("language"),
+            "language": extracted.get("language") or guess_language(text),
             "image": extracted.get("image"),
             "pagetype": extracted.get("pagetype"),
         },
@@ -262,6 +320,9 @@ def extract_all() -> int:
         if record is None:
             continue
         if record["article_id"] in seen:
+            continue
+        published = _parse_date(record.get("published_at"))
+        if published is not None and published < datetime.now(timezone.utc) - timedelta(days=LOOKBACK_DAYS):
             continue
         seen.add(record["article_id"])
         by_source.setdefault(record.get("source_id") or "unknown", []).append(record)

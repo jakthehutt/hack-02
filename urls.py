@@ -19,6 +19,7 @@ TRACKING_PARAMS = {
     "yclid",
     "igshid",
     "_ga",
+    "ref",
 }
 
 
@@ -66,17 +67,51 @@ def host_from_url(url: str) -> str:
     return normalize_host(urlparse(url).hostname)
 
 
+URL_DATE_RE = re.compile(
+    r"/(20\d{2})(?:[/-](\d{1,2})[/-](\d{1,2})|(\d{2})(\d{2}))(?:/|-|$)"
+)
+
 ARTICLE_PATH_HINT = re.compile(
     r"/(20\d{2}|news|artikel|article|story|politik|welt|meinung|"
-    r"nachrichten|debatte|kommentar|video|wirtschaft|sport)/",
+    r"nachrichten|debatte|kommentar|video|wirtschaft|sport|"
+    r"international|gesellschaft|europa|russland|ukraine)/",
     re.I,
 )
 
 LIST_PATH_HINT = re.compile(
     r"/(tag|tags|category|kategorie|author|autor|page|seite|search|suche|"
-    r"feed|rss|sitemap)(/|$)",
+    r"feed|rss|sitemap|about|contacts?|kontakt\w*|impressum|newsletter|"
+    r"unterstuetzen)(/|$)",
     re.I,
 )
+DATE_ONLY_PATH = re.compile(r"^/20\d{2}(?:\d{4}|/\d{1,2}/\d{1,2})$")
+
+
+def usable_path_re(path_re: str | None) -> str | None:
+    """Ignore placeholder patterns that match every path."""
+    if path_re is None:
+        return None
+    text = path_re.strip()
+    if text in {"", "/", ".*", "^/", "^.*$", "^/$"}:
+        return None
+    return text
+
+
+def url_published_at(url: str) -> tuple[int, int, int] | None:
+    match = URL_DATE_RE.search(urlparse(url).path or "")
+    if not match:
+        return None
+    year = int(match.group(1))
+    if match.group(2):
+        month, day = int(match.group(2)), int(match.group(3))
+    else:
+        month, day = int(match.group(4)), int(match.group(5))
+    try:
+        if not (1 <= month <= 12 and 1 <= day <= 31):
+            return None
+    except ValueError:
+        return None
+    return year, month, day
 
 
 def looks_like_article_url(url: str, path_re: str | None = None) -> bool:
@@ -84,17 +119,25 @@ def looks_like_article_url(url: str, path_re: str | None = None) -> bool:
     path = parsed.path or "/"
     if path in {"", "/"}:
         return False
+    if DATE_ONLY_PATH.fullmatch(path):
+        return False
+    parts = [p for p in path.split("/") if p]
     if LIST_PATH_HINT.search(path):
         return False
-    suffix = path.rsplit(".", 1)[-1].lower() if "." in path.split("/")[-1] else ""
-    if suffix in {"xml", "jpg", "jpeg", "png", "gif", "css", "js", "pdf", "zip"}:
+    if parts and parts[-1].lower() in {"ueber-uns", "ueber-anti-spiegel", "kontaktformular"}:
         return False
-    if path_re and re.search(path_re, path):
+    suffix = path.rsplit(".", 1)[-1].lower() if "." in path.split("/")[-1] else ""
+    if suffix in {"xml", "jpg", "jpeg", "png", "gif", "webp", "css", "js", "pdf", "zip", "mp3", "mp4"}:
+        return False
+    pattern = usable_path_re(path_re)
+    if pattern and re.search(pattern, path):
         return True
     if ARTICLE_PATH_HINT.search(path):
         return True
+    if url_published_at(url):
+        return True
     parts = [p for p in path.split("/") if p]
-    if len(parts) >= 2:
+    if len(parts) >= 2 and re.search(r"\d", parts[-1]):
         return True
     slug = parts[-1] if parts else ""
-    return len(slug) >= 16
+    return "-" in slug and len(slug) >= 16

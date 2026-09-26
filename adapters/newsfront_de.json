@@ -1,5 +1,6 @@
 {
-  "article_path_re": "/",
+  "article_path_re": "/20\\d{2}/\\d{2}/\\d{2}/",
   "homepage_paths": ["/", "/category/deutschland/"],
+  "feed_paths": ["/feed"],
   "min_chars": 400
 }

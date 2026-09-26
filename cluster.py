@@ -13,6 +13,7 @@ from typing import Any, Iterable
 from catalogue import DATA_DIR, source_meta
 from extract import load_articles
 from simhash import from_hex, hamming
+from urls import normalize_url
 
 EDGES_PATH = DATA_DIR / "edges.jsonl"
 TOPICS_PATH = DATA_DIR / "topics.jsonl"
@@ -88,8 +89,19 @@ def _lead(article: dict[str, Any], n: int = 1500) -> str:
     return f"{title}\n{text[:n]}"
 
 
+GENERIC_ENTITIES = {
+    "russland", "ukraine", "deutschland", "amerika", "china", "iran",
+    "putin", "trump", "merz", "selensky", "nato", "europa", "berlin",
+    "moskau", "kiew", "usa", "eu", "russian", "russia", "germany",
+}
+
+
 def _entities(text: str) -> set[str]:
-    return {tok.lower() for tok in ENTITY_RE.findall(text or "") if tok[:1].isupper()}
+    return {
+        tok.lower()
+        for tok in ENTITY_RE.findall(text or "")
+        if tok[:1].isupper() and len(tok) >= 5 and tok.lower() not in GENERIC_ENTITIES
+    }
 
 
 def collapse_mirrors(articles: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -107,65 +119,81 @@ def collapse_mirrors(articles: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 
 def citation_edges(articles: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    by_source: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    by_url: dict[str, dict[str, Any]] = {}
     for article in articles:
-        by_source[article.get("source_id") or ""].append(article)
+        for key in (article.get("canonical_url"), article.get("url"), article.get("final_url")):
+            if key:
+                by_url[normalize_url(key)] = article
     edges: list[dict[str, Any]] = []
+    seen: set[tuple[str, str]] = set()
     for article in articles:
-        cited_ids: set[str] = set()
         for link in article.get("outbound_links") or []:
-            sid = link.get("resolved_source_id")
-            if sid and sid != article.get("source_id"):
-                cited_ids.add(sid)
-        for credit in article.get("credits") or []:
-            sid = credit.get("resolved_source_id")
-            if sid and sid != article.get("source_id"):
-                cited_ids.add(sid)
-        for sid in cited_ids:
-            partner = _closest_in_time(article, by_source.get(sid) or [])
-            if partner is None:
+            target = by_url.get(normalize_url(link.get("url") or ""))
+            if target is None or target["article_id"] == article["article_id"]:
                 continue
+            if target.get("source_id") and target.get("source_id") == article.get("source_id"):
+                continue
+            pair = (target["article_id"], article["article_id"])
+            if pair in seen:
+                continue
+            seen.add(pair)
             edges.append(
                 _edge(
-                    partner,
+                    target,
                     article,
                     relation="citation",
                     rule="explicit_citation",
                     similarity=1.0,
-                    example=_citation_example(article, sid),
+                    example=(link.get("anchor") or link.get("url") or "")[:240],
                 )
             )
     return edges
 
 
-def _citation_example(article: dict[str, Any], source_id: str) -> str:
-    for credit in article.get("credits") or []:
-        if credit.get("resolved_source_id") == source_id:
-            return credit.get("span") or credit.get("raw") or source_id
-    for link in article.get("outbound_links") or []:
-        if link.get("resolved_source_id") == source_id:
-            return (link.get("anchor") or link.get("url") or "")[:240]
-    return source_id
+def _script(text: str) -> str:
+    cyrillic = latin = 0
+    for char in text[:2000]:
+        if "\u0400" <= char <= "\u04FF":
+            cyrillic += 1
+        elif "A" <= char <= "Z" or "a" <= char <= "z":
+            latin += 1
+    return "cyr" if cyrillic > latin else "lat"
 
 
-def _closest_in_time(article: dict[str, Any], candidates: list[dict[str, Any]]) -> dict[str, Any] | None:
-    if not candidates:
-        return None
-    origin = _dt(article.get("published_at"))
-    if origin is None:
-        return candidates[0]
-    scored = []
-    for candidate in candidates:
-        other = _dt(candidate.get("published_at"))
-        if other is None:
-            scored.append((timedelta(days=999), candidate))
-        else:
-            scored.append((abs(origin - other), candidate))
-    scored.sort(key=lambda item: item[0])
-    delta, partner = scored[0]
-    if delta > timedelta(days=7):
-        return partner if delta < timedelta(days=30) else None
-    return partner
+SALIENT_RE = re.compile(r"\b[A-Z][\wÀ-ÿ]{3,}\b|\b\d{3,}\b")
+SALIENT_STOP = {
+    "ukraine",
+    "russland",
+    "russia",
+    "putin",
+    "moskau",
+    "moscow",
+    "berlin",
+    "europa",
+    "europe",
+    "deutschland",
+    "germany",
+    "nato",
+    "usa",
+    "amerika",
+    "krieg",
+    "selenskyj",
+    "zelensky",
+    "kremlin",
+    "kreml",
+}
+
+
+def _salient(article: dict[str, Any]) -> set[str]:
+    tokens: set[str] = set()
+    for token in SALIENT_RE.findall(_lead(article, 800)):
+        lower = token.lower()
+        if lower in SALIENT_STOP:
+            continue
+        if token.isdigit() and len(token) == 4 and token.startswith(("19", "20")):
+            continue
+        tokens.add(lower)
+    return tokens
 
 
 def duplicate_pairs(articles: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -181,19 +209,33 @@ def duplicate_pairs(articles: list[dict[str, Any]]) -> list[dict[str, Any]]:
             relation = "mirror" if head.get("source_id") == other.get("source_id") else "near_duplicate"
             pairs.append(_edge(head, other, relation=relation, rule="text_sha256", similarity=1.0))
 
-    ngram_cache = {a["article_id"]: _ngrams(_lead(a)) for a in articles}
+    ngram_cache: dict[str, dict[str, int]] = {}
+    scripts = {article["article_id"]: _script(_lead(article, 400)) for article in articles}
+    salient = {article["article_id"]: _salient(article) for article in articles}
+
+    def ngrams_for(article: dict[str, Any]) -> dict[str, int]:
+        cached = ngram_cache.get(article["article_id"])
+        if cached is None:
+            cached = _ngrams(_lead(article))
+            ngram_cache[article["article_id"]] = cached
+        return cached
+
     for i, left in enumerate(articles):
-        left_hash = from_hex(left["simhash"]) if left.get("simhash") else 0
+        left_hash = from_hex(left["simhash"]) if left.get("simhash") else None
         left_lang = (left.get("extracted") or {}).get("language")
+        left_when = _dt(left.get("published_at"))
         for right in articles[i + 1 :]:
             if left["article_id"] == right["article_id"]:
                 continue
             if left.get("text_sha256") and left.get("text_sha256") == right.get("text_sha256"):
                 continue
-            right_hash = from_hex(right["simhash"]) if right.get("simhash") else 0
-            distance = hamming(left_hash, right_hash)
             right_lang = (right.get("extracted") or {}).get("language")
-            same_lang = left_lang and right_lang and left_lang == right_lang
+            same_lang = bool(left_lang and right_lang and left_lang == right_lang)
+            same_script = scripts[left["article_id"]] == scripts[right["article_id"]]
+            right_hash = from_hex(right["simhash"]) if right.get("simhash") else None
+            distance = (
+                hamming(left_hash, right_hash) if left_hash is not None and right_hash is not None else 64
+            )
             if same_lang and distance <= HAMMING_MAX:
                 pairs.append(
                     _edge(
@@ -205,18 +247,38 @@ def duplicate_pairs(articles: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     )
                 )
                 continue
-            if (not same_lang) or distance <= 10:
-                sim = _cosine(ngram_cache[left["article_id"]], ngram_cache[right["article_id"]])
-                if sim >= NGRAM_COSINE_MIN:
+            if same_script and distance <= 12:
+                similarity = _cosine(ngrams_for(left), ngrams_for(right))
+                if similarity >= NGRAM_COSINE_MIN:
                     pairs.append(
                         _edge(
                             left,
                             right,
-                            relation="translation" if not same_lang else "near_duplicate",
+                            relation="near_duplicate" if same_lang else "translation",
                             rule="ngram_cosine",
-                            similarity=sim,
+                            similarity=similarity,
                         )
                     )
+                    continue
+            if same_script:
+                continue
+            shared = salient[left["article_id"]] & salient[right["article_id"]]
+            if len(shared) < 4:
+                continue
+            right_when = _dt(right.get("published_at"))
+            if left_when is None or right_when is None or abs(left_when - right_when) > timedelta(days=7):
+                continue
+            union = salient[left["article_id"]] | salient[right["article_id"]]
+            pairs.append(
+                _edge(
+                    left,
+                    right,
+                    relation="translation",
+                    rule="shared_entities",
+                    similarity=len(shared) / max(len(union), 1),
+                    example=" ".join(sorted(shared)[:8]),
+                )
+            )
     return pairs
 
 
@@ -300,19 +362,26 @@ def assign_mothers(
         origin, rule = _pick_origin(members, citation_to, by_id, meta)
         if origin is None:
             continue
+        origin["origin_rule"] = rule
         for member in members:
             if member["article_id"] == origin["article_id"]:
                 continue
             if member.get("source_id") == origin.get("source_id"):
                 continue
+            origin_lang = (origin.get("extracted") or {}).get("language")
+            member_lang = (member.get("extracted") or {}).get("language")
+            relation = (
+                "translation"
+                if origin_lang and member_lang and origin_lang != member_lang
+                else "near_duplicate"
+            )
             mothers.append(
                 _edge(
                     origin,
                     member,
-                    relation="near_duplicate",
+                    relation=relation,
                     rule=rule,
                     similarity=1.0,
-                    example=rule,
                 )
             )
             mothers[-1]["copy_cluster_id"] = cluster_id
@@ -332,8 +401,13 @@ def _pick_origin(
             parent = by_id.get(parent_id)
             if parent and parent["article_id"] in member_ids:
                 cited_parents.append(parent)
-            elif parent:
-                cited_parents.append(parent)
+        for credit in member.get("credits") or []:
+            source_id = credit.get("resolved_source_id")
+            if not source_id or source_id == member.get("source_id"):
+                continue
+            for other in members:
+                if other.get("source_id") == source_id and other["article_id"] != member["article_id"]:
+                    cited_parents.append(other)
     if cited_parents:
         cited_parents.sort(key=lambda a: _dt(a.get("published_at")) or datetime.max.replace(tzinfo=timezone.utc))
         return cited_parents[0], "citation_wins"
@@ -354,9 +428,9 @@ def _pick_origin(
 
     members_sorted = sorted(
         members,
-        key=lambda a: (
-            _dt(a.get("published_at")) or datetime.max.replace(tzinfo=timezone.utc),
-            meta.get(a.get("source_id") or "", {}).get("rank", 99),
+        key=lambda article: (
+            meta.get(article.get("source_id") or "", {}).get("rank", 99),
+            article["article_id"],
         ),
     )
     return members_sorted[0], "rank_tiebreak"
@@ -405,9 +479,7 @@ def build_topics(articles: list[dict[str, Any]], mother_edges: list[dict[str, An
             if row["start"] and other["start"] and window_end and other["start"] > window_end:
                 break
             overlap = len(row["entities"] & other["entities"])
-            if overlap >= 4 or (
-                overlap >= 2 and _titles_close(row["origin"], other["origin"])
-            ):
+            if overlap >= 2 and _titles_close(row["origin"], other["origin"]):
                 group.append(other)
                 used.add(other["cluster_id"])
         topics.append(_topic_from_group(group, len(topics)))
@@ -415,7 +487,7 @@ def build_topics(articles: list[dict[str, Any]], mother_edges: list[dict[str, An
 
 
 def _titles_close(a: dict[str, Any], b: dict[str, Any]) -> bool:
-    return _cosine(_ngrams((a.get("extracted") or {}).get("title") or ""), _ngrams((b.get("extracted") or {}).get("title") or "")) >= 0.35
+    return _cosine(_ngrams((a.get("extracted") or {}).get("title") or ""), _ngrams((b.get("extracted") or {}).get("title") or "")) >= 0.32
 
 
 def _topic_from_group(group: list[dict[str, Any]], index: int) -> dict[str, Any]:
@@ -437,7 +509,6 @@ def _topic_from_group(group: list[dict[str, Any]], index: int) -> dict[str, Any]
     for row in group:
         entities |= row["entities"]
     label, description = label_topic(titles[:5], origin)
-    origin_ids = {row["origin"]["article_id"] for row in group}
     return {
         "topic_id": f"topic_{index:04d}_{origin['article_id'][:8]}",
         "window_start": min(times).isoformat() if times else None,
@@ -447,13 +518,20 @@ def _topic_from_group(group: list[dict[str, Any]], index: int) -> dict[str, Any]
         "entities": sorted(entities)[:40],
         "origin_source_id": origin.get("source_id"),
         "origin_article_id": origin["article_id"],
-        "origin_rule": "earliest_cluster_origin",
+        "origin_rule": origin.get("origin_rule") or "earliest_cluster_origin",
+        "downstream_source_ids": sorted(
+            {
+                member.get("source_id")
+                for member in members
+                if member.get("source_id") and member.get("source_id") != origin.get("source_id")
+            }
+        ),
         "members": [
             {
                 "source_id": m.get("source_id"),
                 "article_id": m["article_id"],
                 "published_at": m.get("published_at"),
-                "role": "origin" if m["article_id"] in origin_ids and m.get("source_id") == origin.get("source_id") else "relay",
+                "role": "origin" if m["article_id"] == origin["article_id"] else "relay",
             }
             for m in members
         ],
@@ -473,6 +551,37 @@ def label_topic(titles: list[str], origin: dict[str, Any]) -> tuple[str, str]:
     if len(clean) > 1:
         description += " Also seen as: " + " / ".join(clean[1:4])
     return label, description
+
+
+def topic_echo_edges(
+    topics: list[dict[str, Any]],
+    by_id: dict[str, dict[str, Any]],
+) -> list[dict[str, Any]]:
+    edges: list[dict[str, Any]] = []
+    for topic in topics:
+        origin = by_id.get(topic["origin_article_id"])
+        if origin is None:
+            continue
+        seen = {origin.get("copy_cluster_id")}
+        for member in topic["members"]:
+            article = by_id.get(member["article_id"])
+            if article is None:
+                continue
+            cluster_id = article.get("copy_cluster_id")
+            if not cluster_id or cluster_id in seen:
+                continue
+            seen.add(cluster_id)
+            edges.append(
+                _edge(
+                    origin,
+                    article,
+                    relation="topic_echo",
+                    rule="entity_window",
+                    similarity=0.0,
+                    example=topic.get("label"),
+                )
+            )
+    return edges
 
 
 def write_jsonl(path, rows: list[dict[str, Any]]) -> None:
@@ -511,7 +620,9 @@ def cluster() -> dict[str, int]:
     for article in unique:
         article["topic_id"] = topic_by_article.get(article["article_id"])
 
-    edges = pairs + mothers
+    by_id = {article["article_id"]: article for article in unique}
+    echoes = topic_echo_edges(topics, by_id)
+    edges = pairs + mothers + echoes
     write_jsonl(EDGES_PATH, edges)
     write_jsonl(TOPICS_PATH, topics)
     write_jsonl(ARTICLES_PATH, unique)

@@ -26,6 +26,7 @@ MVP_SOURCE_IDS = (
 PREFERRED_ROLES = (
     "primary",
     "german_edition",
+    "observed_german_desk",
     "successor",
     "sanctioned_mirror",
     "multilingual_hub",
@@ -50,6 +51,7 @@ SKIP_ROLES_UNTIL_PRIMARY_FAILS = {
 }
 
 NO_STABLE_DOMAIN_SOURCES = {"alina_lipp", "aam"}
+LOOKBACK_DAYS = 14
 
 
 def load_catalogue(path: Path | None = None) -> dict[str, Any]:

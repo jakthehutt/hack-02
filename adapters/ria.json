@@ -1,5 +1,6 @@
 {
-  "article_path_re": "/",
+  "article_path_re": "/20\\d{6}/[^/]+",
   "homepage_paths": ["/"],
+  "feed_paths": ["/export/rss2/archive/index.xml"],
   "min_chars": 400
 }

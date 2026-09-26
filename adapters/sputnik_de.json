@@ -1,5 +1,5 @@
 {
-  "article_path_re": "/",
-  "homepage_paths": ["/", "/politik", "/wirtschaft"],
+  "article_path_re": null,
+  "homepage_paths": ["/", "/politik", "/wirtschaft", "/welt"],
   "min_chars": 400
 }

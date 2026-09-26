@@ -1,5 +1,6 @@
 {
-  "article_path_re": "/",
+  "article_path_re": "/\\d{6,}",
   "homepage_paths": ["/"],
+  "feed_paths": ["/rss/v2.xml"],
   "min_chars": 400
 }

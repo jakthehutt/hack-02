@@ -2,3 +2,21 @@
 {"host": "snanews.de", "source_id": "sputnik_de", "stage": "all", "status": "empty", "note": "Inspect saved homepage and add or edit adapters/{source_id}.json", "homepage_saved": false}
 {"host": "snanews.de", "source_id": "sputnik_de", "stage": "summary", "url_count": 0}
 {"host": "de.rt.com", "source_id": "rt_de", "stage": "summary", "url_count": 8}
+{"host": "snanews.de", "source_id": "sputnik_de", "stage": "all", "status": "empty", "note": "Inspect saved homepage and add or edit adapters/{source_id}.json", "homepage_saved": false}
+{"host": "snanews.de", "source_id": "sputnik_de", "stage": "summary", "url_count": 0}
+{"host": "de.sputniknews.com", "source_id": "sputnik_de", "stage": "all", "status": "empty", "note": "Inspect saved homepage and add or edit adapters/{source_id}.json", "homepage_saved": false}
+{"host": "de.sputniknews.com", "source_id": "sputnik_de", "stage": "summary", "url_count": 0}
+{"host": "germany.news-pravda.com", "source_id": "pravda_de", "stage": "summary", "url_count": 8}
+{"host": "de.news-front.info", "source_id": "newsfront_de", "stage": "all", "status": "empty", "note": "Inspect saved homepage and add or edit adapters/{source_id}.json", "homepage_saved": false}
+{"host": "de.news-front.info", "source_id": "newsfront_de", "stage": "summary", "url_count": 0}
+{"host": "news-front.su", "source_id": "newsfront_de", "stage": "homepage", "status": "unreachable", "http_status": 404, "homepage_path": "/Users/pete/Code/hackathonmisinofrmation/data/homepages/newsfront_de__news-front.su.html"}
+{"host": "news-front.su", "source_id": "newsfront_de", "stage": "summary", "url_count": 8}
+{"host": "ria.ru", "source_id": "ria", "stage": "summary", "url_count": 8}
+{"host": "tass.com", "source_id": "tass", "stage": "summary", "url_count": 8}
+{"host": "anti-spiegel.ru", "source_id": "anti_spiegel", "stage": "summary", "url_count": 8}
+{"host": "apolut.net", "source_id": "apolut", "stage": "summary", "url_count": 8}
+{"host": "snanews.de", "source_id": "sputnik_de", "stage": "all", "status": "empty", "note": "Inspect saved homepage and add or edit adapters/{source_id}.json", "homepage_saved": false}
+{"host": "snanews.de", "source_id": "sputnik_de", "stage": "summary", "url_count": 0, "discovered": 0}
+{"host": "de.sputniknews.com", "source_id": "sputnik_de", "stage": "all", "status": "empty", "note": "Inspect saved homepage and add or edit adapters/{source_id}.json", "homepage_saved": false}
+{"host": "de.sputniknews.com", "source_id": "sputnik_de", "stage": "summary", "url_count": 0, "discovered": 0}
+{"host": "ria.ru", "source_id": "ria", "stage": "summary", "url_count": 8, "discovered": 8}

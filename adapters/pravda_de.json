@@ -1,5 +1,6 @@
 {
-  "article_path_re": "/",
-  "homepage_paths": ["/", "/world/", "/germany/"],
+  "article_path_re": null,
+  "homepage_paths": ["/", "/world", "/germany"],
+  "feed_paths": ["/feed"],
   "min_chars": 400
 }
