@@ -1,5 +1,5 @@
 import React from 'react';
-import { LayoutGrid, Activity, Share2, Database, Radar } from 'lucide-react';
+import { LayoutGrid, Activity, Share2, Database, Radar, Home } from 'lucide-react';
 import { Tabs, Toast } from './ds/index.js';
 import { useDashboardData } from './data/index.js';
 import { RANGE_PRESETS, METRIC_OPTIONS, rangeBounds, fmtWeek, seriesById, sourceById } from './data/derive.js';
@@ -7,6 +7,7 @@ import { Overview } from './views/Overview.jsx';
 import { Narratives } from './views/Narratives.jsx';
 import { Origin } from './views/Propagation.jsx';
 import { Sources } from './views/Sources.jsx';
+import { Landing } from './views/Landing.jsx';
 
 const VIEWS = [
   { id: 'overview', label: 'Overview', icon: LayoutGrid, title: 'This week', lede: 'How many outlets we scanned, which narratives showed up, where they spiked, and who repeated whom.' },
@@ -26,6 +27,10 @@ export default function App() {
   const kind = 'all';
   const [focus, setFocus] = React.useState({ source: 'rt_de', series: 'kiewer_regime' });
   const [toast, setToast] = React.useState(null);
+  // Start page shows once per browser session; the sidebar's "Start" item brings it back.
+  const [landing, setLanding] = React.useState(() => {
+    try { return sessionStorage.getItem('foreshock.entered') !== '1'; } catch { return true; }
+  });
 
   React.useEffect(() => {
     if (!toast) return;
@@ -44,6 +49,12 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const enter = id => {
+    setLanding(false);
+    try { sessionStorage.setItem('foreshock.entered', '1'); } catch { /* private mode: fine, just show it again next time */ }
+    if (id) go(id);
+  };
+
   const drill = next => {
     const f = { ...focus, ...next };
     setFocus(f);
@@ -53,11 +64,16 @@ export default function App() {
 
   const shows = FILTERED[view] || [];
 
+  if (landing) return <Landing data={data} onEnter={enter} />;
+
   return (
     <div className="app">
       <nav className="sidebar" aria-label="Sections">
         <div className="wordmark"><Radar size={22} strokeWidth={2.5} />Foreshock</div>
         <div className="wordmark-sub">DE · RU influence monitor</div>
+        <button type="button" className="nav-item" onClick={() => setLanding(true)}>
+          <Home size={18} strokeWidth={2.25} />Start
+        </button>
         {VIEWS.map(x => (
           <button key={x.id} className="nav-item" aria-current={view === x.id ? 'page' : undefined} onClick={() => go(x.id)}>
             <x.icon size={18} strokeWidth={2.25} />{x.label}
@@ -67,6 +83,9 @@ export default function App() {
           Window <strong>{fmtWeek(data.weeks[0])} – {fmtWeek(data.weeks[data.weeks.length - 1])} {data.weeks[data.weeks.length - 1].end.slice(0, 4)}</strong><br />
           {data.sources.length} outlets · {data.series.length} narratives<br />
           <span style={{ display: 'inline-block', marginTop: 8 }}>RT DE weeks and {data.edges.filter(e => !e.synthetic).length} pickups were seen in the crawl. Other weekly curves and the remaining pickups are estimated.</span>
+          <div className="sidebar-owner">
+            A <a href="https://www.dacora.eu">DACORA</a> project · <a href="https://www.dacora.eu">Impressum</a>
+          </div>
         </div>
       </nav>
 
