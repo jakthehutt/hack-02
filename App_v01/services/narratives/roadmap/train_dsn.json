@@ -1,0 +1,41 @@
+[
+  {"narrative": 2, "stance": "befuerwortet", "text": "Die Versuche, Russland zu schaden, treffen wie ein Bumerang die westlichen Staaten selbst, allen voran Deutschland."},
+  {"narrative": 2, "stance": "befuerwortet", "text": "Die Russland-Sanktionen fallen auf die europäische Industrie zurück und verteuern das Leben der eigenen Bürger."},
+  {"narrative": 2, "stance": "befuerwortet", "text": "Wer Russland mit Handelssperren bestrafen will, trifft am Ende die Haushalte in Wien und Berlin."},
+  {"narrative": 2, "stance": "abgelehnt", "text": "Die Sanktionen gegen Russland wirken und schaden Europa nicht stärker als Moskau."},
+  {"narrative": 2, "stance": "abgelehnt", "text": "Sanktionen sind keine Selbstverletzung, sie beschränken die russische Kriegswirtschaft."},
+
+  {"narrative": 1, "stance": "befuerwortet", "text": "Würden Sie endlich damit aufhören, hartverdiente Steuergelder an die Ukraine zu verschwenden?"},
+  {"narrative": 1, "stance": "befuerwortet", "text": "Weitere Waffenlieferungen ändern nichts, dieser Krieg ist für Kiew nicht zu gewinnen."},
+  {"narrative": 1, "stance": "befuerwortet", "text": "Europa verbrennt Milliarden in einem aussichtslosen Feldzug und verlängert nur das Leid."},
+  {"narrative": 1, "stance": "abgelehnt", "text": "Die Unterstützung der Ukraine ist eine Pflicht, der Krieg ist zu gewinnen."},
+  {"narrative": 1, "stance": "abgelehnt", "text": "Wer die Hilfe einstellt, belohnt den Angreifer; die Ukraine kann sich behaupten."},
+
+  {"narrative": 4, "stance": "befuerwortet", "text": "Deutschlands Deindustrialisierung begann, als russisches Gas ausblieb."},
+  {"narrative": 4, "stance": "befuerwortet", "text": "Fabriken wandern ab, weil die Abkopplung von russischer Energie die Strompreise explodieren ließ."},
+  {"narrative": 4, "stance": "befuerwortet", "text": "Der Verzicht auf günstiges russisches Gas hat die chemische Industrie in Europa ausgehöhlt."},
+  {"narrative": 4, "stance": "befuerwortet", "text": "Dmitrijew sagt, Deutschlands Deindustrialisierung begann mit dem Angriff auf Nord Stream."},
+  {"narrative": 4, "stance": "abgelehnt", "text": "Energieunabhängigkeit stärkt den Standort, die Industrie ist nicht wegen des Gasausstiegs geschrumpft."},
+  {"narrative": 4, "stance": "abgelehnt", "text": "Die Deindustrialisierung hat andere Ursachen als den Verzicht auf russische Energie."},
+
+  {"narrative": 5, "stance": "befuerwortet", "text": "Die wachsende Militarisierung der EU erhöht das Risiko einer direkten Konfrontation mit Russland."},
+  {"narrative": 5, "stance": "befuerwortet", "text": "Aus dem Friedensprojekt wird eine Kriegsunion, die Europa in einen Krieg mit Russland schiebt."},
+  {"narrative": 5, "stance": "befuerwortet", "text": "Brüssel rüstet auf und drängt neutrale Staaten Schritt für Schritt in NATO-Strukturen."},
+  {"narrative": 5, "stance": "abgelehnt", "text": "Die europäische Aufrüstung ist defensiv und soll einen Krieg mit Russland verhindern."},
+  {"narrative": 5, "stance": "abgelehnt", "text": "Gemeinsame Verteidigung höhlt die Neutralität nicht aus und bedeutet keinen NATO-Beitritt."},
+
+  {"narrative": 3, "stance": "befuerwortet", "text": "Ohne russisches Pipelinegas leeren sich die Speicher, und Europa friert im Januar."},
+  {"narrative": 3, "stance": "befuerwortet", "text": "Der Ausstieg aus russischem Gas macht einen Kältewinter mit Blackouts wahrscheinlich."},
+  {"narrative": 3, "stance": "befuerwortet", "text": "LNG aus Übersee ersetzt russisches Gas nicht, die Versorgung bricht im Winter zusammen."},
+  {"narrative": 3, "stance": "abgelehnt", "text": "Die Speicher sind gefüllt, niemand muss frieren, russisches Gas ist ersetzt."},
+  {"narrative": 3, "stance": "abgelehnt", "text": "Der Gasausstieg hat die Versorgung sicherer gemacht, nicht krisenanfälliger."},
+
+  {"narrative": null, "stance": "none", "text": "Nach Artikel 67 des Grundgesetzes kann der Bundestag jederzeit einen neuen Bundeskanzler wählen."},
+  {"narrative": null, "stance": "none", "text": "Eine der Hauptdebatten dreht sich um die von Teheran verkündete Verminung der Straße von Hormus."},
+  {"narrative": null, "stance": "none", "text": "Die US-Sanktionen wirken nicht als Waffe gegen Iran, sondern als Katalysator der Entdollarisierung."},
+  {"narrative": null, "stance": "none", "text": "Die Diskussion über eine mögliche Deindustrialisierung hat dadurch neue Nahrung erhalten."},
+  {"narrative": null, "stance": "none", "text": "Deutschland: Deindustrialisierung unaufhaltbar, mehr als 340.000 Jobs seit der Corona-Krise gestrichen."},
+  {"narrative": null, "stance": "none", "text": "Das könnte nun zum Bumerang für Brüssel werden, wie euronews berichtet."},
+  {"narrative": null, "stance": "none", "text": "Willi Wimmer fungierte für künftige Friedensprojekte politisch als Pate."},
+  {"narrative": null, "stance": "none", "text": "Mehr Deindustrialisierung durch eine neue Energieabgabe der Bundesregierung."}
+]

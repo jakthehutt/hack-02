@@ -1,0 +1,7 @@
+# CPU wheels: pip install -r services/narratives/requirements-ml.txt --index-url https://download.pytorch.org/whl/cpu
+# then the rest from PyPI. Versions match the environment that produced runs/.
+torch==2.14.0
+transformers==5.17.0
+sentence-transformers==6.1.0
+numpy==2.5.3
+scikit-learn==1.9.1

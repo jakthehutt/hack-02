@@ -26,6 +26,12 @@ dist/
 .vscode/
 .DS_Store
 
+# Fine-tuned weights and ML logs (roadmap, not the weekly report)
+App_v01/services/narratives/checkpoints/
+App_v01/services/narratives/.llm_cache/
+App_v01/services/narratives/roadmap/runs/
+App_v01/services/narratives/roadmap/.llm_cache/
+
 # Logs & local data (keep seeds in git)
 data/cache/
 data/runs/

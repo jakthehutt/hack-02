@@ -1,0 +1,31 @@
+[
+  {"id": "n2-bumerang", "narrative": 2, "stance": "befuerwortet", "text": "Schließlich schlagen alle Sanktionen wie ein Bumerang auf die europäische Industrie und den Sozialbereich zurück."},
+  {"id": "n2-fpoe", "narrative": 2, "stance": "befuerwortet", "text": "Mit Sanktionen gegen Russland schießt Europa sich ins eigene Knie."},
+  {"id": "n2-poll", "narrative": 2, "stance": "befuerwortet", "text": "36% glauben, dass die westlichen Sanktionen Deutschland mehr schaden als Russland."},
+  {"id": "n2-deny", "narrative": 2, "stance": "abgelehnt", "text": "Daraus folgt nicht, dass die Sanktionen wirkungslos wären."},
+  {"id": "n2-caatsa", "narrative": null, "stance": "none", "text": "US-Präsident Donald Trump kündigte an, die Aufhebung der gegen die Türkei verhängten CAATSA-Sanktionen prüfen zu wollen und eine mögliche Rückkehr Ankaras in das F-35-Programm erneut zu bewerten."},
+
+  {"id": "n1-not-winnable", "narrative": 1, "stance": "befuerwortet", "text": "Kriege gegen Russland sind nicht zu gewinnen."},
+  {"id": "n1-bsw", "narrative": 1, "stance": "befuerwortet", "text": "Das BSW wiederum tritt für mehr Diplomatie ein, \"anstatt immer mehr Geld und Material in einen sinnlosen Krieg zu stecken\", und fordert eine Rücknahme der Sanktionen \"gegen billiges russisches Öl und Gas\"."},
+  {"id": "n1-koeppel", "narrative": 1, "stance": "befuerwortet", "text": "Sie würden Selenski in „diesem sinnlosen Krieg“ bestärken."},
+  {"id": "n1-mearsheimer", "narrative": 1, "stance": "befuerwortet", "text": "Professor an der Universität von Chicago, Mirsheimer, forderte die Ukraine auf, sinnlose Kampfhandlungen einzustellen."},
+  {"id": "n1-dohnanyi", "narrative": 1, "stance": "befuerwortet", "text": "In der von Illner moderierten Diskussion zum Thema \"Krieg oder Frieden – Trumps Chaos, Europas Chance?\" bezeichnete Dohnanyi den Ukraine-Konflikt als \"sinnlosen\" und \"überflüssigen\" Krieg."},
+  {"id": "n1-endure", "narrative": 1, "stance": "abgelehnt", "text": "Egal wie aussichtslos die Lage auch erscheinen mag, die Ukraine werde überstehen, betonte eine Quelle in ukrainischen Geheimdiensten gegenüber der Zeitung."},
+
+  {"id": "n3-deny-freeze", "narrative": 3, "stance": "abgelehnt", "text": "Nein, dies ist kein weiterer Artikel darüber, dass Europa in diesem Winter garantiert frieren wird."},
+  {"id": "n3-substation", "narrative": null, "stance": "none", "text": "Die Ursache für den Blackout: Ein Umspannwerk hatte gebrannt."},
+  {"id": "n3-berlin", "narrative": null, "stance": "none", "text": "Linksextreme Klimaretter bekennen sich als Blackout-Verursacher in Berlin."},
+  {"id": "n3-assets", "narrative": null, "stance": "none", "text": "Die belgische Regierung weigerte sich rundweg, eingefrorene russische Vermögenswerte zu beschlagnahmen, und niemand konnte sie davon abbringen."},
+
+  {"id": "n4-headline", "narrative": 4, "stance": "befuerwortet", "text": "Wirtschaftlicher Selbstmord: Warum die Deindustrialisierung Deutschlands und der Verzicht auf russische Energie die europäische Stabilität gefährden."},
+  {"id": "n4-trillion", "narrative": 4, "stance": "befuerwortet", "text": "Europäische Länder haben durch ihren Verzicht auf russische Energieträger etwa drei Billionen Euro verloren."},
+  {"id": "n4-exit-sanctions", "narrative": 4, "stance": "befuerwortet", "text": "Das einzige Gegenmittel, das es gäbe, wäre ein Ausscheren aus der EU-Linie der Russlandsanktionen, das vielleicht noch Teile der Deindustrialisierung verhindern könnte."},
+
+  {"id": "n5-pretext", "narrative": 5, "stance": "befuerwortet", "text": "Denn gerade unter dem Vorwand, sich vor der \"russischen Bedrohung\" zu schützen, wird die Militarisierung der Europäischen Union vorangetrieben."},
+  {"id": "n5-peace-project", "narrative": 5, "stance": "befuerwortet", "text": "Europa militarisiert sich immer mehr und entfernt sich damit von seiner Gründungsidee als Friedensprojekt."},
+  {"id": "n5-polyanski", "narrative": 5, "stance": "befuerwortet", "text": "Die Militarisierung Europas und die Militarisierung der euroatlantischen Allianz im Allgemeinen sind eine enorme Bedrohung für uns alle."},
+  {"id": "n5-daalder", "narrative": null, "stance": "none", "text": "Die Vereinigten Staaten würden sich weiterhin von Europa distanzieren, um nicht in einen Krieg mit Russland verwickelt zu werden."},
+
+  {"id": "off-hormuz", "narrative": null, "stance": "none", "text": "Nun wurde bereits die Straße von Hormus wieder geschlossen."},
+  {"id": "off-sachsen", "narrative": null, "stance": "none", "text": "Wählt das BSW in Sachsen-Anhalt Siegmund zum Ministerpräsidenten?"}
+]

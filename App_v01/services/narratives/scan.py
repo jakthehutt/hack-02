@@ -1,6 +1,4 @@
-"""Label RT DE articles with the codebook and write a weekly report.
-
-Usage (from App_v01):
+"""Weekly share of German codebook wording. This is the ready report.
 
     python -m services.narratives
 """
@@ -17,6 +15,8 @@ from pathlib import Path
 from services.narratives.codebook import PATTERNS
 
 ROOT = Path(__file__).resolve().parents[2]
+METHOD = "German wording only; one quote required"
+CUTOFF = "2026-05-26"
 ARTICLES = ROOT / "crawler" / "data" / "rt_de" / "articles.jsonl"
 REPORT = ROOT / "crawler" / "data" / "rt_de" / "narratives_report.json"
 RUN = ROOT / "data" / "runs" / "de_sources_2026-05-26_2026-09-26"
@@ -148,8 +148,8 @@ def scan_rows(rows: list[dict], source: str) -> dict:
         return {
             "source": source,
             "script": "unknown",
-            "method": "sentence regex from services/narratives/codebook.py; German wording only; one quote required",
-            "cutoff": "2026-05-26",
+            "method": METHOD,
+            "cutoff": CUTOFF,
             "article_count": 0,
             "date_span": date_span(dated),
             "weeks": [],
@@ -218,8 +218,8 @@ def scan_rows(rows: list[dict], source: str) -> dict:
     return {
         "source": source,
         "script": body_script(dated),
-        "method": "sentence regex from services/narratives/codebook.py; German wording only; one quote required",
-        "cutoff": "2026-05-26",
+        "method": METHOD,
+        "cutoff": CUTOFF,
         "article_count": len(dated),
         "date_span": span,
         "weeks": [
