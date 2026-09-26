@@ -1,0 +1,137 @@
+{
+  "extractor": "trafilatura 2.2.0",
+  "download": "gzip via urllib; trafilatura.extract for the article body",
+  "cutoff": "2026-05-26",
+  "results": {
+    "anti_spiegel": {
+      "discovered": 502,
+      "ok": 0,
+      "reject": 0,
+      "error": 0
+    },
+    "apolut": {
+      "discovered": 644,
+      "ok": 0,
+      "reject": 0,
+      "error": 0
+    },
+    "auf1": {
+      "discovered": 10,
+      "ok": 0,
+      "reject": 0,
+      "error": 0
+    },
+    "klagemauer": {
+      "discovered": 900,
+      "ok": 0,
+      "reject": 0,
+      "error": 0
+    },
+    "newsfront_de": {
+      "discovered": 6582,
+      "ok": 6543,
+      "reject": 25,
+      "error": 14
+    },
+    "pravda_de": {
+      "discovered": 0,
+      "ok": 0,
+      "reject": 0,
+      "error": 0
+    },
+    "rt_de": {
+      "discovered": 3863,
+      "ok": 3729,
+      "reject": 134,
+      "error": 0,
+      "note": "collected by crawler/rt_de.py; same files as crawler/data/rt_de"
+    }
+  },
+  "skipped": [
+    {
+      "id": "ria",
+      "reason": "upstream Russian wire, not a German edition"
+    },
+    {
+      "id": "tass",
+      "reason": "upstream Russian wire, not a German edition"
+    },
+    {
+      "id": "izvestia",
+      "reason": "upstream Russian wire, not a German edition"
+    },
+    {
+      "id": "rg",
+      "reason": "upstream Russian wire, not a German edition"
+    },
+    {
+      "id": "lenta_south_strategic",
+      "reason": "upstream Russian wire, not a German edition"
+    }
+  ],
+  "unreachable": [
+    {
+      "id": "sputnik_de",
+      "hosts": [
+        "de.sputniknews.com",
+        "snanews.de"
+      ],
+      "reason": "dns_failed"
+    },
+    {
+      "id": "mid_embassy_de",
+      "hosts": [
+        "mid.ru",
+        "germany.mid.ru"
+      ],
+      "reason": "no article sitemap in this run (diplomatic page, clone snapshot, or feedless site)"
+    },
+    {
+      "id": "doppelganger",
+      "hosts": [
+        "rrn.media",
+        "bild.pics",
+        "spiegel.ltd",
+        "welt.ltd",
+        "faz.ltd",
+        "sueddeutsche.ltd",
+        "t-online.life",
+        "morgenpost.ltd",
+        "tagesspiegel.ltd",
+        "nd-aktuell.net",
+        "meisterurian.io",
+        "arbeitspause.org",
+        "wanderfalke.net",
+        "grenzezank.com",
+        "besuchszweck.org",
+        "derbayerischelowe.info",
+        "grunehummel.com",
+        "miastagebuch.com",
+        "derglaube.com",
+        "kaputteampel.com",
+        "deintelligenz.com",
+        "hauynescherben.net",
+        "brennendefrage.com",
+        "derleitstern.com",
+        "derrattenfanger.net"
+      ],
+      "reason": "no article sitemap in this run (diplomatic page, clone snapshot, or feedless site)"
+    },
+    {
+      "id": "voice_of_europe",
+      "hosts": [
+        "voiceofeurope.com"
+      ],
+      "reason": "dns_failed"
+    },
+    {
+      "id": "alina_lipp",
+      "reason": "no stable domain (Telegram only)"
+    },
+    {
+      "id": "aam",
+      "reason": "no stable domain (Telegram only)"
+    }
+  ],
+  "finished_at": "2026-09-26T14:44:37.210909+00:00"
+}

@@ -1,0 +1,12 @@
+{
+  "source": "sputnik_de",
+  "channel": "https://t.me/satellit_de",
+  "why": "snanews.de and de.sputniknews.com do not resolve; Satellit is the German SNA/Sputnik successor",
+  "extractor": "trafilatura 2.2.0",
+  "cutoff": "2026-05-26",
+  "ok": 2795,
+  "reject": 94,
+  "error": 0,
+  "pages": 191,
+  "finished_at": "2026-09-26T14:45:53.359443+00:00"
+}

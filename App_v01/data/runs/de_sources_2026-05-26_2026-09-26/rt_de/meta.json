@@ -1,0 +1,19 @@
+{
+  "source_home": "https://de.rt.com/",
+  "extractor": "trafilatura 2.2.0",
+  "cutoff": "2026-05-26",
+  "cutoff_meaning": "publication date on or after this day; four months before 2026-09-26",
+  "skipped_sections": [
+    "kurzclips",
+    "podcast",
+    "programme",
+    "tag"
+  ],
+  "discovered_urls": 3863,
+  "article_count": 3729,
+  "written_this_run": 10,
+  "rejected_this_run": 134,
+  "errors_this_run": 0,
+  "articles_file": "crawler/data/rt_de/articles.jsonl",
+  "finished_at": "2026-09-26T14:00:08.061695+00:00"
+}
