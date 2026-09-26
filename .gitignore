@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.Python
+
+# Build / cache
+.next/
+out/
+dist/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Env & secrets
+.env
+.env.local
+.env.*.local
+*.pem
+
+# IDE & OS
+.idea/
+.vscode/
+.DS_Store
+
+# Logs & local data (keep seeds in git)
+data/cache/
+data/runs/
+App_v01/data/runs/
+*.log
