@@ -6,5 +6,8 @@
 @import './tokens/motion.css';
 *{box-sizing:border-box}
 body{margin:0;background:var(--surface-page);color:var(--text-primary);font:var(--font-body-md)}
+h1,h2,h3,h4{font-family:var(--font-display)}
+strong,b{font-weight:var(--weight-semibold)}
+code,kbd,samp,pre{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
 a{color:var(--text-link)}
 a:hover{color:var(--text-link-hover)}

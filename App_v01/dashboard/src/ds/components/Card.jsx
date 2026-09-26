@@ -8,7 +8,7 @@ export function Card({ children, padding = 28, interactive = false, style }) {
     onMouseEnter: () => interactive && setHover(true),
     onMouseLeave: () => interactive && setHover(false),
     style: {
-      background: 'var(--surface-card)', border: '2.5px solid var(--black)', borderRadius: 'var(--radius-lg)',
+      background: 'var(--surface-card)', border: '2.5px solid var(--ink)', borderRadius: 'var(--radius-lg)',
       boxShadow: lift ? 'var(--shadow-hard-lg)' : 'var(--shadow-hard-md)',
       transform: lift ? 'translate(-2px,-2px)' : 'none',
       transition: 'box-shadow var(--duration-base) var(--ease-out-back), transform var(--duration-base) var(--ease-out-back)',

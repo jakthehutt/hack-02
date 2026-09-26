@@ -74,7 +74,7 @@ export function Overview({ data, filters, focus, onDrill, onOpen }) {
                       <div className="row-sub">Week of {fmtWeek(s.week)} · {s.n} matching articles</div>
                     </div>
                     <div style={{ textAlign: 'right' }}>
-                      <div className="mono" style={{ fontWeight: 700 }}>{fmtPct(s.share, 1)}</div>
+                      <div className="mono">{fmtPct(s.share, 1)}</div>
                       <div className="row-sub mono">usual {fmtPct(s.baseline, 1)}</div>
                     </div>
                   </button>

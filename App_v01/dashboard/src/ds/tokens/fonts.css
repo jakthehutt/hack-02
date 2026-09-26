@@ -1,3 +1,2 @@
-/* Substituted from Google Fonts — no brand-provided font files were available.
-   Flagged in readme.md; ask the brand for real webfont files if they exist. */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap');
+/* Geist: logo, display, H1–H3. Inter: body, UI labels, captions, tables. IBM Plex Mono: code, data, numbers. */
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@600;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');

@@ -5,15 +5,15 @@ import { shortName } from './Heatmap.jsx';
 import { fmtHours, fmtNum, fmtPct, fmtWeek } from '../data/derive.js';
 
 export const SERIES_COLORS = [
-  'var(--accent-700)',
-  'var(--accent-500)',
-  'var(--black)',
-  'var(--accent-600)',
-  'var(--grey-700)',
-  'var(--amber-500)',
-  'var(--green-500)',
-  'var(--red-500)',
-  'var(--grey-500)',
+  'var(--burgundy)',
+  'var(--ink)',
+  'var(--burgundy-soft)',
+  'var(--ink-soft)',
+  'var(--semantic-warning)',
+  'var(--semantic-success)',
+  'var(--semantic-danger)',
+  'var(--ink-muted)',
+  'var(--burgundy-deep)',
 ];
 
 export const seriesColor = i => SERIES_COLORS[i % SERIES_COLORS.length];
@@ -110,8 +110,8 @@ export function ForestPlot({ rows, metric, selectedId, onSelect }) {
                 <span className="forest-track">
                   {r.interval ? (
                     <>
-                      <span className="forest-ci" style={{ left: `${(lo / xMax) * 100}%`, width: `${Math.max(0, ((hi - lo) / xMax) * 100)}%`, background: on ? 'var(--accent-700)' : 'var(--black)' }} />
-                      <span className="forest-dot" style={{ left: `${(point / xMax) * 100}%`, background: on ? 'var(--accent-primary)' : 'var(--black)' }} />
+                      <span className="forest-ci" style={{ left: `${(lo / xMax) * 100}%`, width: `${Math.max(0, ((hi - lo) / xMax) * 100)}%`, background: on ? 'var(--burgundy)' : 'var(--ink)' }} />
+                      <span className="forest-dot" style={{ left: `${(point / xMax) * 100}%`, background: on ? 'var(--accent-primary)' : 'var(--ink)' }} />
                     </>
                   ) : <span className="row-sub">n/c</span>}
                   {hover === r.series.id && r.interval && (
@@ -208,14 +208,14 @@ export function VolumeShareChart({ model, seriesLabel }) {
               </g>
             ))}
             {points.map((p, k) => p.total > 0 && (
-              <rect key={p.week.week} x={x(k) - barW / 2} y={yVol(p.total)} width={barW} height={Math.max(0, yVol(0) - yVol(p.total))} fill="var(--grey-200)" rx={2} />
+              <rect key={p.week.week} x={x(k) - barW / 2} y={yVol(p.total)} width={barW} height={Math.max(0, yVol(0) - yVol(p.total))} fill="var(--ink-line)" rx={2} />
             ))}
             {line && <path d={line} fill="none" stroke="var(--accent-primary)" strokeWidth={2.5} strokeLinejoin="round" strokeLinecap="round" />}
             {points.map((p, k) => (k % Math.max(1, Math.ceil(n / 6)) === 0) && (
               <text key={`t-${p.week.week}`} className="axis-text" x={x(k)} y={H - 8} textAnchor="middle">{fmtWeek(p.week)}</text>
             ))}
             {hover != null && points[hover] && (
-              <line x1={x(hover)} x2={x(hover)} y1={M.t} y2={yVol(0)} stroke="var(--black)" strokeWidth={1} />
+              <line x1={x(hover)} x2={x(hover)} y1={M.t} y2={yVol(0)} stroke="var(--ink)" strokeWidth={1} />
             )}
             <rect x={M.l} y={M.t} width={iw} height={ih} fill="transparent"
               onPointerMove={e => {
@@ -322,12 +322,12 @@ export function CompositionChart({ model }) {
               let acc = 0;
               return (
                 <g key={w.week.week}>
-                  {w.volume > 0 && <rect x={x} y={y(w.volume)} width={barW} height={y(0) - y(w.volume)} fill="var(--grey-100)" rx={2} />}
+                  {w.volume > 0 && <rect x={x} y={y(w.volume)} width={barW} height={y(0) - y(w.volume)} fill="var(--paper-deep)" rx={2} />}
                   {w.counts.map((c, i) => {
                     const yy = y(acc + c);
                     const h = y(acc) - yy;
                     acc += c;
-                    return c > 0 && <rect key={model.series[i].id} x={x + barW * 0.18} y={yy} width={barW * 0.64} height={Math.max(0, h)} fill={seriesColor(i)} />;
+                    return c > 0 && <rect key={model.series[i].id} x={x + barW * 0.18} y={yy} width={barW * 0.64} height={Math.max(0, h)} fill={seriesColor(i)} stroke="var(--paper)" strokeWidth={1} />;
                   })}
                   {(k % Math.max(1, Math.ceil(n / 6)) === 0) && (
                     <text className="axis-text" x={x + barW / 2} y={H - 8} textAnchor="middle">{fmtWeek(w.week)}</text>
@@ -381,7 +381,7 @@ export function LagEcdf({ ecdf }) {
   const y = p => M.t + ih - p * ih;
   const curves = [
     { id: 'observed', label: 'Observed', stroke: 'var(--accent-primary)', width: 2.5, ...ecdf.observed },
-    { id: 'generated', label: 'Generated', stroke: 'var(--grey-500)', width: 1.75, ...ecdf.generated },
+    { id: 'generated', label: 'Generated', stroke: 'var(--ink-muted)', width: 1.75, ...ecdf.generated },
   ];
 
   return (
@@ -427,7 +427,7 @@ export function LagEcdf({ ecdf }) {
                 {c.median != null && (
                   <g>
                     <line x1={x(c.median)} x2={x(c.median)} y1={y(0)} y2={y(0.5)} stroke={c.stroke} strokeDasharray="3 3" />
-                    <circle cx={x(c.median)} cy={y(0.5)} r={4} fill={c.stroke} stroke="var(--white)" strokeWidth={2} />
+                    <circle cx={x(c.median)} cy={y(0.5)} r={4} fill={c.stroke} stroke="var(--paper)" strokeWidth={2} />
                   </g>
                 )}
               </g>
@@ -543,7 +543,7 @@ export function RankGradient({ model }) {
                 r={d.r}
                 fill={d.color}
                 fillOpacity={d.n ? 0.9 : 0.25}
-                stroke="var(--white)"
+                stroke="var(--paper)"
                 strokeWidth={1.5}
                 onMouseEnter={() => setHover(d)}
                 onMouseLeave={() => setHover(null)}

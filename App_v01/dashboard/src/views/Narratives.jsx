@@ -18,8 +18,8 @@ function NarrativeRail({ data, kind, lo, hi, value, onChange }) {
           <button key={se.id} role="radio" aria-checked={on} onClick={() => onChange(se.id)}
             style={{
               textAlign: 'left', cursor: 'pointer', padding: 'var(--space-4)', borderRadius: 'var(--radius-md)',
-              border: `var(--border-width-md) solid ${on ? 'var(--accent-primary)' : 'var(--black)'}`,
-              background: on ? 'var(--accent-primary-soft)' : 'var(--white)',
+              border: `var(--border-width-md) solid ${on ? 'var(--accent-primary)' : 'var(--ink)'}`,
+              background: on ? 'var(--accent-primary-soft)' : 'var(--paper)',
               boxShadow: on ? 'var(--shadow-hard-accent-md)' : 'var(--shadow-hard-sm)',
               transform: on ? 'translate(-2px,-2px)' : 'none', font: 'inherit', color: 'inherit',
               transition: 'transform var(--duration-fast) var(--ease-out-back), box-shadow var(--duration-fast) var(--ease-standard), background var(--duration-fast) var(--ease-standard)',
@@ -46,16 +46,16 @@ function Carriers({ data, series, lo, hi, focus, onFocus }) {
           const on = r.src.id === focus;
           return (
             <button key={r.src.id} className="list-row" style={{ gridTemplateColumns: '120px 1fr 64px' }} onClick={() => onFocus(r.src.id)} aria-pressed={on}>
-              <span className="row-title" style={{ fontSize: 'var(--text-xs)', color: on ? 'var(--accent-700)' : undefined }}>{shortName(r.src)}</span>
-              <span style={{ height: 14, background: 'var(--grey-50)', borderRadius: 4, overflow: 'hidden' }}>
+              <span className="row-title" style={{ fontSize: 'var(--text-xs)', color: on ? 'var(--burgundy)' : undefined }}>{shortName(r.src)}</span>
+              <span style={{ height: 14, background: 'var(--paper-deep)', borderRadius: 4, overflow: 'hidden' }}>
                 <span style={{
                   display: 'block', height: '100%', borderRadius: 4,
                   width: r.total ? `${((r.share || 0) / max) * 100}%` : 0,
-                  background: on ? 'var(--accent-primary)' : 'var(--black)',
+                  background: on ? 'var(--accent-primary)' : 'var(--ink)',
                   transition: `width var(--duration-slow) var(--ease-out-back) ${k * 30}ms, background var(--duration-fast)`,
                 }} />
               </span>
-              <span className="mono" style={{ textAlign: 'right', fontSize: 'var(--text-xs)', fontWeight: 700 }}>{r.total ? fmtPct(r.share, 2) : 'n/c'}</span>
+              <span className="mono" style={{ textAlign: 'right', fontSize: 'var(--text-xs)' }}>{r.total ? fmtPct(r.share, 2) : 'n/c'}</span>
             </button>
           );
         })}

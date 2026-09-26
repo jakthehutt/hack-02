@@ -16,7 +16,7 @@ function Coverage({ source, weeks, lo, hi }) {
             <span style={{
               display: 'block', width: '100%', borderRadius: '3px 3px 0 0',
               height: cover[i] && v ? `${Math.max(6, (v / max) * 100)}%` : 3,
-              background: !cover[i] ? 'var(--grey-100)' : inRange ? 'var(--black)' : 'var(--grey-300)',
+              background: !cover[i] ? 'var(--paper-deep)' : inRange ? 'var(--ink)' : 'var(--ink-faint)',
               transition: 'height var(--duration-slow) var(--ease-out-back), background var(--duration-fast)',
             }} />
           </Tooltip>
@@ -28,8 +28,8 @@ function Coverage({ source, weeks, lo, hi }) {
 
 function CrawlStack({ crawl }) {
   const parts = [
-    { k: 'ok', label: 'Extracted', v: crawl.ok, c: 'var(--black)' },
-    { k: 'reject', label: 'Rejected', v: crawl.reject, c: 'var(--grey-300)' },
+    { k: 'ok', label: 'Extracted', v: crawl.ok, c: 'var(--ink)' },
+    { k: 'reject', label: 'Rejected', v: crawl.reject, c: 'var(--ink-faint)' },
     { k: 'error', label: 'Errors', v: crawl.error, c: 'var(--semantic-danger)' },
   ];
   const yieldPct = crawl.discovered ? (crawl.ok / crawl.discovered) * 100 : 0;

@@ -15,10 +15,10 @@ function RelationBars({ byRel, total }) {
         return (
           <div key={r.id} style={{ display: 'grid', gridTemplateColumns: '110px 1fr 28px', alignItems: 'center', gap: 'var(--space-3)' }}>
             <span style={{ font: 'var(--font-label)' }} title={r.note}>{r.label}</span>
-            <span style={{ height: 10, background: 'var(--grey-50)', borderRadius: 4 }}>
-              <span style={{ display: 'block', height: '100%', width: `${total ? (n / total) * 100 : 0}%`, background: 'var(--black)', borderRadius: 4, transition: 'width var(--duration-slow) var(--ease-out-back)' }} />
+            <span style={{ height: 10, background: 'var(--paper-deep)', borderRadius: 4 }}>
+              <span style={{ display: 'block', height: '100%', width: `${total ? (n / total) * 100 : 0}%`, background: 'var(--ink)', borderRadius: 4, transition: 'width var(--duration-slow) var(--ease-out-back)' }} />
             </span>
-            <span className="mono" style={{ textAlign: 'right', fontWeight: 700, fontSize: 'var(--text-xs)' }}>{n}</span>
+            <span className="mono" style={{ textAlign: 'right', fontSize: 'var(--text-xs)' }}>{n}</span>
           </div>
         );
       })}
@@ -43,11 +43,11 @@ function Detail({ selection, links, byId, onClear }) {
         <div style={{ margin: 'var(--space-5) 0' }}>
           <div className="eyebrow" style={{ marginBottom: 'var(--space-3)' }}>Busiest routes</div>
           {top.map(l => (
-            <div key={l.key} style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', padding: 'var(--space-2) 0', borderTop: '1.5px solid var(--grey-100)' }}>
+            <div key={l.key} style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', padding: 'var(--space-2) 0', borderTop: '1.5px solid var(--paper-deep)' }}>
               <span className="row-title" style={{ fontSize: 'var(--text-xs)' }}>{shortName(byId[l.from])}</span>
               <ArrowRight size={14} />
               <span className="row-title" style={{ fontSize: 'var(--text-xs)' }}>{shortName(byId[l.to])}</span>
-              <span className="mono" style={{ marginLeft: 'auto', fontWeight: 700 }}>{l.count}</span>
+              <span className="mono" style={{ marginLeft: 'auto' }}>{l.count}</span>
             </div>
           ))}
         </div>
@@ -145,7 +145,7 @@ export function Origin({ data, preview = false, onOpen }) {
     <>
       <div className="filters">
         {RELATIONS.map(r => <Checkbox key={r.id} label={r.label} checked={relations.has(r.id)} onChange={() => toggle(r.id)} />)}
-        <span style={{ width: 1, height: 28, background: 'var(--grey-200)', margin: '0 var(--space-2)' }} />
+        <span style={{ width: 1, height: 28, background: 'var(--ink-line)', margin: '0 var(--space-2)' }} />
         <Switch checked={observedOnly} onChange={setObservedOnly} label={`Seen in the crawl only (${data.edges.filter(e => !e.synthetic).length})`} />
       </div>
 

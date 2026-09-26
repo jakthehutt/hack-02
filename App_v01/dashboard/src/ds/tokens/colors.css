@@ -1,65 +1,56 @@
 :root{
-/* base */
---black:#0a0a0a;
---white:#ffffff;
---grey-950:#141414;
---grey-900:#1c1c1c;
---grey-700:#3d3d3d;
---grey-500:#6b6b6b;
---grey-300:#a4a4a4;
---grey-200:#d4d4d4;
---grey-100:#e9e9e9;
---grey-50:#f4f4f3;
-/* beige — soft warm neutral, used for section backgrounds and sunken surfaces */
---beige-300:#d9c9ae;
---beige-200:#e8dcc4;
---beige-100:#f0e6d4;
---beige-50:#f8f1e4;
-/* accent — burnt orange/brown, the one brand color */
---accent-700:#7a3a12;
---accent-600:#a04d17;
---accent-500:#c2621d;
---accent-400:#d68a4c;
---accent-100:#f2ddc2;
---accent-50:#faf0e3;
---red-500:#e0102b;
---red-100:#ffe1e4;
---green-500:#0a8a4a;
---green-100:#dbf4e6;
---amber-500:#c77700;
---amber-100:#fff0d6;
+/* core — Paper, Burgundy and Ink sit on one warm axis; Sovereign Blue is the rare cool outlier.
+   Aim for ~60% Paper, 30% Burgundy, 10% Ink details or Blue. Never use #fff.
+   Burgundy, Ink and Blue only ever sit on Paper, never on each other. */
+--paper:#faf8f4;
+--burgundy:#7a1f2b;
+--ink:#14110f;
+--sovereign-blue:#003399;
+/* working tints — support tones, not brand colors */
+--paper-deep:#efeae1;
+--ink-muted:#6a615a;
+--burgundy-deep:#5e141e;
+/* in-between steps, mixed from the colors above */
+--ink-soft:color-mix(in oklab,var(--ink) 50%,var(--ink-muted));
+--ink-faint:color-mix(in oklab,var(--ink-muted) 50%,var(--paper));
+--ink-line:color-mix(in oklab,var(--ink-muted) 28%,var(--paper));
+--burgundy-soft:color-mix(in oklab,var(--burgundy) 60%,var(--paper));
+--burgundy-tint:color-mix(in oklab,var(--burgundy) 14%,var(--paper));
+--burgundy-wash:color-mix(in oklab,var(--burgundy) 6%,var(--paper));
+--sovereign-blue-deep:color-mix(in oklab,var(--sovereign-blue) 75%,var(--ink));
 /* semantic surfaces */
---surface-page:var(--white);
---surface-inverse:var(--black);
---surface-card:var(--white);
---surface-sunken:var(--beige-50);
---surface-warm:var(--beige-100);
---surface-raised:var(--white);
---surface-overlay:rgba(10,10,10,.6);
+--surface-page:var(--paper);
+--surface-inverse:var(--burgundy);
+--surface-card:var(--paper);
+--surface-sunken:var(--paper-deep);
+--surface-warm:var(--paper-deep);
+--surface-raised:var(--paper);
+--surface-overlay:rgba(20,17,15,.55);
 /* text */
---text-primary:var(--black);
---text-inverse:var(--white);
---text-secondary:var(--grey-700);
---text-muted:var(--grey-500);
---text-on-accent:var(--white);
---text-link:var(--accent-600);
---text-link-hover:var(--accent-700);
+--text-primary:var(--ink);
+--text-inverse:var(--paper);
+--text-secondary:var(--ink-soft);
+--text-muted:var(--ink-muted);
+--text-on-accent:var(--paper);
+--text-on-accent-muted:color-mix(in oklab,var(--paper) 72%,var(--burgundy));
+--text-link:var(--sovereign-blue);
+--text-link-hover:var(--sovereign-blue-deep);
 /* brand / accent */
---accent-primary:var(--accent-500);
---accent-primary-hover:var(--accent-600);
---accent-primary-press:var(--accent-700);
---accent-primary-soft:var(--accent-50);
---accent-primary-soft-strong:var(--accent-100);
-/* semantic feedback */
---semantic-success:var(--green-500);
---semantic-success-soft:var(--green-100);
---semantic-danger:var(--red-500);
---semantic-danger-soft:var(--red-100);
---semantic-warning:var(--amber-500);
---semantic-warning-soft:var(--amber-100);
+--accent-primary:var(--burgundy);
+--accent-primary-hover:var(--burgundy-deep);
+--accent-primary-press:var(--burgundy-deep);
+--accent-primary-soft:var(--burgundy-wash);
+--accent-primary-soft-strong:var(--burgundy-tint);
+/* semantic feedback — functional only, muted so they stay on the warm axis */
+--semantic-success:#2f6b3f;
+--semantic-success-soft:color-mix(in oklab,var(--semantic-success) 12%,var(--paper));
+--semantic-danger:#a3261e;
+--semantic-danger-soft:color-mix(in oklab,var(--semantic-danger) 12%,var(--paper));
+--semantic-warning:#8a5a12;
+--semantic-warning-soft:color-mix(in oklab,var(--semantic-warning) 14%,var(--paper));
 /* borders */
---border-default:var(--black);
---border-subtle:var(--grey-200);
---border-on-inverse:var(--white);
+--border-default:var(--ink);
+--border-subtle:var(--ink-line);
+--border-on-inverse:var(--paper);
 --border-accent:var(--accent-primary);
 }

@@ -76,9 +76,9 @@ export function PropagationMap({ nodes, links, selected, onSelect }) {
           const hot = active && lit;
           return (
             <g key={l.key}>
-              <path className="prop-link" d={d} stroke={hot ? 'var(--accent-primary)' : 'var(--black)'} strokeWidth={w}
+              <path className="prop-link" d={d} stroke={hot ? 'var(--accent-primary)' : 'var(--ink)'} strokeWidth={w}
                 strokeOpacity={lit ? (hot ? 0.9 : 0.22) : 0.06} />
-              {lit && <path className="prop-flow" d={d} stroke={hot ? 'var(--white)' : 'var(--accent-primary)'} strokeWidth={Math.max(2, w * 0.35)}
+              {lit && <path className="prop-flow" d={d} stroke={hot ? 'var(--paper)' : 'var(--accent-primary)'} strokeWidth={Math.max(2, w * 0.35)}
                 style={{ animationDuration: `${Math.max(0.5, Math.min(2.4, Math.log2(l.medianLag + 2) / 3))}s` }} />}
               <path d={d} fill="none" stroke="transparent" strokeWidth={Math.max(16, w + 10)} style={{ cursor: 'pointer' }}
                 onPointerEnter={() => setHover({ type: 'link', ...l })} onPointerLeave={() => setHover(null)}
@@ -101,12 +101,12 @@ export function PropagationMap({ nodes, links, selected, onSelect }) {
               onClick={() => onSelect(sel ? null : { type: 'node', id: n.id })}
               onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect(sel ? null : { type: 'node', id: n.id }); } }}
               style={{ transition: 'opacity var(--duration-base) var(--ease-standard)' }}>
-              <rect x={sel ? 2 : 4} y={sel ? 2 : 4} width={NODE_W} height={NODE_H} rx={12} fill="var(--black)" />
-              <rect className="body" width={NODE_W} height={NODE_H} rx={12} fill={sel ? 'var(--accent-primary)' : n.rank === 3 ? 'var(--beige-100)' : 'var(--white)'}
-                stroke="var(--black)" strokeWidth={2.5} transform={sel ? 'translate(2,2)' : undefined} />
+              <rect x={sel ? 2 : 4} y={sel ? 2 : 4} width={NODE_W} height={NODE_H} rx={12} fill={sel ? 'var(--burgundy-deep)' : 'var(--ink)'} />
+              <rect className="body" width={NODE_W} height={NODE_H} rx={12} fill={sel ? 'var(--accent-primary)' : n.rank === 3 ? 'var(--paper-deep)' : 'var(--paper)'}
+                stroke={sel ? 'var(--accent-primary)' : 'var(--ink)'} strokeWidth={2.5} transform={sel ? 'translate(2,2)' : undefined} />
               <g transform={sel ? 'translate(2,2)' : undefined}>
-                <text x={12} y={19} style={{ font: '600 13px var(--font-body)', fill: sel ? 'var(--white)' : 'var(--black)' }}>{fit(shortName(n), NODE_W)}<title>{n.name}</title></text>
-                <text x={12} y={35} style={{ font: '500 11px var(--font-mono)', fill: sel ? 'var(--white)' : 'var(--text-muted)' }}>
+                <text x={12} y={19} style={{ font: '600 13px var(--font-body)', fill: sel ? 'var(--paper)' : 'var(--ink)' }}>{fit(shortName(n), NODE_W)}<title>{n.name}</title></text>
+                <text x={12} y={35} style={{ font: '500 11px var(--font-mono)', fill: sel ? 'var(--paper)' : 'var(--text-muted)' }}>
                   {d.out ? `↗ ${d.out}` : ''}{d.out && d.in ? '  ' : ''}{d.in ? `↘ ${d.in}` : ''}{!d.in && !d.out ? 'no pickups' : ''}
                 </text>
               </g>
@@ -137,12 +137,12 @@ export function LagHistogram({ bins, highlight }) {
           const w = Math.min(bw - 4, 72);
           return (
             <g key={k} onPointerEnter={() => setHover(k)}>
-              <rect className="bar-rect" x={x} y={h - m.b - bh} width={w} height={bh} rx={4} fill={highlight ? 'var(--grey-200)' : 'var(--black)'}
+              <rect className="bar-rect" x={x} y={h - m.b - bh} width={w} height={bh} rx={4} fill={highlight ? 'var(--ink-line)' : 'var(--ink)'}
                 style={{ transition: 'y var(--duration-slow) var(--ease-out-back), height var(--duration-slow) var(--ease-out-back)' }} />
               {hi > 0 && <rect x={x} y={h - m.b - hh} width={w} height={hh} rx={4} fill="var(--accent-primary)" style={{ transition: 'all var(--duration-slow) var(--ease-out-back)' }} />}
               <rect x={x - 2} y={m.t} width={bw} height={h - m.t - m.b} fill="transparent" />
               <text className="axis-text" x={x + w / 2} y={h - m.b + 16} textAnchor="middle">{label(b)}</text>
-              {(hover === k) && <text x={x + w / 2} y={h - m.b - bh - 6} textAnchor="middle" style={{ font: '700 12px var(--font-mono)' }}>{highlight ? `${hi}/` : ''}{b.count}</text>}
+              {(hover === k) && <text x={x + w / 2} y={h - m.b - bh - 6} textAnchor="middle" style={{ font: '500 12px var(--font-mono)' }}>{highlight ? `${hi}/` : ''}{b.count}</text>}
             </g>
           );
         })}
