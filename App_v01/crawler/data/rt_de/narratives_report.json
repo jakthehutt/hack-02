@@ -841,6 +841,214 @@
           "quote": "Nach dem Wahldebakel der CDU in Sachsen-Anhalt wackelt der Stuhl von Friedrich Merz."
         }
       ]
+    },
+    {
+      "id": "denazification",
+      "kind": "frame",
+      "label": "Entnazifizierung",
+      "article_count": 6,
+      "share_pct": 0.16,
+      "weekly_n": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "weekly_share_pct": [
+        0.0,
+        0.5,
+        0.0,
+        0.44,
+        0.0,
+        0.44,
+        0.49,
+        0.0,
+        0.0,
+        0.49,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.49,
+        0.0,
+        0.0
+      ],
+      "peak": {
+        "week": "2026-W23",
+        "week_start": "2026-06-01",
+        "n": 1,
+        "share_pct": 0.5,
+        "z": 1.52
+      },
+      "quotes": [
+        {
+          "date": "2026-06-06",
+          "week": "2026-W23",
+          "url": "https://de.rt.com/international/282387-geschmackloser-ns-vergleich-selenskij-missbraucht/",
+          "title": "Geschmackloser NS-Vergleich: Selenskij missbraucht Andenken an D-Day",
+          "section": "international",
+          "quote": "Als eines der Kriegsziele Russlands bei der militärischen Sonderoperation wird immer wieder die Entnazifizierung der Ukraine genannt, ein Nazi-Vorwurf, den wiederum Kiew zurückweist."
+        }
+      ]
+    },
+    {
+      "id": "biolabs",
+      "kind": "frame",
+      "label": "Biolabore",
+      "article_count": 7,
+      "share_pct": 0.19,
+      "weekly_n": [
+        1,
+        0,
+        2,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "weekly_share_pct": [
+        0.52,
+        0.0,
+        1.02,
+        0.44,
+        0.43,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.5,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.47,
+        0.0
+      ],
+      "peak": {
+        "week": "2026-W24",
+        "week_start": "2026-06-08",
+        "n": 2,
+        "share_pct": 1.02,
+        "z": 2.86
+      },
+      "quotes": [
+        {
+          "date": "2026-06-12",
+          "week": "2026-W24",
+          "url": "https://de.rt.com/international/282781-von-muecken-und-zecken-menschenversuchen/",
+          "title": "Von Mücken und Zecken, Menschenversuchen und heutigen Ängsten",
+          "section": "international",
+          "quote": "Die Insekten wie die Erreger für die Versuche lieferte übrigens, was nicht überrascht, das berüchtigte US-Biowaffenlabor Fort Detrick."
+        },
+        {
+          "date": "2026-06-13",
+          "week": "2026-W24",
+          "url": "https://de.rt.com/international/283066-biolabore-in-ukraine-spitze-eisbergs/",
+          "title": "Biolabore in der Ukraine – die Spitze des Eisbergs",
+          "section": "international",
+          "quote": "Biolabore in der Ukraine – die Spitze des Eisbergs."
+        }
+      ]
+    },
+    {
+      "id": "election_fraud_ru",
+      "kind": "frame",
+      "label": "Wahlfälschung",
+      "article_count": 8,
+      "share_pct": 0.21,
+      "weekly_n": [
+        0,
+        1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        1
+      ],
+      "weekly_share_pct": [
+        0.0,
+        0.5,
+        1.02,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.53,
+        0.0,
+        0.0,
+        0.5,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.99,
+        0.0,
+        0.67
+      ],
+      "peak": {
+        "week": "2026-W24",
+        "week_start": "2026-06-08",
+        "n": 2,
+        "share_pct": 1.02,
+        "z": 2.22
+      },
+      "quotes": [
+        {
+          "date": "2026-06-08",
+          "week": "2026-W24",
+          "url": "https://de.rt.com/asien/282507-armenien-prowestliche-paschinjan-partei-verpasst/",
+          "title": "Armenien: Prowestliche Paschinjan-Partei verpasst 50 Prozent-Marke",
+          "section": "asien",
+          "quote": "Zudem hätten die Behörden Wahlbetrug begangen, die Wähler seien eingeschüchtert worden und es sei versucht worden, deren Willensbekundung zu beeinflussen."
+        },
+        {
+          "date": "2026-06-08",
+          "week": "2026-W24",
+          "url": "https://de.rt.com/nordamerika/282535-trump-stuermt-aus-interview-korrupt/",
+          "title": "Trump stürmt aus Interview: \"Korrupt oder dumm?\" – Schock-Moment mit NBC-Moderatorin (VIDEO)",
+          "section": "nordamerika",
+          "quote": "Trump stürmt aus Interview: \"Korrupt oder dumm?\" – Schock-Moment mit NBC-Moderatorin (VIDEO) US-Präsident Donald Trump ist aus einem Interview mit der Meet the Press-Moderatorin Kristen Welker gestürmt, nachdem es zu einem hitzigen Wortwechsel über seine Vorwürfe des Wahlbetrugs gekommen war."
+        }
+      ]
     }
   ]
 }

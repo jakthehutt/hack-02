@@ -1,0 +1,84 @@
+{
+  "version": "2026-09-26",
+  "disclaimer": "Keyword tags are topical, not a finding that the page is false.",
+  "tags": [
+    {
+      "id": "ukraine_war",
+      "keywords": [
+        "ukraine",
+        "ukrain",
+        "donbas",
+        "donbass",
+        "kiewer regime",
+        "kiev regime",
+        "zelensky",
+        "selenskyj"
+      ]
+    },
+    {
+      "id": "nord_stream",
+      "keywords": [
+        "nord stream",
+        "nordstream",
+        "nord-stream"
+      ]
+    },
+    {
+      "id": "energy_sanctions",
+      "keywords": [
+        "deindustrial",
+        "sanktionen",
+        "sanctions",
+        "gaspreis",
+        "energiekrise"
+      ]
+    },
+    {
+      "id": "migration",
+      "keywords": [
+        "migration",
+        "asyl",
+        "flüchtling",
+        "refugee",
+        "grenz"
+      ]
+    },
+    {
+      "id": "elections",
+      "keywords": [
+        "wahl",
+        "election",
+        "afd-verbot",
+        "verbotsverfahren",
+        "beobachter",
+        "wahlfälschung"
+      ]
+    },
+    {
+      "id": "hormuz",
+      "keywords": [
+        "hormus",
+        "hormuz",
+        "straße von hormus",
+        "strait of hormuz"
+      ]
+    },
+    {
+      "id": "nato_proxy",
+      "keywords": [
+        "stellvertreterkrieg",
+        "vasallen",
+        "nato",
+        "proxy war"
+      ]
+    },
+    {
+      "id": "russophobia",
+      "keywords": [
+        "russophob",
+        "russlandfeind",
+        "russlandhass"
+      ]
+    }
+  ]
+}

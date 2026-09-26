@@ -1,0 +1,23 @@
+# docker compose up --build
+# Admin UI: http://127.0.0.1:8090/_/
+# Publish pipeline files:
+#   POCKETBASE_EMAIL=admin@example.com POCKETBASE_PASSWORD=changeme12345 python run.py sync
+services:
+  pocketbase:
+    build: .
+    ports:
+      - "8090:8090"
+    environment:
+      PB_SUPERUSER_EMAIL: ${PB_SUPERUSER_EMAIL:-admin@example.com}
+      PB_SUPERUSER_PASSWORD: ${PB_SUPERUSER_PASSWORD:-changeme12345}
+    volumes:
+      - pb_data:/pb/pb_data
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8090/api/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 5s
+
+volumes:
+  pb_data:

@@ -20,3 +20,7 @@
 {"host": "de.sputniknews.com", "source_id": "sputnik_de", "stage": "all", "status": "empty", "note": "Inspect saved homepage and add or edit adapters/{source_id}.json", "homepage_saved": false}
 {"host": "de.sputniknews.com", "source_id": "sputnik_de", "stage": "summary", "url_count": 0, "discovered": 0}
 {"host": "ria.ru", "source_id": "ria", "stage": "summary", "url_count": 8, "discovered": 8}
+{"host": "snanews.de", "source_id": "sputnik_de", "stage": "all", "status": "empty", "note": "Inspect saved homepage and add or edit adapters/{source_id}.json", "homepage_saved": false}
+{"host": "snanews.de", "source_id": "sputnik_de", "stage": "summary", "url_count": 0, "discovered": 0}
+{"host": "de.sputniknews.com", "source_id": "sputnik_de", "stage": "all", "status": "empty", "note": "Inspect saved homepage and add or edit adapters/{source_id}.json", "homepage_saved": false}
+{"host": "de.sputniknews.com", "source_id": "sputnik_de", "stage": "summary", "url_count": 0, "discovered": 0}

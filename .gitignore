@@ -32,7 +32,12 @@ App_v01/services/narratives/.llm_cache/
 App_v01/services/narratives/roadmap/runs/
 App_v01/services/narratives/roadmap/.llm_cache/
 
+# PocketBase local data
+pb_data/
+
 # Logs & local data (keep seeds in git)
+data/track.log
+data/watchlist_hits.jsonl
 data/cache/
 data/runs/
 data/raw/
@@ -42,3 +47,4 @@ App_v01/data/runs/*
 !App_v01/data/runs/de_sources_2026-05-26_2026-09-26/
 *.log
 *.html
+!App_v01/dashboard/index.html

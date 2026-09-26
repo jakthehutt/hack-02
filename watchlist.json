@@ -1,0 +1,31 @@
+{
+  "version": "2026-09-26",
+  "note": "Post-filter clustered articles. Each query is a regex (case-insensitive) applied to title, text, and topic entities.",
+  "queries": [
+    {
+      "id": "kiewer_regime",
+      "label": "Kiewer Regime",
+      "pattern": "kiewer regime|kiev regime|киевск\\w+ режим"
+    },
+    {
+      "id": "nord_stream",
+      "label": "Nord Stream",
+      "pattern": "nord stream|nordstream"
+    },
+    {
+      "id": "hormuz",
+      "label": "Straße von Hormus",
+      "pattern": "hormus|hormuz"
+    },
+    {
+      "id": "elections_observers",
+      "label": "Wahlbeobachter / Wahlfälschung",
+      "pattern": "wahlbeobachter|wahlfälschung|наблюдател|международных наблюдателей"
+    },
+    {
+      "id": "afd_ban",
+      "label": "AfD-Verbot",
+      "pattern": "afd-verbot|verbotsverfahren gegen die afd"
+    }
+  ]
+}

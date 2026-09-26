@@ -1,0 +1,4698 @@
+{
+ "meta": {
+  "generated": "2026-09-26",
+  "method": "sentence regex from services/narratives/codebook.py; German and Russian wording; one quote required",
+  "window": {
+   "start": "2026-05-25",
+   "end": "2026-09-27"
+  },
+  "synthetic_note": "Mock fixture for the dashboard. Totals, peaks, quotes, RT DE weekly counts and the first 10 edges come from pipeline output. Weekly curves for other sources, edges flagged synthetic, and some crawl reject/error counts are generated."
+ },
+ "weeks": [
+  {
+   "week": "2026-W22",
+   "start": "2026-05-25",
+   "end": "2026-05-31"
+  },
+  {
+   "week": "2026-W23",
+   "start": "2026-06-01",
+   "end": "2026-06-07"
+  },
+  {
+   "week": "2026-W24",
+   "start": "2026-06-08",
+   "end": "2026-06-14"
+  },
+  {
+   "week": "2026-W25",
+   "start": "2026-06-15",
+   "end": "2026-06-21"
+  },
+  {
+   "week": "2026-W26",
+   "start": "2026-06-22",
+   "end": "2026-06-28"
+  },
+  {
+   "week": "2026-W27",
+   "start": "2026-06-29",
+   "end": "2026-07-05"
+  },
+  {
+   "week": "2026-W28",
+   "start": "2026-07-06",
+   "end": "2026-07-12"
+  },
+  {
+   "week": "2026-W29",
+   "start": "2026-07-13",
+   "end": "2026-07-19"
+  },
+  {
+   "week": "2026-W30",
+   "start": "2026-07-20",
+   "end": "2026-07-26"
+  },
+  {
+   "week": "2026-W31",
+   "start": "2026-07-27",
+   "end": "2026-08-02"
+  },
+  {
+   "week": "2026-W32",
+   "start": "2026-08-03",
+   "end": "2026-08-09"
+  },
+  {
+   "week": "2026-W33",
+   "start": "2026-08-10",
+   "end": "2026-08-16"
+  },
+  {
+   "week": "2026-W34",
+   "start": "2026-08-17",
+   "end": "2026-08-23"
+  },
+  {
+   "week": "2026-W35",
+   "start": "2026-08-24",
+   "end": "2026-08-30"
+  },
+  {
+   "week": "2026-W36",
+   "start": "2026-08-31",
+   "end": "2026-09-06"
+  },
+  {
+   "week": "2026-W37",
+   "start": "2026-09-07",
+   "end": "2026-09-13"
+  },
+  {
+   "week": "2026-W38",
+   "start": "2026-09-14",
+   "end": "2026-09-20"
+  },
+  {
+   "week": "2026-W39",
+   "start": "2026-09-21",
+   "end": "2026-09-27"
+  }
+ ],
+ "series": [
+  {
+   "id": "kiewer_regime",
+   "kind": "frame",
+   "label": "Kiewer Regime",
+   "target": "Ukraine",
+   "pattern": "kiewer regime|киевск\\w* режим",
+   "status": "active"
+  },
+  {
+   "id": "russophobia",
+   "kind": "frame",
+   "label": "Russophobie",
+   "target": "Russland",
+   "pattern": "russophob|russlandfeind|russlandhass|русофоб",
+   "status": "active"
+  },
+  {
+   "id": "ukraine_fascist",
+   "kind": "frame",
+   "label": "Ukraine als faschistisch",
+   "target": "Ukraine",
+   "pattern": "(asow|asov|bander).{0,60}(faschist|nazi)|(faschist|nazi).{0,60}(asow|asov|bander|ukrain)|(?:азов|бандер)\\w*.{0,60}(?:фашист|нацист)|(?:фашист|нацист)\\w*.{0,60}(?:азов|бандер|украин)",
+   "status": "active"
+  },
+  {
+   "id": "vassal_proxy",
+   "kind": "frame",
+   "label": "Vasall / Stellvertreterkrieg",
+   "target": "Europa",
+   "pattern": "stellvertreterkrieg|vasallenmodus|vasallenstaat|vasall(?:en)? der |прокси-войн|вассал",
+   "status": "active"
+  },
+  {
+   "id": "deindustrialization",
+   "kind": "frame",
+   "label": "Deindustrialisierung",
+   "target": "Deutschland",
+   "pattern": "deindustrial|деиндустриал",
+   "status": "active"
+  },
+  {
+   "id": "afd_ban",
+   "kind": "frame",
+   "label": "AfD-Verbot",
+   "target": "AfD",
+   "pattern": "afd-verbot|verbotsverfahren gegen die afd|запрет\\w{0,3} адг|адг.{0,30}запрет",
+   "status": "active"
+  },
+  {
+   "id": "nord_stream",
+   "kind": "frame",
+   "label": "Nord Stream",
+   "target": "Deutschland",
+   "pattern": "nord stream|nordstream|северн\\w* поток",
+   "status": "active"
+  },
+  {
+   "id": "hormuz",
+   "kind": "subject",
+   "label": "Straße von Hormus",
+   "target": "Iran",
+   "pattern": "straße von hormus|strasse von hormus|ормузск",
+   "status": "active"
+  },
+  {
+   "id": "sachsen_anhalt",
+   "kind": "subject",
+   "label": "Sachsen-Anhalt",
+   "target": "Sachsen-Anhalt",
+   "pattern": "sachsen-anhalt|sachsen anhalt|саксон\\w*-анхальт",
+   "status": "active"
+  }
+ ],
+ "sources": [
+  {
+   "id": "rt_de",
+   "rank": 1,
+   "rank_label": "Official German services of the Russian state",
+   "name": "RT DE",
+   "control": "state_media",
+   "language": "de",
+   "script": "de",
+   "article_count": 3729,
+   "date_span": {
+    "min": "2026-05-26",
+    "max": "2026-09-26",
+    "distinct_days": 124,
+    "timeline": true,
+    "note": null
+   },
+   "weekly_articles": [
+    194,
+    202,
+    196,
+    227,
+    234,
+    225,
+    204,
+    190,
+    237,
+    206,
+    199,
+    236,
+    211,
+    180,
+    224,
+    203,
+    213,
+    148
+   ],
+   "weekly_observed": true,
+   "crawl": {
+    "discovered": 3863,
+    "ok": 3729,
+    "reject": 134,
+    "error": 0
+   },
+   "series": [
+    {
+     "id": "kiewer_regime",
+     "article_count": 128,
+     "share_pct": 3.43,
+     "peak": {
+      "week": "2026-W22",
+      "week_start": "2026-05-25",
+      "n": 14,
+      "share_pct": 7.22,
+      "z": 2.53
+     },
+     "weekly_n": [
+      14,
+      8,
+      6,
+      8,
+      7,
+      14,
+      7,
+      10,
+      6,
+      8,
+      5,
+      5,
+      6,
+      4,
+      5,
+      7,
+      2,
+      6
+     ],
+     "quotes": [
+      {
+       "date": "2026-05-30",
+       "week": "2026-W22",
+       "url": "https://de.rt.com/europa/281637-selenskij-und-tichanowskaja-wollen-die-weissrussische-karte-ausspielen/",
+       "title": "Selenskij und Tichanowskaja wollen die \"weißrussische Karte\" ausspielen",
+       "section": "europa",
+       "quote": "Die Situation ist offensichtlich: Die Finanzmittel für das Kiewer Regime werden stetig gekürzt."
+      },
+      {
+       "date": "2026-05-31",
+       "week": "2026-W22",
+       "url": "https://de.rt.com/europa/281801-regime-in-kiew-behindert-streben/",
+       "title": "Das Regime in Kiew behindert das Streben der Ukrainer nach Frieden",
+       "section": "europa",
+       "quote": "Mai veröffentlichte die dem Kiewer Regime nahestehende Meinungsforschungsgruppe \"Rating\" die Ergebnisse einer vom 15."
+      },
+      {
+       "date": "2026-05-27",
+       "week": "2026-W22",
+       "url": "https://de.rt.com/europa/281422-paradigmenwechsel-und-signal-an-westen/",
+       "title": "Experten: Angriffe auf Kiew markieren Paradigmenwechsel",
+       "section": "europa",
+       "quote": "Ausgerechnet Europa diene dem Kiewer Regime als rückwärtiges Gebiet, teilweise sogar als dessen militärisches Hauptquartier."
+      }
+     ]
+    },
+    {
+     "id": "russophobia",
+     "article_count": 104,
+     "share_pct": 2.79,
+     "peak": {
+      "week": "2026-W39",
+      "week_start": "2026-09-21",
+      "n": 7,
+      "share_pct": 4.73,
+      "z": 2.09
+     },
+     "weekly_n": [
+      6,
+      6,
+      8,
+      4,
+      3,
+      5,
+      5,
+      3,
+      6,
+      7,
+      6,
+      9,
+      5,
+      5,
+      9,
+      6,
+      4,
+      7
+     ],
+     "quotes": [
+      {
+       "date": "2026-09-22",
+       "week": "2026-W39",
+       "url": "https://de.rt.com/meinung/292605-medwedew-bezichtigt-merz-des-neonazismus-und-wuenscht-sich-die-cholera-zurueck/",
+       "title": "Medwedew bezichtigt Merz des Neonazismus und wünscht sich die Cholera zurück",
+       "section": "meinung",
+       "quote": "Sein Neonazismus, seine Russophobie und seine Ukraine-Besessenheit haben ihn zum nutzlosesten Bundeskanzler Deutschlands gemacht."
+      },
+      {
+       "date": "2026-09-23",
+       "week": "2026-W39",
+       "url": "https://de.rt.com/meinung/292702-waffenhandel-remmo-und-berliner-intrigen/",
+       "title": "Waffenhandel, Remmo und Berliner Intrigen",
+       "section": "meinung",
+       "quote": "Auch wenn Krach kein Politiker ist, den ich schätze – er ist sogar leicht überdurchschnittlich russophob –, das, was da lief, war eine sehr eigenartige Nummer."
+      },
+      {
+       "date": "2026-09-22",
+       "week": "2026-W39",
+       "url": "https://de.rt.com/meinung/292588-fear-and-loathing-in-brussels-warum-wahlen-in-russland-der-alptraum-der-eu-sind/",
+       "title": "\"Fear and Loathing in Brussels\" – warum Wahlen in Russland Alptraum der EU-Eliten sind",
+       "section": "meinung",
+       "quote": "Diese russophobe Unverfrorenheit konnte niemanden überraschen, denn die allererste Volksabstimmung im Rahmen des Russischen Frühlings auf der Krim wurde genau so beschrieben."
+      }
+     ]
+    },
+    {
+     "id": "ukraine_fascist",
+     "article_count": 32,
+     "share_pct": 0.86,
+     "peak": {
+      "week": "2026-W23",
+      "week_start": "2026-06-01",
+      "n": 4,
+      "share_pct": 1.98,
+      "z": 1.82
+     },
+     "weekly_n": [
+      1,
+      4,
+      2,
+      3,
+      4,
+      4,
+      2,
+      2,
+      0,
+      0,
+      0,
+      1,
+      1,
+      3,
+      1,
+      2,
+      1,
+      1
+     ],
+     "quotes": [
+      {
+       "date": "2026-06-06",
+       "week": "2026-W23",
+       "url": "https://de.rt.com/international/282387-geschmackloser-ns-vergleich-selenskij-missbraucht/",
+       "title": "Geschmackloser NS-Vergleich: Selenskij missbraucht Andenken an D-Day",
+       "section": "international",
+       "quote": "Als eines der Kriegsziele Russlands bei der militärischen Sonderoperation wird immer wieder die Entnazifizierung der Ukraine genannt, ein Nazi-Vorwurf, den wiederum Kiew zurückweist."
+      },
+      {
+       "date": "2026-06-05",
+       "week": "2026-W23",
+       "url": "https://de.rt.com/meinung/282188-wladimir-solowjow-nicht-erste-mal-dass-europaer-juden-enteignen/",
+       "title": "Wladimir Solowjow: \"Nicht das erste Mal, dass Europäer Juden enteignen\"",
+       "section": "meinung",
+       "quote": "Darin erklärten sie, dass Russlands Verwendung der Begriffe 'Völkermord' und 'Nazi' im Zusammenhang mit den Ereignissen in der Ukraine eine Verfälschung der Geschichte und einen Missbrauch der Shoah, des Holocaust, darstelle."
+      },
+      {
+       "date": "2026-06-07",
+       "week": "2026-W23",
+       "url": "https://de.rt.com/meinung/282112-pack-schlaegt-sich-pack-vertraegt/",
+       "title": "Pack schlägt sich, Pack verträgt sich – Warschau und Kiew streiten erneut um tote Nazis",
+       "section": "meinung",
+       "quote": "Pack schlägt sich, Pack verträgt sich – Warschau und Kiew streiten erneut um tote Nazis Von IA Steklomoi In den polnisch-ukrainischen Beziehungen gibt es eine altehrwürdige Tradition, sich wegen des Massakers von Wolhynien zu streiten."
+      }
+     ]
+    },
+    {
+     "id": "vassal_proxy",
+     "article_count": 31,
+     "share_pct": 0.83,
+     "peak": {
+      "week": "2026-W39",
+      "week_start": "2026-09-21",
+      "n": 3,
+      "share_pct": 2.03,
+      "z": 1.93
+     },
+     "weekly_n": [
+      3,
+      2,
+      1,
+      0,
+      0,
+      1,
+      3,
+      1,
+      2,
+      3,
+      0,
+      2,
+      1,
+      3,
+      1,
+      2,
+      3,
+      3
+     ],
+     "quotes": [
+      {
+       "date": "2026-09-26",
+       "week": "2026-W39",
+       "url": "https://de.rt.com/meinung/292727-washington-will-drohnen-weltmacht-werden/",
+       "title": "Washington will Drohnen-Weltmacht werden – China zeigt die Größenordnung",
+       "section": "meinung",
+       "quote": "Der US‑Stellvertreterkrieg in der Ukraine gegen Russland und der verbrecherische, völkerrechtswidrige, unprovozierte Angriffskrieg gegen Iran haben den Druck auf das Pentagon erhöht."
+      },
+      {
+       "date": "2026-09-26",
+       "week": "2026-W39",
+       "url": "https://de.rt.com/meinung/292768-einfache-botschaft-britischen-elite-stellt/",
+       "title": "Die einfache Botschaft der britischen Elite: Stellt keine Fragen und bereitet euch auf Krieg vor!",
+       "section": "meinung",
+       "quote": "Sir Jacob kann doch unmöglich darauf angespielt haben, wie der Westen – Großbritannien ausdrücklich eingeschlossen – das Kiewer Regime dafür bezahlt hat, seine Untertanen (notfalls nach deren Entführung) in den Wahnsinn des Fleischwolfs eines Stellvertreterkriegs zu schicken, um Russland zu schwächen."
+      },
+      {
+       "date": "2026-09-24",
+       "week": "2026-W39",
+       "url": "https://de.rt.com/meinung/292548-die-rache-des-ostens-das-ende-westdeutschlands-ist-endgueltig-gekommen/",
+       "title": "Die Rache des Ostens: Das Ende Westdeutschlands ist endgültig gekommen",
+       "section": "meinung",
+       "quote": "Zugleich droht jedoch große Gefahr: Der Prozess, die alte, nicht mehr passende Haut jenes Westdeutschlands abzustreifen, das einst als Vasallenstaat des Kalten Krieges konzipiert worden war, hat zwar begonnen, doch der politische und psychologische Widerstand wird massiv und womöglich sogar gewaltsam ausfallen."
+      }
+     ]
+    },
+    {
+     "id": "deindustrialization",
+     "article_count": 25,
+     "share_pct": 0.67,
+     "peak": {
+      "week": "2026-W29",
+      "week_start": "2026-07-13",
+      "n": 3,
+      "share_pct": 1.58,
+      "z": 1.65
+     },
+     "weekly_n": [
+      3,
+      2,
+      1,
+      1,
+      0,
+      2,
+      2,
+      3,
+      3,
+      2,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      2,
+      2
+     ],
+     "quotes": [
+      {
+       "date": "2026-07-17",
+       "week": "2026-W29",
+       "url": "https://de.rt.com/inland/286034-keine-waffen-fuer-voelkermord-widerstand/",
+       "title": "\"Keine Waffen für Völkermord\" – Widerstand gegen Elbit-Expansion nach Sachsen-Anhalt",
+       "section": "inland",
+       "quote": "\"Wir wissen alle, dass unsere Region deindustrialisiert wurde und wird.\" Die Arbeitslosenquote liege dort bei etwa zehn Prozent."
+      },
+      {
+       "date": "2026-07-19",
+       "week": "2026-W29",
+       "url": "https://de.rt.com/international/286218-aussenhandel-frankreich-und-deutschland-planen-roadmap-beseitigung-exportdefizit-china/",
+       "title": "Außenhandel: Frankreich und Deutschland planen Roadmap zur Beseitigung des Exportdefizits mit China",
+       "section": "international",
+       "quote": "Das hängt nicht zuletzt mit den selbst verursachten hohen Energiepreisen in der EU und der damit verbundenen schleichenden Deindustrialisierung zusammen."
+      },
+      {
+       "date": "2026-07-16",
+       "week": "2026-W29",
+       "url": "https://de.rt.com/meinung/285989-welche-hymne-ist-denn-nun/",
+       "title": "Welche Hymne ist denn nun die falsche?",
+       "section": "meinung",
+       "quote": "Oder zunehmend an sie erinnert werden, während die Deindustrialisierung das Land fest im Griff hat und die Regierung für die Aufrüstung die sozialen Errungenschaften zerschlägt?"
+      }
+     ]
+    },
+    {
+     "id": "afd_ban",
+     "article_count": 16,
+     "share_pct": 0.43,
+     "peak": {
+      "week": "2026-W26",
+      "week_start": "2026-06-22",
+      "n": 5,
+      "share_pct": 2.14,
+      "z": 2.79
+     },
+     "weekly_n": [
+      2,
+      0,
+      0,
+      0,
+      5,
+      0,
+      1,
+      0,
+      0,
+      0,
+      2,
+      1,
+      0,
+      1,
+      0,
+      2,
+      0,
+      2
+     ],
+     "quotes": [
+      {
+       "date": "2026-06-26",
+       "week": "2026-W26",
+       "url": "https://de.rt.com/umfrage/284367-afd-verbot/",
+       "title": "AfD-Verbot — RT DE",
+       "section": "umfrage",
+       "quote": "AfD-Verbot Die AfD steht in Umfragen so gut wie niemals zuvor da: Platz 1 bundesweit mit nur noch knapp unter 30 Prozent, über 40 Prozent in Sachsen und Sachsen-Anhalt."
+      },
+      {
+       "date": "2026-06-27",
+       "week": "2026-W26",
+       "url": "https://de.rt.com/inland/284402-sachsen-anhalt-antifa-will-landtag-stuermen-falls-afd-wahl-gewinnt/",
+       "title": "Sachsen-Anhalt: Antifa will Landtag stürmen – falls AfD Wahl gewinnt",
+       "section": "inland",
+       "quote": "September, dem Tag der voraussichtlichen faschistischen Machtübernahme in Deutschland, werden wir mit einer großen Schar von Antifas aus ganz Deutschland den Magdeburger Landtag stürmen.\" Mehr zum Thema – AfD-Verbotsgutachten: Ein Steinhagel beim Glaser"
+      },
+      {
+       "date": "2026-06-26",
+       "week": "2026-W26",
+       "url": "https://de.rt.com/meinung/284302-warum-ein-afd-verbot-nur-in-diktatur-oder-krieg-enden-kann/",
+       "title": "Warum ein AfD-Verbot nur in Diktatur oder Krieg enden kann",
+       "section": "meinung",
+       "quote": "Warum ein AfD-Verbot nur in Diktatur oder Krieg enden kann."
+      }
+     ]
+    },
+    {
+     "id": "nord_stream",
+     "article_count": 30,
+     "share_pct": 0.8,
+     "peak": {
+      "week": "2026-W27",
+      "week_start": "2026-06-29",
+      "n": 6,
+      "share_pct": 2.67,
+      "z": 2.31
+     },
+     "weekly_n": [
+      0,
+      4,
+      2,
+      0,
+      2,
+      6,
+      3,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      2,
+      3,
+      1,
+      2,
+      3
+     ],
+     "quotes": [
+      {
+       "date": "2026-07-04",
+       "week": "2026-W27",
+       "url": "https://de.rt.com/meinung/285018-lanz-luegt-wieder-putin-drehte/",
+       "title": "Lanz lügt wieder: \"Putin drehte Deutschland 2021 den Gashahn zu\"",
+       "section": "meinung",
+       "quote": "Er verschleppte und verzögerte die Betriebsgenehmigung für Nord Stream 2."
+      },
+      {
+       "date": "2026-06-30",
+       "week": "2026-W27",
+       "url": "https://de.rt.com/meinung/284584-merz-ist-eigentor-deutschlands/",
+       "title": "Merz ist das Eigentor Deutschlands",
+       "section": "meinung",
+       "quote": "Viele sprechen offen davon, dass der Sieg der deutschen Mannschaft gestohlen wurde – entrissen durch fragwürdige Entscheidungen, so wie die deutsche Wirtschaft durch die Sabotage von Nord Stream brutal abgeschnitten und sabotiert wurde."
+      },
+      {
+       "date": "2026-06-30",
+       "week": "2026-W27",
+       "url": "https://de.rt.com/inland/284621-weidel-wirbt-fuer-annaeherung-an/",
+       "title": "Weidel wirbt für Annäherung an Russland – und hat das Kanzleramt im Blick",
+       "section": "inland",
+       "quote": "Deutschland hat zudem weiterhin Schwierigkeiten, sich von dem Schock zu erholen, der durch die Stilllegung der wichtigen Unterwasser-Pipelines Nord Stream ausgelöst wurde, die im September 2022 durch einen Anschlag schwer beschädigt wurden."
+      }
+     ]
+    },
+    {
+     "id": "hormuz",
+     "article_count": 271,
+     "share_pct": 7.27,
+     "peak": {
+      "week": "2026-W25",
+      "week_start": "2026-06-15",
+      "n": 29,
+      "share_pct": 12.78,
+      "z": 2.1
+     },
+     "weekly_n": [
+      4,
+      6,
+      8,
+      29,
+      21,
+      12,
+      16,
+      21,
+      24,
+      16,
+      18,
+      20,
+      16,
+      10,
+      15,
+      11,
+      15,
+      9
+     ],
+     "quotes": [
+      {
+       "date": "2026-06-20",
+       "week": "2026-W25",
+       "url": "https://de.rt.com/international/283749-strasse-von-hormus-wieder-geschlossen/",
+       "title": "Straße von Hormus wieder geschlossen",
+       "section": "international",
+       "quote": "Nun wurde bereits die Straße von Hormus wieder geschlossen."
+      },
+      {
+       "date": "2026-06-17",
+       "week": "2026-W25",
+       "url": "https://de.rt.com/wirtschaft/283492-oelvorraete-industrielaender-auf-historischem-tiefststand/",
+       "title": "Ölvorräte der Industrieländer auf historischem Tiefststand",
+       "section": "wirtschaft",
+       "quote": "Birol forderte am Dienstag die \"bedingungslose\" Öffnung der Straße von Hormus."
+      },
+      {
+       "date": "2026-06-18",
+       "week": "2026-W25",
+       "url": "https://de.rt.com/international/283538-jenseits-ganzen-spins-washington-hat/",
+       "title": "Trotz aller Rhetorik: Washington behält Oberhand bei Iran-Deal – Was bedeutet das für Russland?",
+       "section": "international",
+       "quote": "Gleichzeitig kontrolliert das Land die strategisch wichtige Straße von Hormus."
+      }
+     ]
+    },
+    {
+     "id": "sachsen_anhalt",
+     "article_count": 183,
+     "share_pct": 4.91,
+     "peak": {
+      "week": "2026-W37",
+      "week_start": "2026-09-07",
+      "n": 34,
+      "share_pct": 16.75,
+      "z": 3.06
+     },
+     "weekly_n": [
+      6,
+      3,
+      2,
+      2,
+      4,
+      7,
+      5,
+      7,
+      10,
+      11,
+      7,
+      12,
+      9,
+      19,
+      17,
+      34,
+      17,
+      11
+     ],
+     "quotes": [
+      {
+       "date": "2026-09-09",
+       "week": "2026-W37",
+       "url": "https://de.rt.com/inland/291262-sensationelle-wahlumfragen-union-erstmals-unter/",
+       "title": "Umfrage mit Wumms: Union bundesweit erstmals unter 20 Prozent, AfD bei 29 Prozent",
+       "section": "inland",
+       "quote": "September, also vor der Wahl in Sachsen-Anhalt, durchgeführt."
+      },
+      {
+       "date": "2026-09-07",
+       "week": "2026-W37",
+       "url": "https://de.rt.com/inland/291032-afd-aussenpolitiker-frohnmaier-im-gespraech-russische-beziehungen-sind-reparabel/",
+       "title": "AfD-Außenpolitiker Frohnmaier im Gespräch: Deutsch-russische Beziehungen sind reparabel",
+       "section": "inland",
+       "quote": "Ein großartiges Ergebnis für unsere Partei hier in Sachsen-Anhalt."
+      },
+      {
+       "date": "2026-09-10",
+       "week": "2026-W37",
+       "url": "https://de.rt.com/umfrage/291347-nach-wahldebakel-der-cdu-in-sachsen/",
+       "title": "Nach dem Wahldebakel der CDU in Sachsen-Anhalt wackelt der Stuhl von Friedrich Merz. — RT DE",
+       "section": "umfrage",
+       "quote": "Nach dem Wahldebakel der CDU in Sachsen-Anhalt wackelt der Stuhl von Friedrich Merz."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sputnik_de",
+   "rank": 1,
+   "rank_label": "Official German services of the Russian state",
+   "name": "Sputnik Deutschland / SNA / Satellit",
+   "control": "state_media",
+   "language": "de",
+   "script": "de",
+   "article_count": 2795,
+   "date_span": {
+    "min": "2026-05-26",
+    "max": "2026-09-26",
+    "distinct_days": 124,
+    "timeline": true,
+    "note": null
+   },
+   "weekly_articles": [
+    256,
+    279,
+    109,
+    80,
+    79,
+    65,
+    188,
+    175,
+    234,
+    133,
+    187,
+    88,
+    91,
+    258,
+    127,
+    184,
+    131,
+    132
+   ],
+   "weekly_observed": false,
+   "crawl": {
+    "discovered": 2795,
+    "ok": 2795,
+    "reject": 0,
+    "error": 0
+   },
+   "series": [
+    {
+     "id": "kiewer_regime",
+     "article_count": 0,
+     "share_pct": 0.0,
+     "peak": null,
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": []
+    },
+    {
+     "id": "russophobia",
+     "article_count": 0,
+     "share_pct": 0.0,
+     "peak": null,
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": []
+    },
+    {
+     "id": "ukraine_fascist",
+     "article_count": 1,
+     "share_pct": 0.04,
+     "peak": {
+      "week": "2026-W23",
+      "week_start": "2026-06-01",
+      "n": 1,
+      "share_pct": 0.68,
+      "z": 4.12
+     },
+     "weekly_n": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": [
+      {
+       "date": "2026-06-05",
+       "week": "2026-W23",
+       "url": "https://t.me/satellit_de/69795",
+       "title": "❌ 🇺🇦 🇺🇦 Keinen Cent mehr für die Ukraine! Während die Selenski-Regierung mit großem Tamtam dem ukrainischen Nazi-Kollaborateur Andrej Melnyk huldigt, wollen deutsche Regierungspoli",
+       "section": null,
+       "quote": "Die rechtsradikalen Umtriebe und der offene Nazi-Kult in der ukrainischen Regierung interessieren die ansonsten so umtriebigen „Kämpfer gegen rechts“ dabei herzlich wenig."
+      }
+     ]
+    },
+    {
+     "id": "vassal_proxy",
+     "article_count": 0,
+     "share_pct": 0.0,
+     "peak": null,
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": []
+    },
+    {
+     "id": "deindustrialization",
+     "article_count": 4,
+     "share_pct": 0.14,
+     "peak": {
+      "week": "2026-W36",
+      "week_start": "2026-08-31",
+      "n": 1,
+      "share_pct": 0.63,
+      "z": 2.12
+     },
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+     ],
+     "quotes": [
+      {
+       "date": "2026-08-31",
+       "week": "2026-W36",
+       "url": "https://t.me/satellit_de/72439",
+       "title": "Siegmund: Unter Merz geht die Wirtschaft den Bach runter Der AfD-Spitzenkandidat für Sachsen-Anhalt, Ulrich Siegmund, hat in einem Interview mit „Welt TV“ die Warnung von Bundeskan",
+       "section": null,
+       "quote": "Wir erleben gerade eine Deindustrialisierung in diesem Land."
+      }
+     ]
+    },
+    {
+     "id": "afd_ban",
+     "article_count": 19,
+     "share_pct": 0.68,
+     "peak": {
+      "week": "2026-W37",
+      "week_start": "2026-09-07",
+      "n": 6,
+      "share_pct": 2.91,
+      "z": 2.94
+     },
+     "weekly_n": [
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      3,
+      1,
+      1,
+      0,
+      0,
+      3,
+      0,
+      5,
+      0,
+      0
+     ],
+     "quotes": [
+      {
+       "date": "2026-09-07",
+       "week": "2026-W37",
+       "url": "https://t.me/satellit_de/72658",
+       "title": "Anti-AfD-Demo in Berlin",
+       "section": null,
+       "quote": "Klimaaktivistin Luisa Neubauer forderte in ihrer Rede ein AfD-Verbotsverfahren."
+      }
+     ]
+    },
+    {
+     "id": "nord_stream",
+     "article_count": 11,
+     "share_pct": 0.39,
+     "peak": {
+      "week": "2026-W25",
+      "week_start": "2026-06-15",
+      "n": 2,
+      "share_pct": 1.98,
+      "z": 2.75
+     },
+     "weekly_n": [
+      1,
+      1,
+      0,
+      2,
+      1,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0
+     ],
+     "quotes": [
+      {
+       "date": "2026-06-19",
+       "week": "2026-W25",
+       "url": "https://t.me/satellit_de/70105",
+       "title": "#EXKLUSIV Gesprengte Nord-Stream-Pipelines: Folgen für Deutschland",
+       "section": null,
+       "quote": "#EXKLUSIV Gesprengte Nord-Stream-Pipelines: Folgen für Deutschland – Wirtschaftswissenschaftler spricht Klartext Die Sprengung von Nord Stream am 26."
+      }
+     ]
+    },
+    {
+     "id": "hormuz",
+     "article_count": 27,
+     "share_pct": 0.97,
+     "peak": {
+      "week": "2026-W29",
+      "week_start": "2026-07-13",
+      "n": 6,
+      "share_pct": 3.51,
+      "z": 2.36
+     },
+     "weekly_n": [
+      1,
+      2,
+      1,
+      1,
+      0,
+      1,
+      2,
+      6,
+      1,
+      2,
+      1,
+      1,
+      0,
+      2,
+      2,
+      2,
+      2,
+      1
+     ],
+     "quotes": [
+      {
+       "date": "2026-07-15",
+       "week": "2026-W29",
+       "url": "https://t.me/satellit_de/70793",
+       "title": "🔥 Iran meldet Angriffe auf US-Ziele in Kuwait, Jordanien und Bahrain Die iranische Armee erklärte nach Angaben des staatlichen Fernsehsenders Irib, sie habe vom US-Militär genutzte",
+       "section": null,
+       "quote": "Zudem bekräftigten sie, dass die Straße von Hormus geschlossen bleibe, „bis die Vereinigten Staaten ihre Aggressionen beenden“."
+      }
+     ]
+    },
+    {
+     "id": "sachsen_anhalt",
+     "article_count": 216,
+     "share_pct": 7.73,
+     "peak": {
+      "week": "2026-W37",
+      "week_start": "2026-09-07",
+      "n": 87,
+      "share_pct": 42.23,
+      "z": 3.61
+     },
+     "weekly_n": [
+      14,
+      13,
+      4,
+      14,
+      7,
+      8,
+      13,
+      5,
+      8,
+      3,
+      11,
+      4,
+      3,
+      14,
+      5,
+      78,
+      4,
+      8
+     ],
+     "quotes": [
+      {
+       "date": "2026-09-11",
+       "week": "2026-W37",
+       "url": "https://t.me/satellit_de/72846",
+       "title": "Wählt das BSW in Sachsen-Anhalt Siegmund zum Ministerpräsidenten? Nein, sagt Parteigründerin Sahra Wagenknecht in einem Interview mit RTL und ntv. Ulrich Siegmund habe „völlig wide",
+       "section": null,
+       "quote": "Wählt das BSW in Sachsen-Anhalt Siegmund zum Ministerpräsidenten?"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pravda_de",
+   "rank": 2,
+   "rank_label": "Covert operations whose product is German or aimed at German politics",
+   "name": "Pravda Deutschland (Portal Kombat)",
+   "control": "covert_io",
+   "language": "de",
+   "script": "de",
+   "article_count": 2352,
+   "date_span": {
+    "min": "2026-05-26",
+    "max": "2026-06-01",
+    "distinct_days": 7,
+    "timeline": false,
+    "note": "dates only run 2026-05-26 to 2026-06-01"
+   },
+   "weekly_articles": [
+    1770,
+    582,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "weekly_observed": false,
+   "crawl": {
+    "discovered": 2352,
+    "ok": 2352,
+    "reject": 0,
+    "error": 0
+   },
+   "series": [
+    {
+     "id": "kiewer_regime",
+     "article_count": 39,
+     "share_pct": 1.66,
+     "peak": {
+      "week": "2026-W22",
+      "week_start": "2026-05-25",
+      "n": 39,
+      "share_pct": 1.67,
+      "z": 1.0
+     },
+     "weekly_n": [
+      30,
+      9,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": [
+      {
+       "date": "2026-05-26",
+       "week": "2026-W22",
+       "url": "https://germany.news-pravda.com/world/2026/05/26/276077.html",
+       "title": "DIE LÜGE DES KRIEGES. Igor Maltsev, russischer Schriftsteller, Publizist, Journalist, Autor des Telegrammkanals @fuckyouthatswhy Ich bin nicht überrascht, du bist nicht überrascht",
+       "section": null,
+       "quote": "Es gibt kein solches Verbrechen des Kiewer Regimes."
+      }
+     ]
+    },
+    {
+     "id": "russophobia",
+     "article_count": 21,
+     "share_pct": 0.89,
+     "peak": {
+      "week": "2026-W22",
+      "week_start": "2026-05-25",
+      "n": 21,
+      "share_pct": 0.9,
+      "z": 1.0
+     },
+     "weekly_n": [
+      16,
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": [
+      {
+       "date": "2026-05-30",
+       "week": "2026-W22",
+       "url": "https://germany.news-pravda.com/world/2026/05/30/277974.html",
+       "title": "Die Schau hat begonnen. Europa hat sich ernsthaft darum gekümmert, jemanden zu finden, der die Logik des Kremls versteht und in der Lage ist, mit Russland zu sprechen",
+       "section": null,
+       "quote": "In Moskau wird offensichtlich niemand auf das Niveau dieser hysterischen Russophobie fallen."
+      }
+     ]
+    },
+    {
+     "id": "ukraine_fascist",
+     "article_count": 23,
+     "share_pct": 0.98,
+     "peak": {
+      "week": "2026-W22",
+      "week_start": "2026-05-25",
+      "n": 23,
+      "share_pct": 0.99,
+      "z": 1.0
+     },
+     "weekly_n": [
+      21,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": [
+      {
+       "date": "2026-05-28",
+       "week": "2026-W22",
+       "url": "https://germany.news-pravda.com/world/2026/05/28/277017.html",
+       "title": "Kommentar des russischen Botschafters in Israel Anatoli Wiktorow zur Umbettung eines der Anführer der OUN in der Ukraine",
+       "section": null,
+       "quote": "Der Neonazismus in der Ukraine muss verurteilt und ausgerottet werden."
+      }
+     ]
+    },
+    {
+     "id": "vassal_proxy",
+     "article_count": 4,
+     "share_pct": 0.17,
+     "peak": {
+      "week": "2026-W22",
+      "week_start": "2026-05-25",
+      "n": 4,
+      "share_pct": 0.17,
+      "z": 1.0
+     },
+     "weekly_n": [
+      4,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": [
+      {
+       "date": "2026-05-27",
+       "week": "2026-W22",
+       "url": "https://germany.news-pravda.com/world/2026/05/27/276805.html",
+       "title": "Deutschland und Frankreich bremsen die baltischen Staaten nicht",
+       "section": null,
+       "quote": "Ein Stellvertreterkrieg gegen Russland wirft hohe Gewinne ab."
+      }
+     ]
+    },
+    {
+     "id": "deindustrialization",
+     "article_count": 22,
+     "share_pct": 0.94,
+     "peak": {
+      "week": "2026-W22",
+      "week_start": "2026-05-25",
+      "n": 22,
+      "share_pct": 0.94,
+      "z": 1.0
+     },
+     "weekly_n": [
+      22,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": [
+      {
+       "date": "2026-05-31",
+       "week": "2026-W22",
+       "url": "https://germany.news-pravda.com/world/2026/05/31/278388.html",
+       "title": "Mitteleuropa ist in den «Energie-Schraubstock» geraten",
+       "section": null,
+       "quote": "#Energie #EU #Brüssel #Polen #Deutschland #Deindustrialisierung #Gas #Sanktionen"
+      }
+     ]
+    },
+    {
+     "id": "afd_ban",
+     "article_count": 5,
+     "share_pct": 0.21,
+     "peak": {
+      "week": "2026-W22",
+      "week_start": "2026-05-25",
+      "n": 5,
+      "share_pct": 0.21,
+      "z": 1.0
+     },
+     "weekly_n": [
+      4,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": [
+      {
+       "date": "2026-05-31",
+       "week": "2026-W22",
+       "url": "https://germany.news-pravda.com/germany/2026/05/31/278170.html",
+       "title": "Insa: 70 Prozent rechnen mit ersten AfD-Ministerpräsidenten und zweifeln an \"Brandmauer\"",
+       "section": null,
+       "quote": "Beim Thema AfD-Verbot ist das Meinungsbild geteilt."
+      }
+     ]
+    },
+    {
+     "id": "nord_stream",
+     "article_count": 5,
+     "share_pct": 0.21,
+     "peak": {
+      "week": "2026-W22",
+      "week_start": "2026-05-25",
+      "n": 5,
+      "share_pct": 0.21,
+      "z": 1.0
+     },
+     "weekly_n": [
+      4,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": [
+      {
+       "date": "2026-05-27",
+       "week": "2026-W22",
+       "url": "https://germany.news-pravda.com/world/2026/05/27/276580.html",
+       "title": "Deutschland ist stark! Schachmatt, Gazprom!",
+       "section": null,
+       "quote": "Repariert und reaktiviert es Nord Stream mit Hochdruck?"
+      }
+     ]
+    },
+    {
+     "id": "hormuz",
+     "article_count": 21,
+     "share_pct": 0.89,
+     "peak": {
+      "week": "2026-W22",
+      "week_start": "2026-05-25",
+      "n": 21,
+      "share_pct": 0.9,
+      "z": 1.0
+     },
+     "weekly_n": [
+      16,
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": [
+      {
+       "date": "2026-05-26",
+       "week": "2026-W22",
+       "url": "https://germany.news-pravda.com/world/2026/05/26/276174.html",
+       "title": "Gestern Nacht eröffneten US-Streitkräfte das Feuer auf Ziele im Süden Irans",
+       "section": null,
+       "quote": "Zugleich wurden Schnellboote neutralisiert, die in der Straße von Hormus Minen auslegten."
+      }
+     ]
+    },
+    {
+     "id": "sachsen_anhalt",
+     "article_count": 32,
+     "share_pct": 1.36,
+     "peak": {
+      "week": "2026-W22",
+      "week_start": "2026-05-25",
+      "n": 32,
+      "share_pct": 1.37,
+      "z": 1.0
+     },
+     "weekly_n": [
+      32,
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": [
+      {
+       "date": "2026-05-26",
+       "week": "2026-W22",
+       "url": "https://germany.news-pravda.com/world/2026/05/26/276243.html",
+       "title": "️AfD strebt in Sachsen-Anhalt die Alleinregierung an. Der Spitzenkandidat Ulrich Siegmund: \"Wir können Deutschland nicht mit denjenigen retten, die es die letzten zwanzig-dreißig Jahre gegen die Wand gefahren haben.\"",
+       "section": null,
+       "quote": "️AfD strebt in Sachsen-Anhalt die Alleinregierung an."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "newsfront_de",
+   "rank": 2,
+   "rank_label": "Covert operations whose product is German or aimed at German politics",
+   "name": "NewsFront, German desk",
+   "control": "covert_io",
+   "language": "de",
+   "script": "ru",
+   "article_count": 6543,
+   "date_span": {
+    "min": "2026-05-26",
+    "max": "2026-09-26",
+    "distinct_days": 102,
+    "timeline": true,
+    "note": null
+   },
+   "weekly_articles": [
+    529,
+    585,
+    338,
+    53,
+    301,
+    421,
+    413,
+    389,
+    502,
+    195,
+    271,
+    322,
+    407,
+    206,
+    395,
+    468,
+    684,
+    65
+   ],
+   "weekly_observed": false,
+   "crawl": {
+    "discovered": 6582,
+    "ok": 6543,
+    "reject": 25,
+    "error": 14
+   },
+   "series": [
+    {
+     "id": "kiewer_regime",
+     "article_count": 415,
+     "share_pct": 6.34,
+     "peak": {
+      "week": "2026-W26",
+      "week_start": "2026-06-22",
+      "n": 41,
+      "share_pct": 8.61,
+      "z": 1.23
+     },
+     "weekly_n": [
+      23,
+      17,
+      18,
+      2,
+      26,
+      19,
+      26,
+      37,
+      24,
+      17,
+      33,
+      45,
+      12,
+      11,
+      39,
+      40,
+      24,
+      4
+     ],
+     "quotes": [
+      {
+       "date": "2026-06-22",
+       "week": "2026-W26",
+       "url": "https://news-front.su/2026/06/22/zachem-zelenskomu-vojna-s-belorussiej/",
+       "title": "Зачем Зеленскому война с Белоруссией?",
+       "section": null,
+       "quote": "Казалось бы, главе киевского режима точно не нужен еще один фронт."
+      }
+     ]
+    },
+    {
+     "id": "russophobia",
+     "article_count": 247,
+     "share_pct": 3.78,
+     "peak": {
+      "week": "2026-W22",
+      "week_start": "2026-05-25",
+      "n": 25,
+      "share_pct": 6.23,
+      "z": 1.83
+     },
+     "weekly_n": [
+      25,
+      18,
+      27,
+      2,
+      11,
+      17,
+      8,
+      15,
+      16,
+      6,
+      15,
+      11,
+      9,
+      9,
+      13,
+      9,
+      33,
+      2
+     ],
+     "quotes": [
+      {
+       "date": "2026-05-26",
+       "week": "2026-W22",
+       "url": "https://news-front.su/2026/05/26/udary-po-voennym-obektam-v-kieve-stanut-sistemnymi/",
+       "title": "Удары по военным объектам в Киеве станут системными",
+       "section": null,
+       "quote": "Причина этого, опять же, – русофобский курс, выбранный правительством республики."
+      }
+     ]
+    },
+    {
+     "id": "ukraine_fascist",
+     "article_count": 62,
+     "share_pct": 0.95,
+     "peak": {
+      "week": "2026-W22",
+      "week_start": "2026-05-25",
+      "n": 8,
+      "share_pct": 2.0,
+      "z": 2.23
+     },
+     "weekly_n": [
+      8,
+      5,
+      5,
+      0,
+      3,
+      2,
+      2,
+      6,
+      5,
+      2,
+      2,
+      1,
+      5,
+      3,
+      3,
+      4,
+      5,
+      0
+     ],
+     "quotes": [
+      {
+       "date": "2026-05-30",
+       "week": "2026-W22",
+       "url": "https://news-front.su/2026/05/30/mnenie-na-ukraine-vybrali-hutorskoj-variant-istorii-maksim-vaskov/",
+       "title": "Мнение: «На Украине выбрали хуторской вариант истории», - Максим Васьков",
+       "section": null,
+       "quote": "«Зеленский боится украинских нацистов, но сейчас господствующая идеология Украины — это нацизм."
+      }
+     ]
+    },
+    {
+     "id": "vassal_proxy",
+     "article_count": 43,
+     "share_pct": 0.66,
+     "peak": {
+      "week": "2026-W26",
+      "week_start": "2026-06-22",
+      "n": 6,
+      "share_pct": 1.26,
+      "z": 1.87
+     },
+     "weekly_n": [
+      3,
+      10,
+      4,
+      0,
+      4,
+      4,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      2,
+      2,
+      3,
+      1
+     ],
+     "quotes": [
+      {
+       "date": "2026-06-23",
+       "week": "2026-W26",
+       "url": "https://news-front.su/2026/06/23/geroicheskaya-lichnost-kozya-morda/",
+       "title": "«Героическая личность - козья морда!»",
+       "section": null,
+       "quote": "Вариант продолжения прокси-войны на Украине, по сути, остается для Запада безальтернативным."
+      }
+     ]
+    },
+    {
+     "id": "deindustrialization",
+     "article_count": 14,
+     "share_pct": 0.21,
+     "peak": {
+      "week": "2026-W23",
+      "week_start": "2026-06-01",
+      "n": 4,
+      "share_pct": 0.8,
+      "z": 2.84
+     },
+     "weekly_n": [
+      1,
+      4,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0
+     ],
+     "quotes": [
+      {
+       "date": "2026-06-04",
+       "week": "2026-W23",
+       "url": "https://news-front.su/2026/06/04/zolotoj-vek-ameriki-tak-i-ne-nastupil/",
+       "title": "Золотой век Америки так и не наступил",
+       "section": null,
+       "quote": "Развернуть вспять неизбежные процессы деиндустриализации США Трампу не удалось."
+      }
+     ]
+    },
+    {
+     "id": "afd_ban",
+     "article_count": 0,
+     "share_pct": 0.0,
+     "peak": null,
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": []
+    },
+    {
+     "id": "nord_stream",
+     "article_count": 52,
+     "share_pct": 0.79,
+     "peak": {
+      "week": "2026-W36",
+      "week_start": "2026-08-31",
+      "n": 1,
+      "share_pct": 100.0,
+      "z": 4.12
+     },
+     "weekly_n": [
+      4,
+      5,
+      2,
+      1,
+      2,
+      3,
+      3,
+      3,
+      5,
+      4,
+      2,
+      5,
+      5,
+      1,
+      1,
+      3,
+      4,
+      0
+     ],
+     "quotes": [
+      {
+       "date": "2026-09-04",
+       "week": "2026-W36",
+       "url": "https://news-front.su/2026/09/04/evroparlamentarij-de-mazi-prizval-germaniyu-k-dialogu-s-rossiej/",
+       "title": "Европарламентарий Де Мази призвал Германию к диалогу с Россией",
+       "section": null,
+       "quote": "В качестве примера двойных стандартов политик привел подрыв газопроводов «Северный поток»."
+      }
+     ]
+    },
+    {
+     "id": "hormuz",
+     "article_count": 252,
+     "share_pct": 3.85,
+     "peak": {
+      "week": "2026-W25",
+      "week_start": "2026-06-15",
+      "n": 34,
+      "share_pct": 7.1,
+      "z": 1.95
+     },
+     "weekly_n": [
+      33,
+      27,
+      11,
+      4,
+      6,
+      25,
+      8,
+      4,
+      13,
+      5,
+      16,
+      10,
+      8,
+      6,
+      36,
+      12,
+      23,
+      2
+     ],
+     "quotes": [
+      {
+       "date": "2026-06-19",
+       "week": "2026-W25",
+       "url": "https://news-front.su/2026/06/19/podpisav-mirnoe-soglashenie-s-iranom-tramp-podpisal-prigovor-vsej-kievskoj-hunte/",
+       "title": "Подписав мирное соглашение с Ираном, Трамп подписал приговор всей киевской хунте",
+       "section": null,
+       "quote": "Разблокировка в течение 30 дней Ормузского пролива."
+      }
+     ]
+    },
+    {
+     "id": "sachsen_anhalt",
+     "article_count": 14,
+     "share_pct": 0.21,
+     "peak": {
+      "week": "2026-W38",
+      "week_start": "2026-09-14",
+      "n": 3,
+      "share_pct": 1.13,
+      "z": 2.8
+     },
+     "weekly_n": [
+      1,
+      2,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      3,
+      0
+     ],
+     "quotes": [
+      {
+       "date": "2026-09-19",
+       "week": "2026-W38",
+       "url": "https://news-front.su/2026/09/19/energeticheskij-apokalipsis-evropy-kto-vinovat-na-samom-dele/",
+       "title": "Энергетический апокалипсис Европы: кто виноват на самом деле?",
+       "section": null,
+       "quote": "Германского канцлера отхлестали по его рейтингу результаты выборов в Саксонии-Анхальте так, что он отменил все свои международные визиты."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "anti_spiegel",
+   "rank": 4,
+   "rank_label": "German-speaking operators based in Russia",
+   "name": "Anti-Spiegel (Thomas Röper)",
+   "control": "russia_based_operator",
+   "language": "de",
+   "script": "de",
+   "article_count": 502,
+   "date_span": {
+    "min": "2026-09-26",
+    "max": "2026-09-26",
+    "distinct_days": 1,
+    "timeline": false,
+    "note": "every item is dated 2026-09-26"
+   },
+   "weekly_articles": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    502
+   ],
+   "weekly_observed": false,
+   "crawl": {
+    "discovered": 502,
+    "ok": 502,
+    "reject": 0,
+    "error": 0
+   },
+   "series": [
+    {
+     "id": "kiewer_regime",
+     "article_count": 41,
+     "share_pct": 8.17,
+     "peak": {
+      "week": "2026-W39",
+      "week_start": "2026-09-21",
+      "n": 41,
+      "share_pct": 8.17,
+      "z": 0.0
+     },
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      41
+     ],
+     "quotes": [
+      {
+       "date": "2026-09-26",
+       "week": "2026-W39",
+       "url": "https://anti-spiegel.ru/2026/warum-ist-ein-missglueckter-angriff-auf-ein-ukrainisches-flugzeug-schlimmer-als-die-zerstoerung-deutscher-infrastruktur/",
+       "title": "Warum ist ein missglückter Angriff auf ein ukrainisches Flugzeug schlimmer als die Zerstörung deutscher Infrastruktur?",
+       "section": null,
+       "quote": "Deutschland ist der größte Geldgeber des Kiewer Regimes."
+      }
+     ]
+    },
+    {
+     "id": "russophobia",
+     "article_count": 10,
+     "share_pct": 1.99,
+     "peak": {
+      "week": "2026-W39",
+      "week_start": "2026-09-21",
+      "n": 10,
+      "share_pct": 1.99,
+      "z": 0.0
+     },
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      10
+     ],
+     "quotes": [
+      {
+       "date": "2026-09-26",
+       "week": "2026-W39",
+       "url": "https://anti-spiegel.ru/2026/aussenminister-lawrow-ueber-den-kampf-der-nato-um-die-arktis/",
+       "title": "Außenminister Lawrow über den Kampf der NATO um die Arktis",
+       "section": null,
+       "quote": "Und außerhalb des Kreises der NATO-Russophoben bilden solche Partner die große Mehrheit."
+      }
+     ]
+    },
+    {
+     "id": "ukraine_fascist",
+     "article_count": 15,
+     "share_pct": 2.99,
+     "peak": {
+      "week": "2026-W39",
+      "week_start": "2026-09-21",
+      "n": 15,
+      "share_pct": 2.99,
+      "z": 0.0
+     },
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      15
+     ],
+     "quotes": [
+      {
+       "date": "2026-09-26",
+       "week": "2026-W39",
+       "url": "https://anti-spiegel.ru/2026/wie-putin-die-schwierigen-beziehungen-zwischen-china-und-indien-einschaetzt/",
+       "title": "Wie Putin die schwierigen Beziehungen zwischen China und Indien einschätzt",
+       "section": null,
+       "quote": "Nächster Beitrag: Putin über einen möglichen Angriff Russlands auf die NATO und die Nazi-Verehrung in der Ukraine"
+      }
+     ]
+    },
+    {
+     "id": "vassal_proxy",
+     "article_count": 8,
+     "share_pct": 1.59,
+     "peak": {
+      "week": "2026-W39",
+      "week_start": "2026-09-21",
+      "n": 8,
+      "share_pct": 1.59,
+      "z": 0.0
+     },
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      8
+     ],
+     "quotes": [
+      {
+       "date": "2026-09-26",
+       "week": "2026-W39",
+       "url": "https://anti-spiegel.ru/2026/die-eu-will-keine-ukrainische-maenner-mehr-aufnehmen-und-in-kiew-wird-ueber-die-zwangsmobilisierung-von-frauen-gesprochen/",
+       "title": "Die EU will keine ukrainische Männer mehr aufnehmen und in Kiew wird über die Zwangsmobilisierung von Frauen gesprochen",
+       "section": null,
+       "quote": "Doch das Wichtigste ist jedoch der Wunsch des Großteils der europäischen Eliten, den Stellvertreterkrieg gegen Russland fortzusetzen."
+      }
+     ]
+    },
+    {
+     "id": "deindustrialization",
+     "article_count": 7,
+     "share_pct": 1.39,
+     "peak": {
+      "week": "2026-W39",
+      "week_start": "2026-09-21",
+      "n": 7,
+      "share_pct": 1.39,
+      "z": 0.0
+     },
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      7
+     ],
+     "quotes": [
+      {
+       "date": "2026-09-26",
+       "week": "2026-W39",
+       "url": "https://anti-spiegel.ru/2026/vance-die-usa-sind-der-meinung-dass-die-waffenruhe-mit-dem-iran-derzeit-haelt/",
+       "title": "Vance: Die USA sind der Meinung, dass die Waffenruhe mit dem Iran derzeit hält",
+       "section": null,
+       "quote": "Nächster Beitrag: Hatte Europa eine Chance, die Deindustrialisierung zu verhindern?"
+      }
+     ]
+    },
+    {
+     "id": "afd_ban",
+     "article_count": 0,
+     "share_pct": 0.0,
+     "peak": null,
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": []
+    },
+    {
+     "id": "nord_stream",
+     "article_count": 9,
+     "share_pct": 1.79,
+     "peak": {
+      "week": "2026-W39",
+      "week_start": "2026-09-21",
+      "n": 9,
+      "share_pct": 1.79,
+      "z": 0.0
+     },
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      9
+     ],
+     "quotes": [
+      {
+       "date": "2026-09-26",
+       "week": "2026-W39",
+       "url": "https://anti-spiegel.ru/2026/tacheles-218-ist-online/",
+       "title": "Tacheles #218 ist online",
+       "section": null,
+       "quote": "Nächster Beitrag: Tusk rechtfertigt die Sprengung der Nord Streams"
+      }
+     ]
+    },
+    {
+     "id": "hormuz",
+     "article_count": 37,
+     "share_pct": 7.37,
+     "peak": {
+      "week": "2026-W39",
+      "week_start": "2026-09-21",
+      "n": 37,
+      "share_pct": 7.37,
+      "z": 0.0
+     },
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      37
+     ],
+     "quotes": [
+      {
+       "date": "2026-09-26",
+       "week": "2026-W39",
+       "url": "https://anti-spiegel.ru/2026/merz-erklaerte-er-werde-keine-anzeigen-mehr-wegen-beleidigungen-in-sozialen-medien-erstatten/",
+       "title": "Merz erklärte, er werde keine Anzeigen mehr wegen Beleidigungen in sozialen Medien erstatten",
+       "section": null,
+       "quote": "Nächster Beitrag: Tasnim: Iran nennt die Bedingungen für die Öffnung der Straße von Hormus"
+      }
+     ]
+    },
+    {
+     "id": "sachsen_anhalt",
+     "article_count": 10,
+     "share_pct": 1.99,
+     "peak": {
+      "week": "2026-W39",
+      "week_start": "2026-09-21",
+      "n": 10,
+      "share_pct": 1.99,
+      "z": 0.0
+     },
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      10
+     ],
+     "quotes": [
+      {
+       "date": "2026-09-26",
+       "week": "2026-W39",
+       "url": "https://anti-spiegel.ru/2026/wie-das-russische-fernsehen-ueber-die-politische-woche-in-deutschland-berichtet/",
+       "title": "Wie das russische Fernsehen über die politische Woche in Deutschland berichtet",
+       "section": null,
+       "quote": "Sachsen-Anhalt ist das Deutschland des Mittelalters."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "apolut",
+   "rank": 5,
+   "rank_label": "DACH outlets that relay the outlets above",
+   "name": "Apolut (Ken Jebsen)",
+   "control": "domestic_amplifier",
+   "language": "de",
+   "script": "de",
+   "article_count": 589,
+   "date_span": {
+    "min": "2026-05-26",
+    "max": "2026-09-26",
+    "distinct_days": 122,
+    "timeline": true,
+    "note": null
+   },
+   "weekly_articles": [
+    37,
+    43,
+    45,
+    12,
+    5,
+    5,
+    37,
+    49,
+    57,
+    54,
+    19,
+    23,
+    38,
+    34,
+    42,
+    37,
+    27,
+    25
+   ],
+   "weekly_observed": false,
+   "crawl": {
+    "discovered": 644,
+    "ok": 589,
+    "reject": 38,
+    "error": 17
+   },
+   "series": [
+    {
+     "id": "kiewer_regime",
+     "article_count": 6,
+     "share_pct": 1.02,
+     "peak": {
+      "week": "2026-W26",
+      "week_start": "2026-06-22",
+      "n": 2,
+      "share_pct": 6.9,
+      "z": 2.49
+     },
+     "weekly_n": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": [
+      {
+       "date": "2026-06-22",
+       "week": "2026-W26",
+       "url": "https://apolut.net/die-wahrheit-uber-us-biolabore-von-thomas-roper/",
+       "title": "Die Wahrheit über US-Biolabore | Von Thomas Röper",
+       "section": null,
+       "quote": "Wir betrachten die veröffentlichten Dokumente als weiteren Beweis für die Verletzung der Verpflichtungen aus der Konvention durch das Kiewer Regime und werden in relevanten internationalen Foren um Aufklärung des Sachverhalts bitten."
+      }
+     ]
+    },
+    {
+     "id": "russophobia",
+     "article_count": 8,
+     "share_pct": 1.36,
+     "peak": {
+      "week": "2026-W30",
+      "week_start": "2026-07-20",
+      "n": 2,
+      "share_pct": 5.71,
+      "z": 2.34
+     },
+     "weekly_n": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      0
+     ],
+     "quotes": [
+      {
+       "date": "2026-07-23",
+       "week": "2026-W30",
+       "url": "https://apolut.net/brzezinskis-schachbrett-deutschlands-milliardenrechnung-von-wolfgang-effenberger/",
+       "title": "Brzezinskis Schachbrett – Deutschlands Milliardenrechnung | Von Wolfgang Effenberger",
+       "section": null,
+       "quote": "Das westliche Traumpaar Wiktor Juschtschenko und seine attraktive Ministerpräsidentin Timoschenko fuhr einen russlandfeindlichen Kurs und revidierte die russischen Vorzugsbedingungen beim Gaseinkauf."
+      }
+     ]
+    },
+    {
+     "id": "ukraine_fascist",
+     "article_count": 4,
+     "share_pct": 0.68,
+     "peak": {
+      "week": "2026-W22",
+      "week_start": "2026-05-25",
+      "n": 1,
+      "share_pct": 5.0,
+      "z": 2.82
+     },
+     "weekly_n": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": [
+      {
+       "date": "2026-05-27",
+       "week": "2026-W22",
+       "url": "https://apolut.net/die-ehrung-eines-nazis-in-der-ukraine-chronik-eines-protests-von-andrea-drescher/",
+       "title": "Die Ehrung eines Nazis in der Ukraine: Chronik eines Protests | Von Andrea Drescher",
+       "section": null,
+       "quote": "Die Ehrung eines Nazis in der Ukraine: Chronik eines Protests | Von Andrea Drescher."
+      }
+     ]
+    },
+    {
+     "id": "vassal_proxy",
+     "article_count": 27,
+     "share_pct": 4.58,
+     "peak": {
+      "week": "2026-W28",
+      "week_start": "2026-07-06",
+      "n": 3,
+      "share_pct": 10.0,
+      "z": 1.99
+     },
+     "weekly_n": [
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      3,
+      4,
+      3,
+      3,
+      1,
+      0,
+      2,
+      1,
+      1,
+      3,
+      1,
+      1
+     ],
+     "quotes": [
+      {
+       "date": "2026-07-08",
+       "week": "2026-W28",
+       "url": "https://apolut.net/kriegsbundnis-nato-russland-weiter-im-visier-von-tilo-graser/",
+       "title": "Kriegsbündnis NATO: Russland weiter im Visier | Von Tilo Gräser",
+       "section": null,
+       "quote": "Was als Stellvertreterkrieg in der Ukraine begann, soll nun ausgeweitet werden."
+      }
+     ]
+    },
+    {
+     "id": "deindustrialization",
+     "article_count": 13,
+     "share_pct": 2.21,
+     "peak": {
+      "week": "2026-W29",
+      "week_start": "2026-07-13",
+      "n": 3,
+      "share_pct": 7.5,
+      "z": 2.46
+     },
+     "weekly_n": [
+      1,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      3,
+      2,
+      2,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1
+     ],
+     "quotes": [
+      {
+       "date": "2026-07-17",
+       "week": "2026-W29",
+       "url": "https://apolut.net/wie-china-dem-westen-den-appetit-auf-krieg-verdirbt-von-felix-abt/",
+       "title": "Wie China dem Westen den Appetit auf Krieg verdirbt | Von Felix Abt",
+       "section": null,
+       "quote": "Von Deindustrialisierung zur Abhängigkeit: Chinas strategischer Vorteil China ist zum wichtigsten industriellen Engpass der westlichen Rüstungsproduktion geworden."
+      }
+     ]
+    },
+    {
+     "id": "afd_ban",
+     "article_count": 5,
+     "share_pct": 0.85,
+     "peak": {
+      "week": "2026-W39",
+      "week_start": "2026-09-21",
+      "n": 2,
+      "share_pct": 6.45,
+      "z": 2.89
+     },
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2
+     ],
+     "quotes": [
+      {
+       "date": "2026-09-23",
+       "week": "2026-W39",
+       "url": "https://apolut.net/geschwatz-uber-das-angebliche-machtbeben-von-friedhelm-klinkhammer-und-volker-brautigam/",
+       "title": "Geschwätz über das angebliche „Machtbeben“ | Von Friedhelm Klinkhammer und Volker Bräutigam",
+       "section": null,
+       "quote": "Die am Wahlsonntag sorgfältig vermiedene Debatte über ein Verbotsverfahren gegen die AfD wird nach kurzer Pause aufleben und weiter angeheizt werden."
+      }
+     ]
+    },
+    {
+     "id": "nord_stream",
+     "article_count": 10,
+     "share_pct": 1.7,
+     "peak": {
+      "week": "2026-W30",
+      "week_start": "2026-07-20",
+      "n": 2,
+      "share_pct": 5.71,
+      "z": 2.02
+     },
+     "weekly_n": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0
+     ],
+     "quotes": [
+      {
+       "date": "2026-07-20",
+       "week": "2026-W30",
+       "url": "https://apolut.net/im-gespraech-moritz-enders/",
+       "title": "Im Gespräch: Moritz Enders | Der Film „Nordstream – Die Sprengung“",
+       "section": null,
+       "quote": "Im Gespräch: Moritz Enders | Der Film „Nordstream – Die Sprengung“."
+      }
+     ]
+    },
+    {
+     "id": "hormuz",
+     "article_count": 54,
+     "share_pct": 9.17,
+     "peak": {
+      "week": "2026-W29",
+      "week_start": "2026-07-13",
+      "n": 9,
+      "share_pct": 22.5,
+      "z": 2.89
+     },
+     "weekly_n": [
+      3,
+      5,
+      3,
+      2,
+      0,
+      0,
+      6,
+      9,
+      4,
+      5,
+      1,
+      1,
+      2,
+      4,
+      2,
+      2,
+      1,
+      2
+     ],
+     "quotes": [
+      {
+       "date": "2026-07-14",
+       "week": "2026-W29",
+       "url": "https://apolut.net/das-geschaftsmodell-krieg-wie-dauer-zur-dividende-wird-von-dirk-ellerbrock/",
+       "title": "Das Geschäftsmodell Krieg: Wie Dauer zur Dividende wird | Von Dirk Ellerbrock",
+       "section": null,
+       "quote": "Zwei Flugzeugträgergruppen, zwanzig Kriegsschiffe, 170 Luftangriffe – und die Straße von Hormus liegt still wie am ersten Kriegstag."
+      }
+     ]
+    },
+    {
+     "id": "sachsen_anhalt",
+     "article_count": 41,
+     "share_pct": 6.96,
+     "peak": {
+      "week": "2026-W37",
+      "week_start": "2026-09-07",
+      "n": 17,
+      "share_pct": 42.5,
+      "z": 3.24
+     },
+     "weekly_n": [
+      3,
+      1,
+      2,
+      0,
+      0,
+      0,
+      1,
+      2,
+      2,
+      2,
+      1,
+      0,
+      4,
+      2,
+      1,
+      16,
+      1,
+      1
+     ],
+     "quotes": [
+      {
+       "date": "2026-09-10",
+       "week": "2026-W37",
+       "url": "https://apolut.net/deutschland-2026-wenn-eine-politische-klasse-nur-noch-im-eigenen-echo-lebt-von-dirk-ellerbrock/",
+       "title": "Deutschland 2026: Wenn eine politische Klasse nur noch im eigenen Echo lebt | Von Dirk Ellerbrock",
+       "section": null,
+       "quote": "September 2026 wählte Sachsen-Anhalt einen neuen Landtag."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "klagemauer",
+   "rank": 5,
+   "rank_label": "DACH outlets that relay the outlets above",
+   "name": "Klagemauer.TV",
+   "control": "domestic_amplifier",
+   "language": "de",
+   "script": "de",
+   "article_count": 212,
+   "date_span": {
+    "min": "2026-06-17",
+    "max": "2026-09-26",
+    "distinct_days": 78,
+    "timeline": true,
+    "note": null
+   },
+   "weekly_articles": [
+    0,
+    0,
+    0,
+    13,
+    1,
+    13,
+    27,
+    23,
+    10,
+    10,
+    15,
+    12,
+    21,
+    22,
+    24,
+    12,
+    1,
+    9
+   ],
+   "weekly_observed": false,
+   "crawl": {
+    "discovered": 900,
+    "ok": 212,
+    "reject": 481,
+    "error": 207
+   },
+   "series": [
+    {
+     "id": "kiewer_regime",
+     "article_count": 0,
+     "share_pct": 0.0,
+     "peak": null,
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": []
+    },
+    {
+     "id": "russophobia",
+     "article_count": 0,
+     "share_pct": 0.0,
+     "peak": null,
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": []
+    },
+    {
+     "id": "ukraine_fascist",
+     "article_count": 0,
+     "share_pct": 0.0,
+     "peak": null,
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": []
+    },
+    {
+     "id": "vassal_proxy",
+     "article_count": 0,
+     "share_pct": 0.0,
+     "peak": null,
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": []
+    },
+    {
+     "id": "deindustrialization",
+     "article_count": 0,
+     "share_pct": 0.0,
+     "peak": null,
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": []
+    },
+    {
+     "id": "afd_ban",
+     "article_count": 0,
+     "share_pct": 0.0,
+     "peak": null,
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": []
+    },
+    {
+     "id": "nord_stream",
+     "article_count": 0,
+     "share_pct": 0.0,
+     "peak": null,
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": []
+    },
+    {
+     "id": "hormuz",
+     "article_count": 0,
+     "share_pct": 0.0,
+     "peak": null,
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": []
+    },
+    {
+     "id": "sachsen_anhalt",
+     "article_count": 1,
+     "share_pct": 0.47,
+     "peak": {
+      "week": "2026-W30",
+      "week_start": "2026-07-20",
+      "n": 1,
+      "share_pct": 7.69,
+      "z": 3.74
+     },
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": [
+      {
+       "date": "2026-07-21",
+       "week": "2026-W30",
+       "url": "https://www.kla.tv/41987",
+       "title": "Und schon wieder: Wasserstand der Elbe auf „niedrigstem“ Niveau?",
+       "section": null,
+       "quote": "Simon, ein Augenzeuge aus Sachsen-Anhalt, hat dazu schon im letzten Jahr einen Faktencheck gemacht."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "auf1",
+   "rank": 5,
+   "rank_label": "DACH outlets that relay the outlets above",
+   "name": "AUF1 (Stefan Magnet)",
+   "control": "domestic_amplifier",
+   "language": "de",
+   "script": "de",
+   "article_count": 10,
+   "date_span": {
+    "min": "2026-09-22",
+    "max": "2026-09-25",
+    "distinct_days": 4,
+    "timeline": false,
+    "note": "dates only run 2026-09-22 to 2026-09-25"
+   },
+   "weekly_articles": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    10
+   ],
+   "weekly_observed": false,
+   "crawl": {
+    "discovered": 10,
+    "ok": 10,
+    "reject": 0,
+    "error": 0
+   },
+   "series": [
+    {
+     "id": "kiewer_regime",
+     "article_count": 0,
+     "share_pct": 0.0,
+     "peak": null,
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": []
+    },
+    {
+     "id": "russophobia",
+     "article_count": 0,
+     "share_pct": 0.0,
+     "peak": null,
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": []
+    },
+    {
+     "id": "ukraine_fascist",
+     "article_count": 0,
+     "share_pct": 0.0,
+     "peak": null,
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": []
+    },
+    {
+     "id": "vassal_proxy",
+     "article_count": 0,
+     "share_pct": 0.0,
+     "peak": null,
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": []
+    },
+    {
+     "id": "deindustrialization",
+     "article_count": 0,
+     "share_pct": 0.0,
+     "peak": null,
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": []
+    },
+    {
+     "id": "afd_ban",
+     "article_count": 0,
+     "share_pct": 0.0,
+     "peak": null,
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": []
+    },
+    {
+     "id": "nord_stream",
+     "article_count": 0,
+     "share_pct": 0.0,
+     "peak": null,
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": []
+    },
+    {
+     "id": "hormuz",
+     "article_count": 0,
+     "share_pct": 0.0,
+     "peak": null,
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": []
+    },
+    {
+     "id": "sachsen_anhalt",
+     "article_count": 0,
+     "share_pct": 0.0,
+     "peak": null,
+     "weekly_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "quotes": []
+    }
+   ]
+  }
+ ],
+ "upstream": [
+  {
+   "id": "ria",
+   "rank": 3,
+   "rank_label": "Sanctioned Russian wires that German desks translate",
+   "name": "RIA Novosti",
+   "control": "state_media",
+   "language": "ru"
+  },
+  {
+   "id": "tass",
+   "rank": 3,
+   "rank_label": "Sanctioned Russian wires that German desks translate",
+   "name": "TASS",
+   "control": "state_media",
+   "language": "ru"
+  }
+ ],
+ "edges": [
+  {
+   "from_article_id": "886ee265fa09093fd688c75f4ac5f9c565c1240301a1682545c64737cd83921a",
+   "to_article_id": "2ae1eaab0aed5e308e93464e07ae0743230a9b47cf2d480bb5f3d8052bb0641e",
+   "from_source_id": "ria",
+   "to_source_id": "anti_spiegel",
+   "relation": "citation",
+   "lag_hours": 108.52,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": "über 336.000 russische Wahlbeobachter akkreditiert",
+   "synthetic": false
+  },
+  {
+   "from_article_id": "5f0cb413cf1aa3b4c596e712e0e7c9abfba836fb7d4ddd0b899982bef8bcd414",
+   "to_article_id": "2ae1eaab0aed5e308e93464e07ae0743230a9b47cf2d480bb5f3d8052bb0641e",
+   "from_source_id": "ria",
+   "to_source_id": "anti_spiegel",
+   "relation": "citation",
+   "lag_hours": 178.08,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": "1.126 ausländische Wahlbeobachter",
+   "synthetic": false
+  },
+  {
+   "from_article_id": "886ee265fa09093fd688c75f4ac5f9c565c1240301a1682545c64737cd83921a",
+   "to_article_id": "8b9210f9cc4aa0ac6edbda0ad923f716f7620c0df0b3ce92a963579cb500ffe6",
+   "from_source_id": "ria",
+   "to_source_id": "apolut",
+   "relation": "citation",
+   "lag_hours": 36.52,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": "über 336.000 russische Wahlbeobachter akkreditiert",
+   "synthetic": false
+  },
+  {
+   "from_article_id": "5f0cb413cf1aa3b4c596e712e0e7c9abfba836fb7d4ddd0b899982bef8bcd414",
+   "to_article_id": "8b9210f9cc4aa0ac6edbda0ad923f716f7620c0df0b3ce92a963579cb500ffe6",
+   "from_source_id": "ria",
+   "to_source_id": "apolut",
+   "relation": "citation",
+   "lag_hours": 106.08,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": "1.126 ausländische Wahlbeobachter",
+   "synthetic": false
+  },
+  {
+   "from_article_id": "2ae1eaab0aed5e308e93464e07ae0743230a9b47cf2d480bb5f3d8052bb0641e",
+   "to_article_id": "8b9210f9cc4aa0ac6edbda0ad923f716f7620c0df0b3ce92a963579cb500ffe6",
+   "from_source_id": "anti_spiegel",
+   "to_source_id": "apolut",
+   "relation": "citation",
+   "lag_hours": -72.0,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": "anti-spiegel.ru",
+   "synthetic": false
+  },
+  {
+   "from_article_id": "8b9210f9cc4aa0ac6edbda0ad923f716f7620c0df0b3ce92a963579cb500ffe6",
+   "to_article_id": "2ae1eaab0aed5e308e93464e07ae0743230a9b47cf2d480bb5f3d8052bb0641e",
+   "from_source_id": "apolut",
+   "to_source_id": "anti_spiegel",
+   "relation": "near_duplicate",
+   "lag_hours": 72.0,
+   "similarity": 0.9688,
+   "rule": "simhash",
+   "example_overlap": " Wahlfälschungen und Manipulationen zu berichten. So auch an diesem Wochenende, an dem in Russland die Wahlen zur Duma, ",
+   "synthetic": false
+  },
+  {
+   "from_article_id": "2ae1eaab0aed5e308e93464e07ae0743230a9b47cf2d480bb5f3d8052bb0641e",
+   "to_article_id": "8b9210f9cc4aa0ac6edbda0ad923f716f7620c0df0b3ce92a963579cb500ffe6",
+   "from_source_id": "anti_spiegel",
+   "to_source_id": "apolut",
+   "relation": "citation",
+   "lag_hours": -72.0,
+   "similarity": 1.0,
+   "rule": "citation_wins",
+   "example_overlap": "adition deutscher Medien, bei Wahlen in Russland von Wahlfälschungen und Manipulationen zu berichten. So auch an diesem ",
+   "copy_cluster_id": "cluster_8b9210f9cc4a",
+   "synthetic": false
+  },
+  {
+   "from_article_id": "5f0cb413cf1aa3b4c596e712e0e7c9abfba836fb7d4ddd0b899982bef8bcd414",
+   "to_article_id": "2ae1eaab0aed5e308e93464e07ae0743230a9b47cf2d480bb5f3d8052bb0641e",
+   "from_source_id": "ria",
+   "to_source_id": "anti_spiegel",
+   "relation": "topic_echo",
+   "lag_hours": 178.08,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": "Рекордное количество международных наблюдателей приехали в Россию",
+   "synthetic": false
+  },
+  {
+   "from_article_id": "5f0cb413cf1aa3b4c596e712e0e7c9abfba836fb7d4ddd0b899982bef8bcd414",
+   "to_article_id": "886ee265fa09093fd688c75f4ac5f9c565c1240301a1682545c64737cd83921a",
+   "from_source_id": "ria",
+   "to_source_id": "ria",
+   "relation": "topic_echo",
+   "lag_hours": 69.57,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": "Рекордное количество международных наблюдателей приехали в Россию",
+   "synthetic": false
+  },
+  {
+   "from_article_id": "f916e3b3eb1e4ac5f539979c0b8cb7b1a3ae6bd1c3965617ce6bdccc0d11ec39",
+   "to_article_id": "4fd3d95927e6ca963a1ce03a92d3df1315b4dd54d17f1d7c3c25a2fe6809a69d",
+   "from_source_id": "newsfront_de",
+   "to_source_id": "newsfront_de",
+   "relation": "topic_echo",
+   "lag_hours": 0.12,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": "Актуальная информация об обстановке на линии фронта 26 сентября (обновляется)",
+   "synthetic": false
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "rt_de",
+   "relation": "citation",
+   "lag_hours": 25.97,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "rt_de",
+   "relation": "citation",
+   "lag_hours": 7.47,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "rt_de",
+   "relation": "citation",
+   "lag_hours": 9.05,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "rt_de",
+   "relation": "citation",
+   "lag_hours": 12.82,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "rt_de",
+   "relation": "topic_echo",
+   "lag_hours": 18.97,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "rt_de",
+   "relation": "near_duplicate",
+   "lag_hours": 21.19,
+   "similarity": 0.9681,
+   "rule": "simhash",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "rt_de",
+   "relation": "topic_echo",
+   "lag_hours": 9.19,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "rt_de",
+   "relation": "citation",
+   "lag_hours": 2.63,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "rt_de",
+   "relation": "citation",
+   "lag_hours": 21.78,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "rt_de",
+   "relation": "near_duplicate",
+   "lag_hours": 26.58,
+   "similarity": 0.9469,
+   "rule": "simhash",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "rt_de",
+   "relation": "near_duplicate",
+   "lag_hours": 3.48,
+   "similarity": 0.929,
+   "rule": "simhash",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "rt_de",
+   "relation": "topic_echo",
+   "lag_hours": 6.56,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "rt_de",
+   "relation": "topic_echo",
+   "lag_hours": 8.83,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "rt_de",
+   "relation": "citation",
+   "lag_hours": 13.33,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "sputnik_de",
+   "relation": "topic_echo",
+   "lag_hours": 5.16,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "sputnik_de",
+   "relation": "topic_echo",
+   "lag_hours": 20.0,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "sputnik_de",
+   "relation": "citation",
+   "lag_hours": 32.43,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "sputnik_de",
+   "relation": "topic_echo",
+   "lag_hours": 55.86,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "sputnik_de",
+   "relation": "citation",
+   "lag_hours": 0.8,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "sputnik_de",
+   "relation": "citation",
+   "lag_hours": 22.58,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "sputnik_de",
+   "relation": "citation",
+   "lag_hours": 21.63,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "sputnik_de",
+   "relation": "near_duplicate",
+   "lag_hours": 13.85,
+   "similarity": 0.9767,
+   "rule": "simhash",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "sputnik_de",
+   "relation": "citation",
+   "lag_hours": 29.94,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "sputnik_de",
+   "relation": "citation",
+   "lag_hours": 29.46,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "sputnik_de",
+   "relation": "topic_echo",
+   "lag_hours": 15.69,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "rt_de",
+   "relation": "citation",
+   "lag_hours": 11.54,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "rt_de",
+   "relation": "topic_echo",
+   "lag_hours": 25.38,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "rt_de",
+   "relation": "topic_echo",
+   "lag_hours": 10.32,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "rt_de",
+   "relation": "citation",
+   "lag_hours": 19.16,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "rt_de",
+   "relation": "topic_echo",
+   "lag_hours": 24.5,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "rt_de",
+   "relation": "citation",
+   "lag_hours": 6.91,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "rt_de",
+   "relation": "topic_echo",
+   "lag_hours": 14.38,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "rt_de",
+   "relation": "citation",
+   "lag_hours": 59.03,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "rt_de",
+   "relation": "topic_echo",
+   "lag_hours": 20.09,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "sputnik_de",
+   "relation": "topic_echo",
+   "lag_hours": 26.25,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "sputnik_de",
+   "relation": "topic_echo",
+   "lag_hours": 4.12,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "sputnik_de",
+   "relation": "topic_echo",
+   "lag_hours": 20.11,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "sputnik_de",
+   "relation": "citation",
+   "lag_hours": 70.15,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "sputnik_de",
+   "relation": "citation",
+   "lag_hours": 15.1,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "sputnik_de",
+   "relation": "citation",
+   "lag_hours": 11.5,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "sputnik_de",
+   "relation": "citation",
+   "lag_hours": 3.28,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "newsfront_de",
+   "relation": "citation",
+   "lag_hours": 47.96,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "newsfront_de",
+   "relation": "citation",
+   "lag_hours": 4.54,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "newsfront_de",
+   "relation": "topic_echo",
+   "lag_hours": 12.71,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "newsfront_de",
+   "relation": "citation",
+   "lag_hours": 17.32,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "newsfront_de",
+   "relation": "citation",
+   "lag_hours": 17.94,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "newsfront_de",
+   "relation": "near_duplicate",
+   "lag_hours": 20.03,
+   "similarity": 0.9554,
+   "rule": "simhash",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "newsfront_de",
+   "relation": "citation",
+   "lag_hours": 102.33,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "newsfront_de",
+   "relation": "topic_echo",
+   "lag_hours": 2.9,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "newsfront_de",
+   "relation": "topic_echo",
+   "lag_hours": 6.05,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "newsfront_de",
+   "relation": "citation",
+   "lag_hours": 41.77,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "newsfront_de",
+   "relation": "citation",
+   "lag_hours": 5.16,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "newsfront_de",
+   "relation": "citation",
+   "lag_hours": 35.32,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "newsfront_de",
+   "relation": "citation",
+   "lag_hours": 8.78,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "newsfront_de",
+   "relation": "citation",
+   "lag_hours": 17.88,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "newsfront_de",
+   "relation": "topic_echo",
+   "lag_hours": 7.94,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "newsfront_de",
+   "relation": "topic_echo",
+   "lag_hours": 11.21,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "newsfront_de",
+   "relation": "topic_echo",
+   "lag_hours": 15.33,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "pravda_de",
+   "relation": "citation",
+   "lag_hours": 26.38,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "pravda_de",
+   "relation": "topic_echo",
+   "lag_hours": 16.46,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "pravda_de",
+   "relation": "citation",
+   "lag_hours": 31.64,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "pravda_de",
+   "relation": "topic_echo",
+   "lag_hours": 51.66,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "pravda_de",
+   "relation": "topic_echo",
+   "lag_hours": 7.67,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "pravda_de",
+   "relation": "topic_echo",
+   "lag_hours": 15.42,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "pravda_de",
+   "relation": "near_duplicate",
+   "lag_hours": 51.22,
+   "similarity": 0.9788,
+   "rule": "simhash",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "pravda_de",
+   "relation": "citation",
+   "lag_hours": 3.76,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "pravda_de",
+   "relation": "topic_echo",
+   "lag_hours": 2.6,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "pravda_de",
+   "relation": "near_duplicate",
+   "lag_hours": 5.32,
+   "similarity": 0.9481,
+   "rule": "simhash",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "pravda_de",
+   "relation": "topic_echo",
+   "lag_hours": 7.84,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "pravda_de",
+   "relation": "topic_echo",
+   "lag_hours": 28.24,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "pravda_de",
+   "relation": "citation",
+   "lag_hours": 85.35,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "pravda_de",
+   "relation": "citation",
+   "lag_hours": 38.85,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "pravda_de",
+   "relation": "near_duplicate",
+   "lag_hours": 14.26,
+   "similarity": 0.9366,
+   "rule": "simhash",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "pravda_de",
+   "relation": "citation",
+   "lag_hours": 8.04,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "pravda_de",
+   "relation": "topic_echo",
+   "lag_hours": 8.74,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "pravda_de",
+   "relation": "citation",
+   "lag_hours": 13.84,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "pravda_de",
+   "relation": "citation",
+   "lag_hours": 40.04,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "pravda_de",
+   "relation": "citation",
+   "lag_hours": 31.71,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "pravda_de",
+   "relation": "citation",
+   "lag_hours": 16.51,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "pravda_de",
+   "relation": "topic_echo",
+   "lag_hours": 12.89,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "pravda_de",
+   "relation": "citation",
+   "lag_hours": 26.25,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "pravda_de",
+   "relation": "near_duplicate",
+   "lag_hours": 101.95,
+   "similarity": 0.9853,
+   "rule": "simhash",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "pravda_de",
+   "relation": "citation",
+   "lag_hours": 3.35,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "tass",
+   "to_source_id": "pravda_de",
+   "relation": "near_duplicate",
+   "lag_hours": 4.55,
+   "similarity": 0.9783,
+   "rule": "simhash",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "anti_spiegel",
+   "relation": "citation",
+   "lag_hours": 16.83,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "anti_spiegel",
+   "relation": "citation",
+   "lag_hours": 31.46,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "anti_spiegel",
+   "relation": "topic_echo",
+   "lag_hours": 19.76,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "ria",
+   "to_source_id": "anti_spiegel",
+   "relation": "citation",
+   "lag_hours": 5.75,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "rt_de",
+   "to_source_id": "anti_spiegel",
+   "relation": "citation",
+   "lag_hours": 94.96,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "rt_de",
+   "to_source_id": "anti_spiegel",
+   "relation": "topic_echo",
+   "lag_hours": 12.48,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "rt_de",
+   "to_source_id": "anti_spiegel",
+   "relation": "topic_echo",
+   "lag_hours": 11.01,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "rt_de",
+   "to_source_id": "anti_spiegel",
+   "relation": "citation",
+   "lag_hours": 9.07,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "rt_de",
+   "to_source_id": "anti_spiegel",
+   "relation": "citation",
+   "lag_hours": 16.14,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "rt_de",
+   "to_source_id": "anti_spiegel",
+   "relation": "topic_echo",
+   "lag_hours": 52.09,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "rt_de",
+   "to_source_id": "apolut",
+   "relation": "near_duplicate",
+   "lag_hours": 10.03,
+   "similarity": 0.8726,
+   "rule": "simhash",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "rt_de",
+   "to_source_id": "apolut",
+   "relation": "near_duplicate",
+   "lag_hours": 86.83,
+   "similarity": 0.9188,
+   "rule": "simhash",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "rt_de",
+   "to_source_id": "apolut",
+   "relation": "citation",
+   "lag_hours": 57.32,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "rt_de",
+   "to_source_id": "apolut",
+   "relation": "topic_echo",
+   "lag_hours": 13.07,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "rt_de",
+   "to_source_id": "apolut",
+   "relation": "citation",
+   "lag_hours": 47.31,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "rt_de",
+   "to_source_id": "klagemauer",
+   "relation": "citation",
+   "lag_hours": 49.08,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "rt_de",
+   "to_source_id": "klagemauer",
+   "relation": "citation",
+   "lag_hours": 12.83,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "rt_de",
+   "to_source_id": "klagemauer",
+   "relation": "topic_echo",
+   "lag_hours": 18.67,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "anti_spiegel",
+   "to_source_id": "apolut",
+   "relation": "topic_echo",
+   "lag_hours": 32.88,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "anti_spiegel",
+   "to_source_id": "apolut",
+   "relation": "topic_echo",
+   "lag_hours": 16.52,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "anti_spiegel",
+   "to_source_id": "apolut",
+   "relation": "citation",
+   "lag_hours": 11.28,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "sputnik_de",
+   "to_source_id": "auf1",
+   "relation": "near_duplicate",
+   "lag_hours": 19.03,
+   "similarity": 0.8602,
+   "rule": "simhash",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "sputnik_de",
+   "to_source_id": "auf1",
+   "relation": "topic_echo",
+   "lag_hours": 25.66,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "rt_de",
+   "to_source_id": "auf1",
+   "relation": "citation",
+   "lag_hours": 50.57,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "rt_de",
+   "to_source_id": "auf1",
+   "relation": "topic_echo",
+   "lag_hours": 13.39,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "newsfront_de",
+   "to_source_id": "pravda_de",
+   "relation": "topic_echo",
+   "lag_hours": 35.22,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "newsfront_de",
+   "to_source_id": "pravda_de",
+   "relation": "citation",
+   "lag_hours": 5.77,
+   "similarity": 1.0,
+   "rule": "explicit_citation",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "newsfront_de",
+   "to_source_id": "pravda_de",
+   "relation": "topic_echo",
+   "lag_hours": 16.6,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  },
+  {
+   "from_source_id": "newsfront_de",
+   "to_source_id": "pravda_de",
+   "relation": "topic_echo",
+   "lag_hours": 111.42,
+   "similarity": 0.0,
+   "rule": "entity_window",
+   "example_overlap": null,
+   "synthetic": true
+  }
+ ],
+ "dsn_narratives": [
+  {
+   "id": 1,
+   "category_topic": "Ukraine_Unterstützung",
+   "category_description": "Reden, die militärische, finanzielle oder politische Hilfe für die Ukraine, Friedensverhandlungen oder die Rolle der EU im Konflikt thematisieren.",
+   "narrative_statement": "Die Unterstützung der Ukraine durch Europa ist sinnlos.",
+   "narrative_guidelines": "Befürwortet: Argumente, dass der Krieg nicht zu gewinnen ist, Geld verschwendet wird, es das Leid verlängert oder Aufrufe zu sofortigem Frieden um jeden Preis. \nAbgelehnt: Argumente, dass Unterstützung für Demokratie/Freiheit notwendig ist, eine moralische Verpflichtung besteht oder dass die Ukraine gewinnen muss."
+  },
+  {
+   "id": 2,
+   "category_topic": "Russland_Sanktionen",
+   "category_description": "Reden, die EU-Sanktionen, Handelsbeschränkungen gegen Russland oder deren Auswirkungen auf die österreichische Wirtschaft und Inflation (Teuerung) thematisieren.",
+   "narrative_statement": "Die Sanktionen gegen Russland sind wirkungslos und schaden primär der eigenen Bevölkerung.",
+   "narrative_guidelines": "Befürwortet: Argumente, dass Sanktionen als 'Bumerang' wirken, Inflation ('Teuerung') verursachen, Österreich mehr schaden als Russland (Putin) oder Aufrufe, sie zu beenden. \nAbgelehnt: Argumente, dass Sanktionen wirken, eine moralische Notwendigkeit sind oder dass Inflation andere Ursachen hat."
+  },
+  {
+   "id": 3,
+   "category_topic": "EU_Energiesicherheit",
+   "category_description": "Reden, die die Versorgungssicherheit Europas mit Gas und Energie behandeln: den EU-weiten Ausstieg aus russischem Pipelinegas und LNG (REPowerEU), gemeinsame Speicherziele, Solidaritätsmechanismen zwischen Mitgliedstaaten, Angriffe auf kritische Energieinfrastruktur (Pipelines, Unterseekabel, Stromnetze) oder Szenarien einer europäischen Mangellage.",
+   "narrative_statement": "Der EU-weite Ausstieg aus russischem Gas gefährdet die Energiesicherheit Europas und führt im Winter zu einer Versorgungskrise.",
+   "narrative_guidelines": "Befürwortet: Warnungen vor **Blackouts**, **Frieren**, **Kältewinter** oder leeren Speichern in Europa; Aussagen, dass russisches Gas für die europäische Versorgungssicherheit unersetzlich ist; Darstellung von LNG-Alternativen (z.B. aus den USA oder Katar) als unzuverlässig, teuer oder neue Abhängigkeit, die schlimmer sei als die russische; Behauptungen, dass EU-Solidaritätsmechanismen im Ernstfall nicht funktionieren oder einzelne Staaten (z.B. Österreich, Ungarn, Slowakei) von Brüssel 'geopfert' werden. Fokus auf menschliches Leid durch Kälte/Dunkelheit und Versagen der EU.\nAbgelehnt: Aussagen, dass europäische Speicher gefüllt sind, die Diversifizierung funktioniert hat, die EU gemeinsam krisenfest ist, Russland Energie als Waffe einsetzt und der Ausstieg deshalb die Sicherheit erhöht, oder Vorwürfe der Angstmacherei an andere."
+  },
+  {
+   "id": 4,
+   "category_topic": "EU_Wettbewerbsfähigkeit_Energie",
+   "category_description": "Reden, die Deindustrialisierung, Abwanderung von Unternehmen, Standortnachteile oder den wirtschaftlichen Abstieg Europas gegenüber den USA und China spezifisch im Kontext von Energiepreisen, dem Verzicht auf russische Energie oder der wirtschaftlichen Resilienz der EU behandeln.",
+   "narrative_statement": "Die Abkopplung von russischer Energie führt zur Deindustrialisierung Europas und zu seinem wirtschaftlichen Niedergang gegenüber den USA und China.",
+   "narrative_guidelines": "Befürwortet: Argumente, dass hohe Energiepreise die europäische **Industrie** zerstören, **Unternehmen** in die USA oder nach Asien abwandern, **Arbeitsplätze** verloren gehen oder Europas Wohlstand von billiger russischer Energie abhängt; Darstellung der EU-Energie- und Sanktionspolitik als Selbstbeschädigung zugunsten der USA ('Europa als Verlierer', 'US-Vasall'); Forderungen, wirtschaftliche Beziehungen zu Russland im Interesse der Wettbewerbsfähigkeit wiederherzustellen. Fokus auf Ökonomie und Produktion.\nAbgelehnt: Argumente, dass Energieunabhängigkeit ein Sicherheits- und Standortvorteil ist, die grüne Transformation und der Binnenmarkt die Wettbewerbsfähigkeit stärken, europäische Unternehmen sich als resilient erwiesen haben, oder die Leugnung eines Zusammenhangs zwischen wirtschaftlichen Problemen und der Abkopplung von Russland."
+  },
+  {
+   "id": 5,
+   "category_topic": "EU_Verteidigung_Militarisierung",
+   "category_description": "Reden, die die europäische Sicherheits- und Verteidigungspolitik thematisieren: Aufrüstungsinitiativen (z.B. ReArm Europe / Readiness 2030, SAFE-Kredite), gemeinsame Rüstungsbeschaffung, European Sky Shield, die EU-Beistandsklausel (Art. 42 Abs. 7 EUV), das Verhältnis EU–NATO, Truppenstationierungen sowie den Druck auf neutrale bzw. bündnisfreie Staaten (z.B. Österreich, Irland, Malta).",
+   "narrative_statement": "Die EU wird militarisiert und treibt Europa in einen Krieg mit Russland; neutrale Staaten werden dabei schrittweise in NATO-Strukturen gedrängt.",
+   "narrative_guidelines": "Befürwortet: Argumente, dass die EU sich von einem 'Friedensprojekt' zu einem Militärbündnis oder einer 'Kriegsunion' wandelt; dass Aufrüstung und Waffenlieferungen Russland provozieren und eine Eskalation bzw. einen Krieg in Europa herbeiführen; dass die russische Bedrohung übertrieben oder erfunden ist, um Rüstungsausgaben zu rechtfertigen; dass Sky Shield, gemeinsame Beschaffung oder die Beistandsklausel die Neutralität aushöhlen ('Salamitaktik') und einen heimlichen NATO-Beitritt vorbereiten; dass Brüssel oder Washington nationale Souveränität in Sicherheitsfragen untergraben; Aufrufe zu Verhandlungen und Abrüstung statt Abschreckung.\nAbgelehnt: Argumente, dass Russland eine reale Bedrohung für die europäische Sicherheit darstellt und Abschreckung Krieg verhindert; dass gemeinsame Verteidigungsfähigkeit die Souveränität Europas stärkt; dass Kooperationen wie Sky Shield oder Beschaffungsinitiativen mit Neutralität vereinbar sind und keinen Beitritt bedeuten; dass die EU defensiv handelt und die Neutralität durch die 'irische Klausel' geschützt ist."
+  }
+ ],
+ "dsn_meta": {
+  "source": "Verfassungsschutzbericht 2024",
+  "publisher": "Direktion Staatsschutz und Nachrichtendienst (DSN)",
+  "context": "Russische Desinformationsnarrative und deren Übernahme in Österreich; Narrative 3–5 auf den Kontext europäischer Sicherheit (EU-Ebene) erweitert"
+ }
+}
