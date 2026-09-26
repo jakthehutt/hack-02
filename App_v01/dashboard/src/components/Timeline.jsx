@@ -78,7 +78,7 @@ export function Timeline({ data, series, metric, lo, hi, focus, onFocus }) {
     <Card padding={28}>
       <CardHead
         title={series.label}
-        sub={`Weekly ${metric === 'share' ? 'share of articles' : 'article count'} · ${fmtWeek(weeks[0])} – ${fmtWeek(weeks[n - 1])}. Lines are drawn only where weekly counts were observed. Gaps are weeks with no crawled volume.`}
+        sub={`Weekly ${metric === 'share' ? 'share of articles' : 'article count'} · ${fmtWeek(weeks[0])} – ${fmtWeek(weeks[n - 1])}. Lines show outlets crawled week by week. Gaps are weeks with nothing crawled.`}
       >
         <TableToggle value={table} onChange={setTable} />
       </CardHead>
@@ -109,10 +109,10 @@ export function Timeline({ data, series, metric, lo, hi, focus, onFocus }) {
             ))}
 
             {others.map(l => (
-              <path key={l.source.id} d={path(l.points)} fill="none" stroke="var(--grey-300)" strokeWidth={1.5}
+              <path key={l.source.id} d={path(l.points)} fill="none" stroke="var(--ink-faint)" strokeWidth={1.5}
                 strokeLinejoin="round" strokeLinecap="round" style={{ transition: 'd var(--duration-slow) var(--ease-standard)' }} />
             ))}
-            <path d={area} fill="var(--accent-50)" style={{ transition: 'd var(--duration-slow) var(--ease-standard)' }} />
+            <path d={area} fill="var(--burgundy-wash)" style={{ transition: 'd var(--duration-slow) var(--ease-standard)' }} />
             <path d={path(focused.points)} fill="none" stroke="var(--accent-primary)" strokeWidth={2.5}
               strokeLinejoin="round" strokeLinecap="round" style={{ transition: 'd var(--duration-slow) var(--ease-standard)' }} />
 
@@ -120,25 +120,25 @@ export function Timeline({ data, series, metric, lo, hi, focus, onFocus }) {
             {(() => {
               const k = focused.points.map(p => p.value != null).lastIndexOf(true);
               if (k < 0) return null;
-              return <text x={x(k) + 8} y={y(focused.points[k].value) + 4} style={{ font: '600 12px var(--font-body)', fill: 'var(--accent-700)' }}>{shortName(focused.source)}</text>;
+              return <text x={x(k) + 8} y={y(focused.points[k].value) + 4} style={{ font: '600 12px var(--font-body)', fill: 'var(--burgundy)' }}>{shortName(focused.source)}</text>;
             })()}
 
             {peak && peak.p.value > 0 && (
               <g transform={`translate(${x(peak.k)},${y(peak.p.value)})`}>
-                <circle r={6} fill="var(--accent-primary)" stroke="var(--white)" strokeWidth={2.5} />
+                <circle r={6} fill="var(--accent-primary)" stroke="var(--paper)" strokeWidth={2.5} />
                 <g transform={`translate(0,-14)`}>
-                  <rect x={-38} y={-15} width={76} height={20} rx={6} fill="var(--black)" />
-                  <text y={-1} textAnchor="middle" style={{ font: '600 11px var(--font-mono)', fill: 'var(--white)' }}>peak {fmtValue(peak.p.value, metric)}</text>
+                  <rect x={-38} y={-15} width={76} height={20} rx={6} fill="var(--accent-primary)" />
+                  <text y={-1} textAnchor="middle" style={{ font: '500 11px var(--font-mono)', fill: 'var(--text-on-accent)' }}>peak {fmtValue(peak.p.value, metric)}</text>
                 </g>
               </g>
             )}
 
             {hover != null && (
               <g pointerEvents="none">
-                <line x1={x(hover)} x2={x(hover)} y1={M.t} y2={y(0)} stroke="var(--black)" strokeWidth={1} />
+                <line x1={x(hover)} x2={x(hover)} y1={M.t} y2={y(0)} stroke="var(--ink)" strokeWidth={1} />
                 {lines.map(l => l.points[hover].value != null && (
                   <circle key={l.source.id} cx={x(hover)} cy={y(l.points[hover].value)} r={l === focused ? 5 : 3.5}
-                    fill={l === focused ? 'var(--accent-primary)' : 'var(--grey-500)'} stroke="var(--white)" strokeWidth={2} />
+                    fill={l === focused ? 'var(--accent-primary)' : 'var(--ink-muted)'} stroke="var(--paper)" strokeWidth={2} />
                 ))}
               </g>
             )}
@@ -153,7 +153,7 @@ export function Timeline({ data, series, metric, lo, hi, focus, onFocus }) {
             <ChartTip x={Math.min(Math.max(x(hover), 110), width - 110)} y={M.t + 8} title={`${weeks[hover].week} · week of ${fmtWeek(weeks[hover])}`}>
               {[...lines].sort((a, b) => (b.points[hover].value ?? -1) - (a.points[hover].value ?? -1)).map(l => (
                 <div key={l.source.id} className={`tip-row${l === focused ? ' is-focus' : ''}`}>
-                  <span className="tip-key" style={{ background: l === focused ? 'var(--accent-400)' : 'var(--grey-500)' }} />
+                  <span className="tip-key" style={{ background: l === focused ? 'var(--accent-primary)' : 'var(--ink-muted)' }} />
                   <span className="v">{l.points[hover].value == null ? '–' : fmtValue(l.points[hover].value, metric)}</span>
                   <span className="k">{shortName(l.source)}</span>
                 </div>

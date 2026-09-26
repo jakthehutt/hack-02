@@ -14,8 +14,8 @@ export function Input({ label, placeholder, value, onChange, error, helper, disa
       onFocus: () => setFocused(true), onBlur: () => setFocused(false),
       style: {
         font: 'var(--font-body-lg)', padding: '12px 16px', borderRadius: 'var(--radius-md)',
-        border: `2.5px solid ${error ? 'var(--semantic-danger)' : focused ? 'var(--accent-primary)' : 'var(--black)'}`,
-        outline: 'none', background: disabled ? 'var(--grey-50)' : 'var(--white)', color: 'var(--black)',
+        border: `2.5px solid ${error ? 'var(--semantic-danger)' : focused ? 'var(--accent-primary)' : 'var(--ink)'}`,
+        outline: 'none', background: disabled ? 'var(--paper-deep)' : 'var(--paper)', color: 'var(--ink)',
         boxShadow: focused ? 'var(--shadow-focus-ring)' : 'none',
         transition: 'border-color var(--duration-fast) var(--ease-standard), box-shadow var(--duration-fast) var(--ease-standard)',
       },

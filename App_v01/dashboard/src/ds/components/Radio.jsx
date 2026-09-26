@@ -9,8 +9,8 @@ export function Radio({ label, selected = false, onSelect, disabled = false, sty
     onClick: () => !disabled && onSelect && onSelect(),
     style: {
       display: 'flex', alignItems: 'center', gap: 14, padding: '14px 18px', cursor: disabled ? 'not-allowed' : 'pointer',
-      borderRadius: 'var(--radius-md)', border: `2.5px solid ${selected ? 'var(--accent-primary)' : 'var(--black)'}`,
-      background: selected ? 'var(--accent-primary-soft)' : 'var(--white)', fontFamily: 'var(--font-body)',
+      borderRadius: 'var(--radius-md)', border: `2.5px solid ${selected ? 'var(--accent-primary)' : 'var(--ink)'}`,
+      background: selected ? 'var(--accent-primary-soft)' : 'var(--paper)', fontFamily: 'var(--font-body)',
       transform: selected ? 'scale(1.015)' : 'scale(1)',
       transition: 'border-color var(--duration-fast) var(--ease-standard), background var(--duration-fast) var(--ease-standard), transform var(--duration-fast) var(--ease-out-back)',
       ...style,
@@ -18,10 +18,10 @@ export function Radio({ label, selected = false, onSelect, disabled = false, sty
   },
     React.createElement('span', {
       style: {
-        width: 22, height: 22, borderRadius: '50%', border: `2.5px solid ${selected ? 'var(--accent-primary)' : 'var(--black)'}`,
+        width: 22, height: 22, borderRadius: '50%', border: `2.5px solid ${selected ? 'var(--accent-primary)' : 'var(--ink)'}`,
         display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
       },
     }, selected && React.createElement('span', { style: { width: 11, height: 11, borderRadius: '50%', background: 'var(--accent-primary)' } })),
-    React.createElement('span', { style: { font: 'var(--font-body-lg)', color: 'var(--black)' } }, label)
+    React.createElement('span', { style: { font: 'var(--font-body-lg)', color: 'var(--ink)' } }, label)
   );
 }

@@ -2,9 +2,10 @@ import React from 'react';
 import { ArrowRight, MousePointerClick } from 'lucide-react';
 import { Card, Badge, Checkbox, Switch, Button } from '../ds/index.js';
 import { CardHead } from '../components/shared.jsx';
-import { PropagationMap, LagHistogram } from '../components/PropagationMap.jsx';
+import { PropagationMap } from '../components/PropagationMap.jsx';
+import { LagEcdf } from '../components/StatCharts.jsx';
 import { shortName } from '../components/Heatmap.jsx';
-import { RELATIONS, propagationLinks, lagHistogram, sourceById, fmtHours } from '../data/derive.js';
+import { RELATIONS, propagationLinks, lagEcdf, sourceById, fmtHours } from '../data/derive.js';
 
 function RelationBars({ byRel, total }) {
   return (
@@ -14,10 +15,10 @@ function RelationBars({ byRel, total }) {
         return (
           <div key={r.id} style={{ display: 'grid', gridTemplateColumns: '110px 1fr 28px', alignItems: 'center', gap: 'var(--space-3)' }}>
             <span style={{ font: 'var(--font-label)' }} title={r.note}>{r.label}</span>
-            <span style={{ height: 10, background: 'var(--grey-50)', borderRadius: 4 }}>
-              <span style={{ display: 'block', height: '100%', width: `${total ? (n / total) * 100 : 0}%`, background: 'var(--black)', borderRadius: 4, transition: 'width var(--duration-slow) var(--ease-out-back)' }} />
+            <span style={{ height: 10, background: 'var(--paper-deep)', borderRadius: 4 }}>
+              <span style={{ display: 'block', height: '100%', width: `${total ? (n / total) * 100 : 0}%`, background: 'var(--ink)', borderRadius: 4, transition: 'width var(--duration-slow) var(--ease-out-back)' }} />
             </span>
-            <span className="mono" style={{ textAlign: 'right', fontWeight: 700, fontSize: 'var(--text-xs)' }}>{n}</span>
+            <span className="mono" style={{ textAlign: 'right', fontSize: 'var(--text-xs)' }}>{n}</span>
           </div>
         );
       })}
@@ -42,16 +43,16 @@ function Detail({ selection, links, byId, onClear }) {
         <div style={{ margin: 'var(--space-5) 0' }}>
           <div className="eyebrow" style={{ marginBottom: 'var(--space-3)' }}>Busiest routes</div>
           {top.map(l => (
-            <div key={l.key} style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', padding: 'var(--space-2) 0', borderTop: '1.5px solid var(--grey-100)' }}>
+            <div key={l.key} style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', padding: 'var(--space-2) 0', borderTop: '1.5px solid var(--paper-deep)' }}>
               <span className="row-title" style={{ fontSize: 'var(--text-xs)' }}>{shortName(byId[l.from])}</span>
               <ArrowRight size={14} />
               <span className="row-title" style={{ fontSize: 'var(--text-xs)' }}>{shortName(byId[l.to])}</span>
-              <span className="mono" style={{ marginLeft: 'auto', fontWeight: 700 }}>{l.count}</span>
+              <span className="mono" style={{ marginLeft: 'auto' }}>{l.count}</span>
             </div>
           ))}
         </div>
         {fastest && <p className="note">Fastest route: {shortName(byId[fastest.from])} → {shortName(byId[fastest.to])}, median {fmtHours(fastest.medianLag)}.</p>}
-        <div className="eyebrow" style={{ marginTop: 'var(--space-5)', marginBottom: 'var(--space-3)' }}>By relation · {total} edges</div>
+        <div className="eyebrow" style={{ marginTop: 'var(--space-5)', marginBottom: 'var(--space-3)' }}>By relation · {total} pickups</div>
         <RelationBars byRel={sumRelations(links)} total={total} />
       </>
     );
@@ -70,7 +71,7 @@ function Detail({ selection, links, byId, onClear }) {
     <>
       <div style={{ font: 'var(--font-h4)', fontSize: 'var(--text-lg)', marginBottom: 'var(--space-2)' }}>{title}</div>
       <div style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap', marginBottom: 'var(--space-5)' }}>
-        <Badge tone="primary">{edges.length} edges</Badge>
+        <Badge tone="primary">{edges.length} pickups</Badge>
         {lags.length > 0 && <Badge>median {fmtHours(lags[Math.floor(lags.length / 2)])}</Badge>}
         {selection.type === 'node' && <Badge>rank {byId[selection.id].rank}</Badge>}
       </div>
@@ -102,7 +103,7 @@ function Detail({ selection, links, byId, onClear }) {
   );
 }
 
-export function Propagation({ data }) {
+export function Origin({ data, preview = false, onOpen }) {
   const [relations, setRelations] = React.useState(() => new Set(RELATIONS.map(r => r.id)));
   const [observedOnly, setObservedOnly] = React.useState(false);
   const [selection, setSelection] = React.useState(null);
@@ -114,8 +115,7 @@ export function Propagation({ data }) {
   // Re-resolve the selected link against the current filters so its counts stay live.
   const liveSel = selection?.type === 'link' ? links.find(l => l.key === selection.key) || null : selection;
 
-  const flatEdges = links.flatMap(l => l.edges);
-  const hl = liveSel ? new Set((liveSel.type === 'link' ? [liveSel] : links.filter(l => l.from === liveSel.id || l.to === liveSel.id)).flatMap(l => l.edges)) : null;
+  const ecdf = React.useMemo(() => lagEcdf(scoped.edges), [scoped.edges]);
 
   const toggle = id => setRelations(prev => {
     const next = new Set(prev);
@@ -123,31 +123,40 @@ export function Propagation({ data }) {
     return next;
   });
 
+  const map = (
+    <Card padding={28}>
+      <CardHead
+        title={preview ? 'Origin' : 'How it travels'}
+        sub={preview
+          ? 'Links are pickups between outlets. Width is how many. Open the full page for routes and delay.'
+          : 'Links are pickups between outlets. Width is how many pickups, and flow speed tracks the typical delay. Click an outlet or a link.'}
+      >
+        {preview && onOpen && <Button variant="secondary" size="sm" onClick={onOpen}>Open Origin</Button>}
+      </CardHead>
+      {links.length ? (
+        <PropagationMap nodes={nodes} links={links} selected={preview ? null : liveSel} onSelect={preview ? () => onOpen?.() : setSelection} />
+      ) : <div className="empty">No pickups match. Turn a relation back on.</div>}
+    </Card>
+  );
+
+  if (preview) return map;
+
   return (
     <>
       <div className="filters">
         {RELATIONS.map(r => <Checkbox key={r.id} label={r.label} checked={relations.has(r.id)} onChange={() => toggle(r.id)} />)}
-        <span style={{ width: 1, height: 28, background: 'var(--grey-200)', margin: '0 var(--space-2)' }} />
-        <Switch checked={observedOnly} onChange={setObservedOnly} label={`Observed edges only (${data.edges.filter(e => !e.synthetic).length})`} />
+        <span style={{ width: 1, height: 28, background: 'var(--ink-line)', margin: '0 var(--space-2)' }} />
+        <Switch checked={observedOnly} onChange={setObservedOnly} label={`Seen in the crawl only (${data.edges.filter(e => !e.synthetic).length})`} />
       </div>
 
-      <Card padding={28}>
-        <CardHead title="How content travels" sub="Links are pickups between outlets; width is the number of edges, and flow speed tracks median lag. Click an outlet or a link." />
-        {links.length ? (
-          <PropagationMap nodes={nodes} links={links} selected={liveSel} onSelect={setSelection} />
-        ) : <div className="empty">No edges match. Turn a relation back on.</div>}
-      </Card>
+      {map}
 
       <div className="grid grid-2-even">
         <Card padding={28}>
           <CardHead title={liveSel ? 'Selection' : 'Summary'} />
           <Detail selection={liveSel} links={links} byId={byId} onClear={() => setSelection(null)} />
         </Card>
-        <Card padding={28}>
-          <CardHead title="Pickup lag" sub={hl ? 'Edges in the current selection are shown in the accent.' : 'Hours between the origin article and the relay. Hover a bar for counts.'} />
-          <LagHistogram bins={lagHistogram(flatEdges)} highlight={hl} />
-          <p className="note">Edges with a negative lag (the relay was published first, e.g. a cited source updated later) are counted by absolute lag.</p>
-        </Card>
+        <LagEcdf ecdf={ecdf} />
       </div>
     </>
   );

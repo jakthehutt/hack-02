@@ -51,7 +51,7 @@ export function TableToggle({ value, onChange }) {
   return <Switch checked={value} onChange={onChange} label="Table" style={{ font: 'var(--font-body-sm)' }} />;
 }
 
-/** Positioned dark tooltip inside a `.chart` container. */
+/** Positioned tooltip inside a `.chart` container. */
 export function ChartTip({ x, y, title, children }) {
   return (
     <div className="chart-tip" style={{ left: x, top: y }} role="status">
@@ -80,22 +80,23 @@ export function Sparkline({ values, width = 120, height = 32, split }) {
   return (
     <svg width={width} height={height} aria-hidden="true" style={{ overflow: 'visible' }}>
       {split != null && split > 0 && (
-        <rect x={split * step} y={0} width={Math.max(0, width - split * step)} height={height} fill="var(--accent-50)" rx={4} />
+        <rect x={split * step} y={0} width={Math.max(0, width - split * step)} height={height} fill="var(--burgundy-wash)" rx={4} />
       )}
-      {d && <path d={d} fill="none" stroke="var(--black)" strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" />}
-      {last && <circle cx={last[0]} cy={last[1]} r={3.5} fill="var(--accent-primary)" stroke="var(--white)" strokeWidth={2} />}
+      {d && <path d={d} fill="none" stroke="var(--ink)" strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" />}
+      {last && <circle cx={last[0]} cy={last[1]} r={3.5} fill="var(--accent-primary)" stroke="var(--paper)" strokeWidth={2} />}
     </svg>
   );
 }
 
 /** Sequential accent ramp on a 0..1 value, built from tokens only. */
 export function rampColor(t) {
-  if (t == null) return 'var(--grey-50)';
+  if (t == null) return 'var(--paper-deep)';
   const p = Math.round(Math.max(0, Math.min(1, t)) * 100);
-  if (p === 0) return 'var(--beige-50)';
-  return `color-mix(in oklab, var(--accent-700) ${Math.max(8, p)}%, var(--beige-50))`;
+  if (p === 0) return 'var(--paper-deep)';
+  return `color-mix(in oklab, var(--burgundy) ${Math.max(8, p)}%, var(--paper-deep))`;
 }
-export const rampInk = t => (t != null && t > 0.52 ? 'var(--white)' : 'var(--text-primary)');
+// Ink and Paper have equal contrast (~4.2:1) at 65% Burgundy; flip there.
+export const rampInk = t => (t != null && t > 0.65 ? 'var(--paper)' : 'var(--text-primary)');
 
 /**
  * Compile a codebook pattern the way the Python side matches it (case-insensitive).

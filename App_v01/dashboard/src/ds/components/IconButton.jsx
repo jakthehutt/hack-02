@@ -10,6 +10,9 @@ export function IconButton({ variant = 'secondary', size = 'md', disabled = fals
   const px = sizePx[size] || sizePx.md;
   const [pressed, setPressed] = React.useState(false);
   const filled = variant === 'primary';
+  const shadow = filled
+    ? (pressed ? 'var(--shadow-hard-primary-press)' : 'var(--shadow-hard-primary-sm)')
+    : (pressed ? 'var(--shadow-hard-press)' : 'var(--shadow-hard-sm)');
   return React.createElement('button', {
     onClick: disabled ? undefined : onClick,
     disabled,
@@ -21,10 +24,10 @@ export function IconButton({ variant = 'secondary', size = 'md', disabled = fals
     style: {
       width: px, height: px, display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
       borderRadius: 'var(--radius-md)', cursor: disabled ? 'not-allowed' : 'pointer',
-      background: disabled ? 'var(--grey-100)' : filled ? 'var(--accent-primary)' : 'var(--white)',
-      color: disabled ? 'var(--grey-300)' : filled ? 'var(--white)' : 'var(--black)',
-      border: `2.5px solid ${disabled ? 'var(--grey-200)' : 'var(--black)'}`,
-      boxShadow: disabled ? 'none' : pressed ? 'var(--shadow-hard-press)' : 'var(--shadow-hard-sm)',
+      background: disabled ? 'var(--paper-deep)' : filled ? 'var(--accent-primary)' : 'var(--paper)',
+      color: disabled ? 'var(--ink-faint)' : filled ? 'var(--text-on-accent)' : 'var(--ink)',
+      border: `2.5px solid ${disabled ? 'var(--ink-line)' : filled ? 'var(--accent-primary)' : 'var(--ink)'}`,
+      boxShadow: disabled ? 'none' : shadow,
       transform: pressed && !disabled ? 'translate(2px,2px) scale(var(--press-scale))' : 'none',
       transition: 'transform var(--duration-fast) var(--ease-out-back), box-shadow var(--duration-fast) var(--ease-standard)',
       ...style,

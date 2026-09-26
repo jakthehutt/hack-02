@@ -5,15 +5,15 @@ import { shortName } from './Heatmap.jsx';
 import { fmtHours, fmtNum, fmtPct, fmtWeek } from '../data/derive.js';
 
 export const SERIES_COLORS = [
-  'var(--accent-700)',
-  'var(--accent-500)',
-  'var(--black)',
-  'var(--accent-600)',
-  'var(--grey-700)',
-  'var(--amber-500)',
-  'var(--green-500)',
-  'var(--red-500)',
-  'var(--grey-500)',
+  'var(--burgundy)',
+  'var(--ink)',
+  'var(--burgundy-soft)',
+  'var(--ink-soft)',
+  'var(--semantic-warning)',
+  'var(--semantic-success)',
+  'var(--semantic-danger)',
+  'var(--ink-muted)',
+  'var(--burgundy-deep)',
 ];
 
 export const seriesColor = i => SERIES_COLORS[i % SERIES_COLORS.length];
@@ -110,8 +110,8 @@ export function ForestPlot({ rows, metric, selectedId, onSelect }) {
                 <span className="forest-track">
                   {r.interval ? (
                     <>
-                      <span className="forest-ci" style={{ left: `${(lo / xMax) * 100}%`, width: `${Math.max(0, ((hi - lo) / xMax) * 100)}%`, background: on ? 'var(--accent-700)' : 'var(--black)' }} />
-                      <span className="forest-dot" style={{ left: `${(point / xMax) * 100}%`, background: on ? 'var(--accent-primary)' : 'var(--black)' }} />
+                      <span className="forest-ci" style={{ left: `${(lo / xMax) * 100}%`, width: `${Math.max(0, ((hi - lo) / xMax) * 100)}%`, background: on ? 'var(--burgundy)' : 'var(--ink)' }} />
+                      <span className="forest-dot" style={{ left: `${(point / xMax) * 100}%`, background: on ? 'var(--accent-primary)' : 'var(--ink)' }} />
                     </>
                   ) : <span className="row-sub">n/c</span>}
                   {hover === r.series.id && r.interval && (
@@ -168,9 +168,9 @@ export function VolumeShareChart({ model, seriesLabel }) {
   return (
     <Card padding={28}>
       <CardHead
-        title="Volume under the share"
+        title="Articles published, and the share that matched"
         sub={model.observed
-          ? `Bars are articles published that week. The line is the share that matched ${seriesLabel}. A high share in a thin week is a small count.`
+          ? 'A high share in a thin week is a small count.'
           : 'This outlet’s week-by-week shape was not crawled. The figure is the crawled total for the whole window.'}
       >
         {model.observed && <TableToggle value={table} onChange={setTable} />}
@@ -179,12 +179,12 @@ export function VolumeShareChart({ model, seriesLabel }) {
         <div className="empty">
           {model.total?.total
             ? <>Crawled total: <strong className="mono">{fmtNum(model.total.n)}</strong> matching articles, {fmtPct(model.total.share, 2)} of {fmtNum(model.total.total)}.</>
-            : 'No crawled total for this frame.'}
+            : 'No crawled total for this narrative.'}
         </div>
       ) : table ? (
         <div className="table-scroll">
           <table className="data-table">
-            <thead><tr><th>Week</th><th className="num">Articles</th><th className="num">Hits</th><th className="num">Share</th></tr></thead>
+            <thead><tr><th>Week</th><th className="num">Articles</th><th className="num">Matching</th><th className="num">Share</th></tr></thead>
             <tbody>
               {points.map(p => (
                 <tr key={p.week.week}>
@@ -208,14 +208,14 @@ export function VolumeShareChart({ model, seriesLabel }) {
               </g>
             ))}
             {points.map((p, k) => p.total > 0 && (
-              <rect key={p.week.week} x={x(k) - barW / 2} y={yVol(p.total)} width={barW} height={Math.max(0, yVol(0) - yVol(p.total))} fill="var(--grey-200)" rx={2} />
+              <rect key={p.week.week} x={x(k) - barW / 2} y={yVol(p.total)} width={barW} height={Math.max(0, yVol(0) - yVol(p.total))} fill="var(--ink-line)" rx={2} />
             ))}
             {line && <path d={line} fill="none" stroke="var(--accent-primary)" strokeWidth={2.5} strokeLinejoin="round" strokeLinecap="round" />}
             {points.map((p, k) => (k % Math.max(1, Math.ceil(n / 6)) === 0) && (
               <text key={`t-${p.week.week}`} className="axis-text" x={x(k)} y={H - 8} textAnchor="middle">{fmtWeek(p.week)}</text>
             ))}
             {hover != null && points[hover] && (
-              <line x1={x(hover)} x2={x(hover)} y1={M.t} y2={yVol(0)} stroke="var(--black)" strokeWidth={1} />
+              <line x1={x(hover)} x2={x(hover)} y1={M.t} y2={yVol(0)} stroke="var(--ink)" strokeWidth={1} />
             )}
             <rect x={M.l} y={M.t} width={iw} height={ih} fill="transparent"
               onPointerMove={e => {
@@ -228,9 +228,15 @@ export function VolumeShareChart({ model, seriesLabel }) {
           {hover != null && points[hover] && (
             <ChartTip x={Math.min(Math.max(x(hover), 110), width - 110)} y={M.t + 8} title={`${points[hover].week.week} · ${fmtWeek(points[hover].week)}`}>
               <div className="tip-row"><span className="v">{fmtNum(points[hover].total)}</span><span className="k">articles</span></div>
-              <div className="tip-row"><span className="v">{fmtNum(points[hover].n)}</span><span className="k">frame hits</span></div>
+              <div className="tip-row"><span className="v">{fmtNum(points[hover].n)}</span><span className="k">matching articles</span></div>
               <div className="tip-row is-focus"><span className="v">{points[hover].share == null ? '–' : fmtPct(points[hover].share, 2)}</span><span className="k">share</span></div>
             </ChartTip>
+          )}
+          {model.observed && (
+            <div className="stat-legend">
+              <span><i className="stat-swatch stat-swatch-bar" />Articles published that week</span>
+              <span><i className="stat-swatch stat-swatch-line" />Share that matched {seriesLabel}</span>
+            </div>
           )}
         </div>
       )}
@@ -316,12 +322,12 @@ export function CompositionChart({ model }) {
               let acc = 0;
               return (
                 <g key={w.week.week}>
-                  {w.volume > 0 && <rect x={x} y={y(w.volume)} width={barW} height={y(0) - y(w.volume)} fill="var(--grey-100)" rx={2} />}
+                  {w.volume > 0 && <rect x={x} y={y(w.volume)} width={barW} height={y(0) - y(w.volume)} fill="var(--paper-deep)" rx={2} />}
                   {w.counts.map((c, i) => {
                     const yy = y(acc + c);
                     const h = y(acc) - yy;
                     acc += c;
-                    return c > 0 && <rect key={model.series[i].id} x={x + barW * 0.18} y={yy} width={barW * 0.64} height={Math.max(0, h)} fill={seriesColor(i)} />;
+                    return c > 0 && <rect key={model.series[i].id} x={x + barW * 0.18} y={yy} width={barW * 0.64} height={Math.max(0, h)} fill={seriesColor(i)} stroke="var(--paper)" strokeWidth={1} />;
                   })}
                   {(k % Math.max(1, Math.ceil(n / 6)) === 0) && (
                     <text className="axis-text" x={x + barW / 2} y={H - 8} textAnchor="middle">{fmtWeek(w.week)}</text>
@@ -375,21 +381,21 @@ export function LagEcdf({ ecdf }) {
   const y = p => M.t + ih - p * ih;
   const curves = [
     { id: 'observed', label: 'Observed', stroke: 'var(--accent-primary)', width: 2.5, ...ecdf.observed },
-    { id: 'generated', label: 'Generated', stroke: 'var(--grey-500)', width: 1.75, ...ecdf.generated },
+    { id: 'generated', label: 'Generated', stroke: 'var(--ink-muted)', width: 1.75, ...ecdf.generated },
   ];
 
   return (
     <Card padding={28}>
       <CardHead
-        title="Pickup lag"
-        sub="Cumulative share of cross-outlet edges by absolute lag. The accent curve is observed. Grey is generated. Marks sit on each median."
+        title="Delay"
+        sub="How long until another outlet repeats it. Marks sit on each median."
       >
         <TableToggle value={table} onChange={setTable} />
       </CardHead>
       {table ? (
         <div className="table-scroll">
           <table className="data-table">
-            <thead><tr><th>Set</th><th className="num">Edges</th><th className="num">Median</th><th className="num">Shortest</th><th className="num">Longest</th></tr></thead>
+            <thead><tr><th>Set</th><th className="num">Pickups</th><th className="num">Median</th><th className="num">Shortest</th><th className="num">Longest</th></tr></thead>
             <tbody>
               {curves.map(c => (
                 <tr key={c.id}>
@@ -405,7 +411,7 @@ export function LagEcdf({ ecdf }) {
         </div>
       ) : (
         <div className="chart" ref={ref}>
-          <svg height={H} role="img" aria-label="Empirical distribution of pickup lag">
+          <svg height={H} role="img" aria-label="Delay before another outlet repeats it">
             {[0, 0.25, 0.5, 0.75, 1].map(p => (
               <g key={p}>
                 <line className="grid-line" x1={M.l} x2={width - M.r} y1={y(p)} y2={y(p)} />
@@ -421,7 +427,7 @@ export function LagEcdf({ ecdf }) {
                 {c.median != null && (
                   <g>
                     <line x1={x(c.median)} x2={x(c.median)} y1={y(0)} y2={y(0.5)} stroke={c.stroke} strokeDasharray="3 3" />
-                    <circle cx={x(c.median)} cy={y(0.5)} r={4} fill={c.stroke} stroke="var(--white)" strokeWidth={2} />
+                    <circle cx={x(c.median)} cy={y(0.5)} r={4} fill={c.stroke} stroke="var(--paper)" strokeWidth={2} />
                   </g>
                 )}
               </g>
@@ -537,7 +543,7 @@ export function RankGradient({ model }) {
                 r={d.r}
                 fill={d.color}
                 fillOpacity={d.n ? 0.9 : 0.25}
-                stroke="var(--white)"
+                stroke="var(--paper)"
                 strokeWidth={1.5}
                 onMouseEnter={() => setHover(d)}
                 onMouseLeave={() => setHover(null)}

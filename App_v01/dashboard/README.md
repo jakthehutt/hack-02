@@ -1,7 +1,8 @@
-# Narrative radar — dashboard
+# Foreshock — dashboard
 
-React + Vite front end for the narrative scan, styled with the Keypad design system
-(imported from claude.ai/design into `src/ds/`).
+React + Vite front end for the narrative scan. The components in `src/ds/` come from the
+Keypad design system (claude.ai/design); colors and type follow the brand palette in
+`src/ds/tokens` (Paper, Burgundy, Ink, Sovereign Blue; Geist, Inter, IBM Plex Mono).
 
 ```
 npm install

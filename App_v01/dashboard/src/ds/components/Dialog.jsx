@@ -9,7 +9,7 @@ export function Dialog({ open, title, children, onClose, actions, style }) {
   }, React.createElement('div', {
     onClick: e => e.stopPropagation(),
     style: {
-      background: 'var(--white)', border: '3px solid var(--black)', borderRadius: 'var(--radius-lg)',
+      background: 'var(--paper)', border: '3px solid var(--ink)', borderRadius: 'var(--radius-lg)',
       boxShadow: 'var(--shadow-hard-lg)', padding: 32, width: 420, fontFamily: 'var(--font-body)', ...style,
     },
   },

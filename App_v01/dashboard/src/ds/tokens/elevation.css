@@ -4,11 +4,15 @@
 --border-width-sm:1.5px;
 --border-width-md:2.5px;
 --border-width-lg:3.5px;
---shadow-hard-sm:3px 3px 0 var(--black);
---shadow-hard-md:5px 5px 0 var(--black);
---shadow-hard-lg:8px 8px 0 var(--black);
---shadow-hard-press:2px 2px 0 var(--black);
+--shadow-hard-sm:3px 3px 0 var(--ink);
+--shadow-hard-md:5px 5px 0 var(--ink);
+--shadow-hard-lg:8px 8px 0 var(--ink);
+--shadow-hard-press:2px 2px 0 var(--ink);
+/* Burgundy-filled controls cast Burgundy Deep: an Ink shadow against Burgundy muds. */
+--shadow-hard-primary-sm:3px 3px 0 var(--burgundy-deep);
+--shadow-hard-primary-md:5px 5px 0 var(--burgundy-deep);
+--shadow-hard-primary-press:2px 2px 0 var(--burgundy-deep);
 --shadow-hard-accent-md:5px 5px 0 var(--accent-primary);
---shadow-soft-card:0 1px 0 var(--grey-200);
+--shadow-soft-card:0 1px 0 var(--ink-line);
 --shadow-focus-ring:0 0 0 3px var(--accent-primary-soft-strong);
 }

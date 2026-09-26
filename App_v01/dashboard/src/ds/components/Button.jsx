@@ -8,17 +8,17 @@ const sizeMap = {
 
 function variantStyle(variant, disabled) {
   if (disabled) {
-    return { background: 'var(--grey-100)', color: 'var(--grey-300)', border: '2.5px solid var(--grey-200)', boxShadow: 'none' };
+    return { background: 'var(--paper-deep)', color: 'var(--ink-faint)', border: '2.5px solid var(--ink-line)', boxShadow: 'none' };
   }
   switch (variant) {
     case 'primary':
-      return { background: 'var(--accent-primary)', color: 'var(--text-on-accent)', border: '2.5px solid var(--black)', boxShadow: 'var(--shadow-hard-md)' };
+      return { background: 'var(--accent-primary)', color: 'var(--text-on-accent)', border: '2.5px solid var(--accent-primary)', boxShadow: 'var(--shadow-hard-primary-md)', pressShadow: 'var(--shadow-hard-primary-press)' };
     case 'secondary':
-      return { background: 'var(--white)', color: 'var(--black)', border: '2.5px solid var(--black)', boxShadow: 'var(--shadow-hard-md)' };
+      return { background: 'var(--paper)', color: 'var(--ink)', border: '2.5px solid var(--ink)', boxShadow: 'var(--shadow-hard-md)' };
     case 'ghost':
-      return { background: 'transparent', color: 'var(--black)', border: '2.5px solid transparent', boxShadow: 'none' };
+      return { background: 'transparent', color: 'var(--ink)', border: '2.5px solid transparent', boxShadow: 'none' };
     case 'danger':
-      return { background: 'var(--semantic-danger)', color: '#fff', border: '2.5px solid var(--black)', boxShadow: 'var(--shadow-hard-md)' };
+      return { background: 'var(--semantic-danger)', color: 'var(--paper)', border: '2.5px solid var(--semantic-danger)', boxShadow: 'var(--shadow-hard-primary-md)', pressShadow: 'var(--shadow-hard-primary-press)' };
     default:
       return {};
   }
@@ -30,7 +30,7 @@ function variantStyle(variant, disabled) {
  */
 export function Button({ variant = 'primary', size = 'md', disabled = false, icon = null, children, onClick, style, ...rest }) {
   const s = sizeMap[size] || sizeMap.md;
-  const v = variantStyle(variant, disabled);
+  const { pressShadow = 'var(--shadow-hard-press)', ...v } = variantStyle(variant, disabled);
   const [pressed, setPressed] = React.useState(false);
   return React.createElement('button', {
     onClick: disabled ? undefined : onClick,
@@ -44,7 +44,7 @@ export function Button({ variant = 'primary', size = 'md', disabled = false, ico
       cursor: disabled ? 'not-allowed' : 'pointer', fontFamily: 'var(--font-body)',
       padding: s.padding, font: s.font, borderRadius: s.radius, ...v,
       transform: pressed && !disabled ? `translate(var(--press-translate),var(--press-translate)) scale(var(--press-scale))` : 'none',
-      boxShadow: pressed && !disabled && v.boxShadow !== 'none' ? 'var(--shadow-hard-press)' : v.boxShadow,
+      boxShadow: pressed && !disabled && v.boxShadow !== 'none' ? pressShadow : v.boxShadow,
       transition: `transform var(--duration-fast) var(--ease-out-back), box-shadow var(--duration-fast) var(--ease-standard), background var(--duration-fast) var(--ease-standard)`,
       ...style,
     },

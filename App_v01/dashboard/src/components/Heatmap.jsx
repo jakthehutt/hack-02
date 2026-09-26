@@ -31,8 +31,8 @@ export function Heatmap({ data, seriesList, lo, hi, metric, selected, onSelect }
   return (
     <Card padding={28}>
       <CardHead
-        title="Where each narrative lives"
-        sub={`${metric === 'share' ? 'Share of each outlet’s articles' : 'Articles'} matching a frame, by source. Click a cell to trace it over time.`}
+        title="Which outlet is promoting which narrative"
+        sub={`${metric === 'share' ? 'Share of each outlet’s articles' : 'Articles'} that matched a narrative. Click a cell to open it.`}
       >
         <div className="scale-legend" aria-hidden="true">
           <span>0</span><span className="scale-bar" /><span className="mono">{fmtValue(max, metric)}</span>
@@ -97,7 +97,7 @@ export function Heatmap({ data, seriesList, lo, hi, metric, selected, onSelect }
             <ChartTip x={tip.x} y={tip.y} title={tip.c.se.label}>
               <div className="tip-row is-focus"><span className="v">{tip.c.total ? fmtPct(tip.c.share, 2) : '–'}</span><span className="k">{tip.r.src.name}</span></div>
               <div className="tip-row"><span className="v">{fmtNum(tip.c.n)}</span><span className="k">of {fmtNum(tip.c.total)} articles</span></div>
-              {!tip.c.total && <div className="tip-row"><span className="k">{tip.c.generated ? 'Weekly counts for this outlet are generated. All weeks shows the crawled total.' : 'Not crawled in this range'}</span></div>}
+              {!tip.c.total && <div className="tip-row"><span className="k">{tip.c.generated ? 'Weekly counts for this outlet are estimated. All weeks shows the crawled total.' : 'Not crawled in this range'}</span></div>}
             </ChartTip>
           )}
         </div>
