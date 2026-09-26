@@ -1,0 +1,43 @@
+{
+  "version": "2025-09-26",
+  "default": [
+    {
+      "country": "EU",
+      "label": "EUvsDisinfo",
+      "url": "https://euvsdisinfo.eu/"
+    },
+    {
+      "country": "EU",
+      "label": "EDMO",
+      "url": "https://edmo.eu/"
+    }
+  ],
+  "by_country": {
+    "FR": [
+      {
+        "label": "VIGINUM (SGDSN)",
+        "url": "https://www.sgdsn.gouv.fr/"
+      }
+    ],
+    "DE": [
+      {
+        "label": "GADMO (German-Austrian EDMO hub)",
+        "url": "https://gadmo.eu/"
+      },
+      {
+        "label": "Auswärtiges Amt — Doppelgänger technical report",
+        "url": "https://www.auswaertiges-amt.de/resource/blob/2682484/2da31936d1cbeb9faec49df74d8bbe2e/technischer-berichtdesinformationskampagne-doppelgaenger-1-data.pdf"
+      },
+      {
+        "label": "Correctiv",
+        "url": "https://correctiv.org/faktencheck/"
+      }
+    ],
+    "PL": [
+      {
+        "label": "EDMO Poland / regional hubs",
+        "url": "https://edmo.eu/about/edmo-european-hub-network/"
+      }
+    ]
+  }
+}

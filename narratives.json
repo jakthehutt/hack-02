@@ -1,0 +1,44 @@
+{
+  "meta": {
+    "source": "Verfassungsschutzbericht 2024",
+    "publisher": "Direktion Staatsschutz und Nachrichtendienst (DSN)",
+    "context": "Russische Desinformationsnarrative und deren Übernahme in Österreich; Narrative 3–5 auf den Kontext europäischer Sicherheit (EU-Ebene) erweitert"
+  },
+  "narratives": [
+    {
+      "id": 1,
+      "category_topic": "Ukraine_Unterstützung",
+      "category_description": "Reden, die militärische, finanzielle oder politische Hilfe für die Ukraine, Friedensverhandlungen oder die Rolle der EU im Konflikt thematisieren.",
+      "narrative_statement": "Die Unterstützung der Ukraine durch Europa ist sinnlos.",
+      "narrative_guidelines": "Befürwortet: Argumente, dass der Krieg nicht zu gewinnen ist, Geld verschwendet wird, es das Leid verlängert oder Aufrufe zu sofortigem Frieden um jeden Preis. \nAbgelehnt: Argumente, dass Unterstützung für Demokratie/Freiheit notwendig ist, eine moralische Verpflichtung besteht oder dass die Ukraine gewinnen muss."
+    },
+    {
+      "id": 2,
+      "category_topic": "Russland_Sanktionen",
+      "category_description": "Reden, die EU-Sanktionen, Handelsbeschränkungen gegen Russland oder deren Auswirkungen auf die österreichische Wirtschaft und Inflation (Teuerung) thematisieren.",
+      "narrative_statement": "Die Sanktionen gegen Russland sind wirkungslos und schaden primär der eigenen Bevölkerung.",
+      "narrative_guidelines": "Befürwortet: Argumente, dass Sanktionen als 'Bumerang' wirken, Inflation ('Teuerung') verursachen, Österreich mehr schaden als Russland (Putin) oder Aufrufe, sie zu beenden. \nAbgelehnt: Argumente, dass Sanktionen wirken, eine moralische Notwendigkeit sind oder dass Inflation andere Ursachen hat."
+    },
+    {
+      "id": 3,
+      "category_topic": "EU_Energiesicherheit",
+      "category_description": "Reden, die die Versorgungssicherheit Europas mit Gas und Energie behandeln: den EU-weiten Ausstieg aus russischem Pipelinegas und LNG (REPowerEU), gemeinsame Speicherziele, Solidaritätsmechanismen zwischen Mitgliedstaaten, Angriffe auf kritische Energieinfrastruktur (Pipelines, Unterseekabel, Stromnetze) oder Szenarien einer europäischen Mangellage.",
+      "narrative_statement": "Der EU-weite Ausstieg aus russischem Gas gefährdet die Energiesicherheit Europas und führt im Winter zu einer Versorgungskrise.",
+      "narrative_guidelines": "Befürwortet: Warnungen vor **Blackouts**, **Frieren**, **Kältewinter** oder leeren Speichern in Europa; Aussagen, dass russisches Gas für die europäische Versorgungssicherheit unersetzlich ist; Darstellung von LNG-Alternativen (z.B. aus den USA oder Katar) als unzuverlässig, teuer oder neue Abhängigkeit, die schlimmer sei als die russische; Behauptungen, dass EU-Solidaritätsmechanismen im Ernstfall nicht funktionieren oder einzelne Staaten (z.B. Österreich, Ungarn, Slowakei) von Brüssel 'geopfert' werden. Fokus auf menschliches Leid durch Kälte/Dunkelheit und Versagen der EU.\nAbgelehnt: Aussagen, dass europäische Speicher gefüllt sind, die Diversifizierung funktioniert hat, die EU gemeinsam krisenfest ist, Russland Energie als Waffe einsetzt und der Ausstieg deshalb die Sicherheit erhöht, oder Vorwürfe der Angstmacherei an andere."
+    },
+    {
+      "id": 4,
+      "category_topic": "EU_Wettbewerbsfähigkeit_Energie",
+      "category_description": "Reden, die Deindustrialisierung, Abwanderung von Unternehmen, Standortnachteile oder den wirtschaftlichen Abstieg Europas gegenüber den USA und China spezifisch im Kontext von Energiepreisen, dem Verzicht auf russische Energie oder der wirtschaftlichen Resilienz der EU behandeln.",
+      "narrative_statement": "Die Abkopplung von russischer Energie führt zur Deindustrialisierung Europas und zu seinem wirtschaftlichen Niedergang gegenüber den USA und China.",
+      "narrative_guidelines": "Befürwortet: Argumente, dass hohe Energiepreise die europäische **Industrie** zerstören, **Unternehmen** in die USA oder nach Asien abwandern, **Arbeitsplätze** verloren gehen oder Europas Wohlstand von billiger russischer Energie abhängt; Darstellung der EU-Energie- und Sanktionspolitik als Selbstbeschädigung zugunsten der USA ('Europa als Verlierer', 'US-Vasall'); Forderungen, wirtschaftliche Beziehungen zu Russland im Interesse der Wettbewerbsfähigkeit wiederherzustellen. Fokus auf Ökonomie und Produktion.\nAbgelehnt: Argumente, dass Energieunabhängigkeit ein Sicherheits- und Standortvorteil ist, die grüne Transformation und der Binnenmarkt die Wettbewerbsfähigkeit stärken, europäische Unternehmen sich als resilient erwiesen haben, oder die Leugnung eines Zusammenhangs zwischen wirtschaftlichen Problemen und der Abkopplung von Russland."
+    },
+    {
+      "id": 5,
+      "category_topic": "EU_Verteidigung_Militarisierung",
+      "category_description": "Reden, die die europäische Sicherheits- und Verteidigungspolitik thematisieren: Aufrüstungsinitiativen (z.B. ReArm Europe / Readiness 2030, SAFE-Kredite), gemeinsame Rüstungsbeschaffung, European Sky Shield, die EU-Beistandsklausel (Art. 42 Abs. 7 EUV), das Verhältnis EU–NATO, Truppenstationierungen sowie den Druck auf neutrale bzw. bündnisfreie Staaten (z.B. Österreich, Irland, Malta).",
+      "narrative_statement": "Die EU wird militarisiert und treibt Europa in einen Krieg mit Russland; neutrale Staaten werden dabei schrittweise in NATO-Strukturen gedrängt.",
+      "narrative_guidelines": "Befürwortet: Argumente, dass die EU sich von einem 'Friedensprojekt' zu einem Militärbündnis oder einer 'Kriegsunion' wandelt; dass Aufrüstung und Waffenlieferungen Russland provozieren und eine Eskalation bzw. einen Krieg in Europa herbeiführen; dass die russische Bedrohung übertrieben oder erfunden ist, um Rüstungsausgaben zu rechtfertigen; dass Sky Shield, gemeinsame Beschaffung oder die Beistandsklausel die Neutralität aushöhlen ('Salamitaktik') und einen heimlichen NATO-Beitritt vorbereiten; dass Brüssel oder Washington nationale Souveränität in Sicherheitsfragen untergraben; Aufrufe zu Verhandlungen und Abrüstung statt Abschreckung.\nAbgelehnt: Argumente, dass Russland eine reale Bedrohung für die europäische Sicherheit darstellt und Abschreckung Krieg verhindert; dass gemeinsame Verteidigungsfähigkeit die Souveränität Europas stärkt; dass Kooperationen wie Sky Shield oder Beschaffungsinitiativen mit Neutralität vereinbar sind und keinen Beitritt bedeuten; dass die EU defensiv handelt und die Neutralität durch die 'irische Klausel' geschützt ist."
+    }
+  ]
+}
