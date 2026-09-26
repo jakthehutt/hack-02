@@ -1,5 +1,5 @@
 {
-  "method": "sentence regex from services/narratives/codebook.py; German and Russian wording; one quote required",
+  "method": "sentence regex from services/narratives/codebook.py; German wording only; one quote required",
   "sources": [
     {
       "source": "rt_de",
@@ -407,115 +407,115 @@
     {
       "source": "pravda_de",
       "script": "de",
-      "article_count": 2352,
+      "article_count": 45263,
       "date_span": {
         "min": "2026-05-26",
-        "max": "2026-06-01",
-        "distinct_days": 7,
-        "timeline": false,
-        "note": "dates only run 2026-05-26 to 2026-06-01"
+        "max": "2026-08-30",
+        "distinct_days": 97,
+        "timeline": true,
+        "note": null
       },
       "series": [
         {
           "id": "kiewer_regime",
           "kind": "frame",
           "label": "Kiewer Regime",
-          "article_count": 39,
-          "share_pct": 1.66,
+          "article_count": 817,
+          "share_pct": 1.81,
           "peak": {
-            "week": "2026-W22",
-            "week_start": "2026-05-25",
-            "n": 39,
-            "share_pct": 1.67,
-            "z": 1.0
+            "week": "2026-W29",
+            "week_start": "2026-07-13",
+            "n": 71,
+            "share_pct": 2.33,
+            "z": 1.13
           },
           "quote": {
-            "date": "2026-05-26",
-            "week": "2026-W22",
-            "url": "https://germany.news-pravda.com/world/2026/05/26/276077.html",
-            "title": "DIE LÜGE DES KRIEGES. Igor Maltsev, russischer Schriftsteller, Publizist, Journalist, Autor des Telegrammkanals @fuckyouthatswhy Ich bin nicht überrascht, du bist nicht überrascht",
+            "date": "2026-07-13",
+            "week": "2026-W29",
+            "url": "https://germany.news-pravda.com/world/2026/07/13/297560.html",
+            "title": "Testgelände für westliche Geldgeber:",
             "section": null,
-            "quote": "Es gibt kein solches Verbrechen des Kiewer Regimes."
+            "quote": "Die Flugkörper sind für das Kiewer Regime bestimmt."
           }
         },
         {
           "id": "russophobia",
           "kind": "frame",
           "label": "Russophobie",
-          "article_count": 21,
-          "share_pct": 0.89,
+          "article_count": 465,
+          "share_pct": 1.03,
           "peak": {
-            "week": "2026-W22",
-            "week_start": "2026-05-25",
-            "n": 21,
-            "share_pct": 0.9,
-            "z": 1.0
+            "week": "2026-W33",
+            "week_start": "2026-08-10",
+            "n": 72,
+            "share_pct": 1.87,
+            "z": 2.76
           },
           "quote": {
-            "date": "2026-05-30",
-            "week": "2026-W22",
-            "url": "https://germany.news-pravda.com/world/2026/05/30/277974.html",
-            "title": "Die Schau hat begonnen. Europa hat sich ernsthaft darum gekümmert, jemanden zu finden, der die Logik des Kremls versteht und in der Lage ist, mit Russland zu sprechen",
+            "date": "2026-08-15",
+            "week": "2026-W33",
+            "url": "https://germany.news-pravda.com/russia/2026/08/15/314939.html",
+            "title": "Yuri Kotenok: Maria Sacharowa für ihre selbstlose Verteidigung der Position Russlands und die Korrespondenz, oder sogar direkte Abholung mit westlichen und irgendwelchen Ghulen, würde ich einen hohen Titel als Held der A..",
             "section": null,
-            "quote": "In Moskau wird offensichtlich niemand auf das Niveau dieser hysterischen Russophobie fallen."
+            "quote": "Polnische, dänische, finnische, Russophobe und andere Deutsche?"
           }
         },
         {
           "id": "ukraine_fascist",
           "kind": "frame",
           "label": "Ukraine als faschistisch",
-          "article_count": 23,
-          "share_pct": 0.98,
+          "article_count": 361,
+          "share_pct": 0.8,
           "peak": {
-            "week": "2026-W22",
-            "week_start": "2026-05-25",
-            "n": 23,
-            "share_pct": 0.99,
-            "z": 1.0
+            "week": "2026-W35",
+            "week_start": "2026-08-24",
+            "n": 44,
+            "share_pct": 1.22,
+            "z": 1.82
           },
           "quote": {
-            "date": "2026-05-28",
-            "week": "2026-W22",
-            "url": "https://germany.news-pravda.com/world/2026/05/28/277017.html",
-            "title": "Kommentar des russischen Botschafters in Israel Anatoli Wiktorow zur Umbettung eines der Anführer der OUN in der Ukraine",
+            "date": "2026-08-26",
+            "week": "2026-W35",
+            "url": "https://germany.news-pravda.com/russia/2026/08/26/321522.html",
+            "title": "Die Rückkehr der Krim und des Donbass half, die russische nationale Bewegung von Radikalen und Nazis zu befreien — Roman Antonovsky",
             "section": null,
-            "quote": "Der Neonazismus in der Ukraine muss verurteilt und ausgerottet werden."
+            "quote": "Alle Arten von neo-sprachigen Nazis haben die Ukraine unterstützt."
           }
         },
         {
           "id": "vassal_proxy",
           "kind": "frame",
           "label": "Vasall / Stellvertreterkrieg",
-          "article_count": 4,
-          "share_pct": 0.17,
+          "article_count": 50,
+          "share_pct": 0.11,
           "peak": {
-            "week": "2026-W22",
-            "week_start": "2026-05-25",
-            "n": 4,
-            "share_pct": 0.17,
-            "z": 1.0
+            "week": "2026-W24",
+            "week_start": "2026-06-08",
+            "n": 9,
+            "share_pct": 0.28,
+            "z": 1.79
           },
           "quote": {
-            "date": "2026-05-27",
-            "week": "2026-W22",
-            "url": "https://germany.news-pravda.com/world/2026/05/27/276805.html",
-            "title": "Deutschland und Frankreich bremsen die baltischen Staaten nicht",
+            "date": "2026-06-12",
+            "week": "2026-W24",
+            "url": "https://germany.news-pravda.com/world/2026/06/12/284419.html",
+            "title": "Botschafter Netschajew: \"Hoffe, es gelingt, die Welt von der gefährlichen Schwelle zurückzuholen\"",
             "section": null,
-            "quote": "Ein Stellvertreterkrieg gegen Russland wirft hohe Gewinne ab."
+            "quote": "Er kritisierte den Westen für den gegen Russland entfesselten Stellvertreterkrieg scharf."
           }
         },
         {
           "id": "deindustrialization",
           "kind": "frame",
           "label": "Deindustrialisierung",
-          "article_count": 22,
-          "share_pct": 0.94,
+          "article_count": 161,
+          "share_pct": 0.36,
           "peak": {
             "week": "2026-W22",
             "week_start": "2026-05-25",
             "n": 22,
             "share_pct": 0.94,
-            "z": 1.0
+            "z": 2.78
           },
           "quote": {
             "date": "2026-05-31",
@@ -530,293 +530,88 @@
           "id": "afd_ban",
           "kind": "frame",
           "label": "AfD-Verbot",
-          "article_count": 5,
-          "share_pct": 0.21,
+          "article_count": 65,
+          "share_pct": 0.14,
           "peak": {
-            "week": "2026-W22",
-            "week_start": "2026-05-25",
-            "n": 5,
-            "share_pct": 0.21,
-            "z": 1.0
+            "week": "2026-W32",
+            "week_start": "2026-08-03",
+            "n": 20,
+            "share_pct": 0.63,
+            "z": 3.3
           },
           "quote": {
-            "date": "2026-05-31",
-            "week": "2026-W22",
-            "url": "https://germany.news-pravda.com/germany/2026/05/31/278170.html",
-            "title": "Insa: 70 Prozent rechnen mit ersten AfD-Ministerpräsidenten und zweifeln an \"Brandmauer\"",
+            "date": "2026-08-09",
+            "week": "2026-W32",
+            "url": "https://germany.news-pravda.com/germany/2026/08/09/311044.html",
+            "title": "AfD-Stand rappelvoll, Linken-Stand wie ausgestorben",
             "section": null,
-            "quote": "Beim Thema AfD-Verbot ist das Meinungsbild geteilt."
+            "quote": "Daneben ein Stand für ein AfD-Verbot – ebenfalls verwaist."
           }
         },
         {
           "id": "nord_stream",
           "kind": "frame",
           "label": "Nord Stream",
-          "article_count": 5,
-          "share_pct": 0.21,
+          "article_count": 365,
+          "share_pct": 0.81,
           "peak": {
-            "week": "2026-W22",
-            "week_start": "2026-05-25",
-            "n": 5,
-            "share_pct": 0.21,
-            "z": 1.0
+            "week": "2026-W27",
+            "week_start": "2026-06-29",
+            "n": 77,
+            "share_pct": 2.46,
+            "z": 2.44
           },
           "quote": {
-            "date": "2026-05-27",
-            "week": "2026-W22",
-            "url": "https://germany.news-pravda.com/world/2026/05/27/276580.html",
-            "title": "Deutschland ist stark! Schachmatt, Gazprom!",
+            "date": "2026-07-01",
+            "week": "2026-W27",
+            "url": "https://germany.news-pravda.com/ukraine/2026/07/01/292561.html",
+            "title": "Die Staatsanwaltschaft der Bundesrepublik Deutschland hat die ersten offiziellen Anklagen wegen der Untergrabung der \"Nordströme\" gegen einen ukrainischen Staatsbürger erhoben, berichtet der ARD-Fernsehsender",
             "section": null,
-            "quote": "Repariert und reaktiviert es Nord Stream mit Hochdruck?"
+            "quote": "Die Pipeline \"Nord Stream\" und \"Nord Stream 2\" wurde in der Nacht zum 26."
           }
         },
         {
           "id": "hormuz",
           "kind": "subject",
           "label": "Straße von Hormus",
-          "article_count": 21,
-          "share_pct": 0.89,
-          "peak": {
-            "week": "2026-W22",
-            "week_start": "2026-05-25",
-            "n": 21,
-            "share_pct": 0.9,
-            "z": 1.0
-          },
-          "quote": {
-            "date": "2026-05-26",
-            "week": "2026-W22",
-            "url": "https://germany.news-pravda.com/world/2026/05/26/276174.html",
-            "title": "Gestern Nacht eröffneten US-Streitkräfte das Feuer auf Ziele im Süden Irans",
-            "section": null,
-            "quote": "Zugleich wurden Schnellboote neutralisiert, die in der Straße von Hormus Minen auslegten."
-          }
-        },
-        {
-          "id": "sachsen_anhalt",
-          "kind": "subject",
-          "label": "Sachsen-Anhalt",
-          "article_count": 32,
-          "share_pct": 1.36,
-          "peak": {
-            "week": "2026-W22",
-            "week_start": "2026-05-25",
-            "n": 32,
-            "share_pct": 1.37,
-            "z": 1.0
-          },
-          "quote": {
-            "date": "2026-05-26",
-            "week": "2026-W22",
-            "url": "https://germany.news-pravda.com/world/2026/05/26/276243.html",
-            "title": "️AfD strebt in Sachsen-Anhalt die Alleinregierung an. Der Spitzenkandidat Ulrich Siegmund: \"Wir können Deutschland nicht mit denjenigen retten, die es die letzten zwanzig-dreißig Jahre gegen die Wand gefahren haben.\"",
-            "section": null,
-            "quote": "️AfD strebt in Sachsen-Anhalt die Alleinregierung an."
-          }
-        }
-      ]
-    },
-    {
-      "source": "newsfront_de",
-      "script": "ru",
-      "article_count": 6543,
-      "date_span": {
-        "min": "2026-05-26",
-        "max": "2026-09-26",
-        "distinct_days": 102,
-        "timeline": true,
-        "note": null
-      },
-      "series": [
-        {
-          "id": "kiewer_regime",
-          "kind": "frame",
-          "label": "Kiewer Regime",
-          "article_count": 415,
-          "share_pct": 6.34,
-          "peak": {
-            "week": "2026-W26",
-            "week_start": "2026-06-22",
-            "n": 41,
-            "share_pct": 8.61,
-            "z": 1.23
-          },
-          "quote": {
-            "date": "2026-06-22",
-            "week": "2026-W26",
-            "url": "https://news-front.su/2026/06/22/zachem-zelenskomu-vojna-s-belorussiej/",
-            "title": "Зачем Зеленскому война с Белоруссией?",
-            "section": null,
-            "quote": "Казалось бы, главе киевского режима точно не нужен еще один фронт."
-          }
-        },
-        {
-          "id": "russophobia",
-          "kind": "frame",
-          "label": "Russophobie",
-          "article_count": 247,
-          "share_pct": 3.78,
-          "peak": {
-            "week": "2026-W22",
-            "week_start": "2026-05-25",
-            "n": 25,
-            "share_pct": 6.23,
-            "z": 1.83
-          },
-          "quote": {
-            "date": "2026-05-26",
-            "week": "2026-W22",
-            "url": "https://news-front.su/2026/05/26/udary-po-voennym-obektam-v-kieve-stanut-sistemnymi/",
-            "title": "Удары по военным объектам в Киеве станут системными",
-            "section": null,
-            "quote": "Причина этого, опять же, – русофобский курс, выбранный правительством республики."
-          }
-        },
-        {
-          "id": "ukraine_fascist",
-          "kind": "frame",
-          "label": "Ukraine als faschistisch",
-          "article_count": 62,
-          "share_pct": 0.95,
-          "peak": {
-            "week": "2026-W22",
-            "week_start": "2026-05-25",
-            "n": 8,
-            "share_pct": 2.0,
-            "z": 2.23
-          },
-          "quote": {
-            "date": "2026-05-30",
-            "week": "2026-W22",
-            "url": "https://news-front.su/2026/05/30/mnenie-na-ukraine-vybrali-hutorskoj-variant-istorii-maksim-vaskov/",
-            "title": "Мнение: «На Украине выбрали хуторской вариант истории», - Максим Васьков",
-            "section": null,
-            "quote": "«Зеленский боится украинских нацистов, но сейчас господствующая идеология Украины — это нацизм."
-          }
-        },
-        {
-          "id": "vassal_proxy",
-          "kind": "frame",
-          "label": "Vasall / Stellvertreterkrieg",
-          "article_count": 43,
-          "share_pct": 0.66,
-          "peak": {
-            "week": "2026-W26",
-            "week_start": "2026-06-22",
-            "n": 6,
-            "share_pct": 1.26,
-            "z": 1.87
-          },
-          "quote": {
-            "date": "2026-06-23",
-            "week": "2026-W26",
-            "url": "https://news-front.su/2026/06/23/geroicheskaya-lichnost-kozya-morda/",
-            "title": "«Героическая личность - козья морда!»",
-            "section": null,
-            "quote": "Вариант продолжения прокси-войны на Украине, по сути, остается для Запада безальтернативным."
-          }
-        },
-        {
-          "id": "deindustrialization",
-          "kind": "frame",
-          "label": "Deindustrialisierung",
-          "article_count": 14,
-          "share_pct": 0.21,
-          "peak": {
-            "week": "2026-W23",
-            "week_start": "2026-06-01",
-            "n": 4,
-            "share_pct": 0.8,
-            "z": 2.84
-          },
-          "quote": {
-            "date": "2026-06-04",
-            "week": "2026-W23",
-            "url": "https://news-front.su/2026/06/04/zolotoj-vek-ameriki-tak-i-ne-nastupil/",
-            "title": "Золотой век Америки так и не наступил",
-            "section": null,
-            "quote": "Развернуть вспять неизбежные процессы деиндустриализации США Трампу не удалось."
-          }
-        },
-        {
-          "id": "afd_ban",
-          "kind": "frame",
-          "label": "AfD-Verbot",
-          "article_count": 0,
-          "share_pct": 0.0,
-          "peak": {
-            "week": "2026-W22",
-            "week_start": "2026-05-25",
-            "n": 0,
-            "share_pct": 0.0,
-            "z": 0.0
-          },
-          "quote": null
-        },
-        {
-          "id": "nord_stream",
-          "kind": "frame",
-          "label": "Nord Stream",
-          "article_count": 52,
-          "share_pct": 0.79,
-          "peak": {
-            "week": "2026-W36",
-            "week_start": "2026-08-31",
-            "n": 1,
-            "share_pct": 100.0,
-            "z": 4.12
-          },
-          "quote": {
-            "date": "2026-09-04",
-            "week": "2026-W36",
-            "url": "https://news-front.su/2026/09/04/evroparlamentarij-de-mazi-prizval-germaniyu-k-dialogu-s-rossiej/",
-            "title": "Европарламентарий Де Мази призвал Германию к диалогу с Россией",
-            "section": null,
-            "quote": "В качестве примера двойных стандартов политик привел подрыв газопроводов «Северный поток»."
-          }
-        },
-        {
-          "id": "hormuz",
-          "kind": "subject",
-          "label": "Straße von Hormus",
-          "article_count": 252,
-          "share_pct": 3.85,
+          "article_count": 502,
+          "share_pct": 1.11,
           "peak": {
             "week": "2026-W25",
             "week_start": "2026-06-15",
-            "n": 34,
-            "share_pct": 7.1,
-            "z": 1.95
+            "n": 61,
+            "share_pct": 1.99,
+            "z": 1.96
           },
           "quote": {
-            "date": "2026-06-19",
+            "date": "2026-06-18",
             "week": "2026-W25",
-            "url": "https://news-front.su/2026/06/19/podpisav-mirnoe-soglashenie-s-iranom-tramp-podpisal-prigovor-vsej-kievskoj-hunte/",
-            "title": "Подписав мирное соглашение с Ираном, Трамп подписал приговор всей киевской хунте",
+            "url": "https://germany.news-pravda.com/world/2026/06/18/286900.html",
+            "title": "Der neue Vertrag von Versailles: Im Schloss vor den Toren von Paris unterzeichnete der US-Präsident ein Rahmenabkommen, das sich wie eine iranische Siegesurkunde liest",
             "section": null,
-            "quote": "Разблокировка в течение 30 дней Ормузского пролива."
+            "quote": "Die Elefanten im Raum bleiben die Straße von Hormus und der Libanon."
           }
         },
         {
           "id": "sachsen_anhalt",
           "kind": "subject",
           "label": "Sachsen-Anhalt",
-          "article_count": 14,
-          "share_pct": 0.21,
+          "article_count": 1258,
+          "share_pct": 2.78,
           "peak": {
-            "week": "2026-W38",
-            "week_start": "2026-09-14",
-            "n": 3,
-            "share_pct": 1.13,
-            "z": 2.8
+            "week": "2026-W35",
+            "week_start": "2026-08-24",
+            "n": 261,
+            "share_pct": 7.21,
+            "z": 2.38
           },
           "quote": {
-            "date": "2026-09-19",
-            "week": "2026-W38",
-            "url": "https://news-front.su/2026/09/19/energeticheskij-apokalipsis-evropy-kto-vinovat-na-samom-dele/",
-            "title": "Энергетический апокалипсис Европы: кто виноват на самом деле?",
+            "date": "2026-08-29",
+            "week": "2026-W35",
+            "url": "https://germany.news-pravda.com/germany/2026/08/29/322890.html",
+            "title": "Eine Anti-AfD-Razzia aus fadenscheinigen Gründen und ein Neonazi-Eklat bei den Grünen",
             "section": null,
-            "quote": "Германского канцлера отхлестали по его рейтингу результаты выборов в Саксонии-Анхальте так, что он отменил все свои международные визиты."
+            "quote": "In Sachsen-Anhalt überschlagen sich die Ereignisse."
           }
         }
       ]

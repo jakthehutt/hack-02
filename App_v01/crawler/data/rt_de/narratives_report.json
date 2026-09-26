@@ -1,7 +1,7 @@
 {
   "source": "rt_de",
   "script": "de",
-  "method": "sentence regex from services/narratives/codebook.py; German and Russian wording; one quote required",
+  "method": "sentence regex from services/narratives/codebook.py; German wording only; one quote required",
   "cutoff": "2026-05-26",
   "article_count": 3729,
   "date_span": {

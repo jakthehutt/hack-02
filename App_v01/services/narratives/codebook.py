@@ -1,6 +1,6 @@
-"""Closed lexical codebook.
+"""Closed lexical codebook for German text.
 
-A hit is a sentence that contains the pattern, in German or Russian.
+A hit is a sentence that contains the pattern.
 It is a provenance signal about wording, not a finding that the sentence is false.
 """
 
@@ -22,54 +22,54 @@ PATTERNS: tuple[Pattern, ...] = (
         "kiewer_regime",
         "frame",
         "Kiewer Regime",
-        r"kiewer regime|киевск\w* режим",
+        r"kiewer regime",
     ),
     Pattern(
         "russophobia",
         "frame",
         "Russophobie",
-        r"russophob|russlandfeind|russlandhass|русофоб",
+        r"russophob|russlandfeind|russlandhass",
     ),
     Pattern(
         "ukraine_fascist",
         "frame",
         "Ukraine als faschistisch",
-        r"(asow|asov|bander).{0,60}(faschist|nazi)|(faschist|nazi).{0,60}(asow|asov|bander|ukrain)|(?:азов|бандер)\w*.{0,60}(?:фашист|нацист)|(?:фашист|нацист)\w*.{0,60}(?:азов|бандер|украин)",
+        r"(asow|asov|bander).{0,60}(faschist|nazi)|(faschist|nazi).{0,60}(asow|asov|bander|ukrain)",
     ),
     Pattern(
         "vassal_proxy",
         "frame",
         "Vasall / Stellvertreterkrieg",
-        r"stellvertreterkrieg|vasallenmodus|vasallenstaat|vasall(?:en)? der |прокси-войн|вассал",
+        r"stellvertreterkrieg|vasallenmodus|vasallenstaat|vasall(?:en)? der ",
     ),
     Pattern(
         "deindustrialization",
         "frame",
         "Deindustrialisierung",
-        r"deindustrial|деиндустриал",
+        r"deindustrial",
     ),
     Pattern(
         "afd_ban",
         "frame",
         "AfD-Verbot",
-        r"afd-verbot|verbotsverfahren gegen die afd|запрет\w{0,3} адг|адг.{0,30}запрет",
+        r"afd-verbot|verbotsverfahren gegen die afd",
     ),
     Pattern(
         "nord_stream",
         "frame",
         "Nord Stream",
-        r"nord stream|nordstream|северн\w* поток",
+        r"nord stream|nordstream",
     ),
     Pattern(
         "hormuz",
         "subject",
         "Straße von Hormus",
-        r"straße von hormus|strasse von hormus|ормузск",
+        r"straße von hormus|strasse von hormus",
     ),
     Pattern(
         "sachsen_anhalt",
         "subject",
         "Sachsen-Anhalt",
-        r"sachsen-anhalt|sachsen anhalt|саксон\w*-анхальт",
+        r"sachsen-anhalt|sachsen anhalt",
     ),
 )

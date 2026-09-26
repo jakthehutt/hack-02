@@ -26,7 +26,6 @@ SOURCES: tuple[tuple[str, Path], ...] = (
     ("rt_de", ARTICLES),
     ("sputnik_de", RUN / "sputnik_de" / "articles.jsonl"),
     ("pravda_de", RUN / "pravda_de" / "articles.jsonl"),
-    ("newsfront_de", RUN / "newsfront_de" / "articles.jsonl"),
     ("anti_spiegel", RUN / "anti_spiegel" / "articles.jsonl"),
     ("apolut", RUN / "apolut" / "articles.jsonl"),
     ("klagemauer", RUN / "klagemauer" / "articles.jsonl"),
@@ -149,7 +148,7 @@ def scan_rows(rows: list[dict], source: str) -> dict:
         return {
             "source": source,
             "script": "unknown",
-            "method": "sentence regex from services/narratives/codebook.py; German and Russian wording; one quote required",
+            "method": "sentence regex from services/narratives/codebook.py; German wording only; one quote required",
             "cutoff": "2026-05-26",
             "article_count": 0,
             "date_span": date_span(dated),
@@ -219,7 +218,7 @@ def scan_rows(rows: list[dict], source: str) -> dict:
     return {
         "source": source,
         "script": body_script(dated),
-        "method": "sentence regex from services/narratives/codebook.py; German and Russian wording; one quote required",
+        "method": "sentence regex from services/narratives/codebook.py; German wording only; one quote required",
         "cutoff": "2026-05-26",
         "article_count": len(dated),
         "date_span": span,
