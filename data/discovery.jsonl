@@ -1,0 +1,4 @@
+{"host": "de.rt.com", "source_id": "rt_de", "stage": "summary", "url_count": 10}
+{"host": "snanews.de", "source_id": "sputnik_de", "stage": "all", "status": "empty", "note": "Inspect saved homepage and add or edit adapters/{source_id}.json", "homepage_saved": false}
+{"host": "snanews.de", "source_id": "sputnik_de", "stage": "summary", "url_count": 0}
+{"host": "de.rt.com", "source_id": "rt_de", "stage": "summary", "url_count": 8}

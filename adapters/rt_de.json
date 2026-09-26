@@ -1,0 +1,5 @@
+{
+  "article_path_re": "/(artikel|news|kurzvideos|meinung|video|wirtschaft|sport|inland|ausland)/",
+  "homepage_paths": ["/", "/listing/nachrichten.amp"],
+  "min_chars": 400
+}

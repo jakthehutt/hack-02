@@ -1,0 +1,463 @@
+{
+    "id": "de_ru_propaganda_catalogue",
+    "version": "2026-09-26",
+    "language": "de",
+    "ranking_basis": "Editorial control and institutional proximity to the Russian state. Audience size is noted separately and does not raise or lower the rank.",
+    "disclaimer": "A listing is a provenance signal for journalists and researchers. It is not a verdict that every item from that source is false. Domestic German or Austrian outlets are included only where investigators have documented systematic republication of Russian state content or personal operational ties. Narrative disagreement with the German government is not, by itself, a reason for inclusion.",
+    "not_included": [
+      "German partisan, conspiracist, or opposition outlets with no documented operational tie to a Russian institution",
+      "Ephemeral Doppelgänger alias domains beyond the 25 May 2024 Federal Foreign Office snapshot",
+      "Outlets asserted only on secondary wikis without a government, court, or investigative citation"
+    ],
+    "ranks": [
+      {
+        "rank": 1,
+        "id": "state_german",
+        "label": "Official German services of the Russian state",
+        "meaning": "The Russian state owns the outlet or the channel and publishes in German under its own name.",
+        "entries": [
+          {
+            "id": "rt_de",
+            "name": "RT DE",
+            "operator": "ANO TV-Novosti (RT), funded by the Russian state and directed by the presidential administration",
+            "control": "state_media",
+            "language": "de",
+            "status": "EU broadcast and distribution ban since 2 March 2022 (Regulation (EU) 2022/350). German activities were ordered stopped in April 2022; the site and mirrors stayed reachable.",
+            "why_this_rank": "Flagship German-language state broadcaster. Highest editorial control and, among German-language Kremlin outlets, the largest measured audience.",
+            "reach_note": "Bundeszentrale für politische Bildung, Russland-Analysen 467: about 4 million visits in January 2025 across the original site and twelve mirrors.",
+            "domains": [
+              {"host": "de.rt.com", "role": "primary", "evidence": "eu_sanctions_domain_list"},
+              {"host": "deutsch.rt.com", "role": "primary", "evidence": "eu_sanctions_domain_list"},
+              {"host": "rt.com", "role": "parent", "evidence": "eu_sanctions_domain_list"},
+              {"host": "rtde.xyz", "role": "sanctioned_mirror", "evidence": "eu_sanctions_domain_list"},
+              {"host": "rtde.site", "role": "sanctioned_mirror_suffix", "evidence": "bnetza_dns_block_list_2025-02-24"},
+              {"host": "rtde.team", "role": "sanctioned_mirror_suffix", "evidence": "bnetza_dns_block_list_2025-02-24"},
+              {"host": "rtde.live", "role": "sanctioned_mirror_suffix", "evidence": "bnetza_dns_block_list_2025-02-24"},
+              {"host": "rtde.life", "role": "sanctioned_mirror_suffix", "evidence": "bnetza_dns_block_list_2025-02-24"},
+              {"host": "rtde.website", "role": "sanctioned_mirror_suffix", "evidence": "bnetza_dns_block_list_2025-02-24"},
+              {"host": "freede.tech", "role": "observed_mirror", "evidence": "same RT DE article served on de.rt.com and freede.tech, January 2025"}
+            ],
+            "channels": ["X account RTDE_OFFIZIELL (suspended and relaunched; status changes)", "Telegram", "Rumble", "Odysee"],
+            "evidence": [
+              {
+                "publisher": "Council of the EU",
+                "title": "Regulation (EU) 2022/350",
+                "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022R0350",
+                "date": "2022-03-01"
+              },
+              {
+                "publisher": "Bundesnetzagentur",
+                "title": "DNS blocks under EU sanctions regulations",
+                "url": "https://www.bundesnetzagentur.de/DE/Fachthemen/Digitales/Schutz/Netzneutralitaet/DNSsperren/AnordnungenGesetzlich_EU-Sanktionen.pdf",
+                "date": "2025-02-24"
+              },
+              {
+                "publisher": "bpb / Russland-Analysen",
+                "title": "Analyse: Die russische Propaganda wirkt (Nr. 467)",
+                "url": "https://www.bpb.de/themen/europa/russland-analysen/nr-467/563546/analyse-die-russische-propaganda-wirkt/",
+                "date": "2025"
+              }
+            ]
+          },
+          {
+            "id": "sputnik_de",
+            "name": "Sputnik Deutschland / SNA / Satellit",
+            "operator": "MIA Rossiya Segodnya",
+            "control": "state_media",
+            "language": "de",
+            "status": "Covered by the same March 2022 EU ban as RT. Editors continued working from Berlin under the names SNA and Satellit.",
+            "why_this_rank": "Second official German-language state newsroom, same institutional rank as RT DE, smaller public brand after the ban.",
+            "reach_note": "OstWest filmed editor-in-chief Sergei Feoktistov at a villa in Berlin-Steglitz in autumn 2022. bpB Russland-Analysen 467.",
+            "domains": [
+              {"host": "sputniknews.com", "role": "parent", "evidence": "eu_sanctions_domain_list"},
+              {"host": "de.sputniknews.com", "role": "pre_ban_german_edition", "evidence": "historical"},
+              {"host": "snanews.de", "role": "successor", "evidence": "bnetza_lists_under_regulation_2022_350"}
+            ],
+            "channels": ["Telegram", "continued Berlin newsroom"],
+            "evidence": [
+              {
+                "publisher": "Council of the EU",
+                "title": "Regulation (EU) 2022/350",
+                "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022R0350",
+                "date": "2022-03-01"
+              },
+              {
+                "publisher": "bpb / Russland-Analysen",
+                "title": "Analyse: Die russische Propaganda wirkt (Nr. 467)",
+                "url": "https://www.bpb.de/themen/europa/russland-analysen/nr-467/563546/analyse-die-russische-propaganda-wirkt/",
+                "date": "2025"
+              }
+            ]
+          },
+          {
+            "id": "mid_embassy_de",
+            "name": "Russian MFA and Embassy in Berlin, German output",
+            "operator": "Ministry of Foreign Affairs of the Russian Federation; Embassy in the Federal Republic of Germany",
+            "control": "official_diplomatic",
+            "language": "de",
+            "status": "Official state speech, not a covert outlet.",
+            "why_this_rank": "Primary source of official Russian positions in German. Narrower audience than RT DE, same institutional author.",
+            "domains": [
+              {"host": "mid.ru", "role": "ministry", "evidence": "official"},
+              {"host": "germany.mid.ru", "role": "embassy", "evidence": "official"}
+            ],
+            "channels": ["Embassy Telegram and social accounts"],
+            "evidence": [
+              {
+                "publisher": "Embassy of the Russian Federation in Germany",
+                "title": "Official mission site",
+                "url": "https://germany.mid.ru/",
+                "date": "current"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "rank": 2,
+        "id": "covert_german",
+        "label": "Covert operations whose product is German or aimed at German politics",
+        "meaning": "Not branded as RT or Sputnik. Governments or technical investigators have attributed the infrastructure to Russian state contractors or services. Domains rotate; treat hostnames as a dated snapshot.",
+        "entries": [
+          {
+            "id": "doppelganger",
+            "name": "Doppelgänger (also called RRN / Recent Reliable News)",
+            "operator": "Social Design Agency and Structura National Technologies, attributed by the EU, France, the United States, and Meta",
+            "control": "covert_io",
+            "language": "de",
+            "status": "Active German-language campaign documented by the Federal Foreign Office through May 2024. Domains and social accounts are replaced after exposure.",
+            "why_this_rank": "Largest documented covert operation against Germany: cloned news sites plus invented German portals, fed by inauthentic social accounts. Below RT only because it hides the state brand.",
+            "reach_note": "Federal Foreign Office: more than 50,000 inauthentic X accounts and 1.8 million German posts in six weeks (mid-December 2023 to end of January 2024); 12,970 articles on the fake portals from March 2023 to 25 May 2024.",
+            "domains": [
+              {"host": "rrn.media", "role": "multilingual_hub", "path": "/de", "evidence": "aa_report_2024-06-05"},
+              {"host": "bild.pics", "role": "clone", "imitates": "bild.de", "aliases": ["bild.beauty", "bild.eu.com", "bild.ws"], "evidence": "aa_snapshot_2024-05-25"},
+              {"host": "spiegel.ltd", "role": "clone", "imitates": "spiegel.de", "aliases": ["spiegel.ink", "spiegel.work", "spiegel.life", "spiegel.live"], "evidence": "aa_snapshot_2024-05-25"},
+              {"host": "welt.ltd", "role": "clone", "imitates": "welt.de", "aliases": ["welt.pm", "welt.media", "welt.ws"], "evidence": "aa_snapshot_2024-05-25"},
+              {"host": "faz.ltd", "role": "clone", "imitates": "faz.net", "aliases": ["faz.lol", "faz.life", "faz.agency"], "evidence": "aa_snapshot_2024-05-25"},
+              {"host": "sueddeutsche.ltd", "role": "clone", "imitates": "sueddeutsche.de", "aliases": ["sueddeutsche.co", "sueddeutsche.cc", "sueddeutsche.online", "sueddeutsche.me"], "evidence": "aa_snapshot_2024-05-25"},
+              {"host": "t-online.life", "role": "clone", "imitates": "t-online.de", "aliases": ["t-online.cfd", "t-online.today", "t-online.online"], "evidence": "aa_snapshot_2024-05-25"},
+              {"host": "morgenpost.ltd", "role": "clone", "imitates": "morgenpost.de", "evidence": "aa_snapshot_2024-05-25"},
+              {"host": "tagesspiegel.ltd", "role": "clone", "imitates": "tagesspiegel.de", "aliases": ["tagesspiegel.co"], "evidence": "aa_snapshot_2024-05-25"},
+              {"host": "nd-aktuell.net", "role": "clone", "imitates": "nd-aktuell.de", "aliases": ["nd-aktuell.co", "nd-aktuell.pro", "nd-aktuell.lol"], "evidence": "aa_snapshot_2024-05-25"},
+              {"host": "meisterurian.io", "role": "fake_portal", "topic": "geopolitics, migration", "evidence": "aa_snapshot_2024-05-25"},
+              {"host": "arbeitspause.org", "role": "fake_portal", "topic": "strikes, farmers' protests", "evidence": "aa_snapshot_2024-05-25"},
+              {"host": "wanderfalke.net", "role": "fake_portal", "topic": "Ukraine, migration, domestic politics", "evidence": "aa_snapshot_2024-05-25"},
+              {"host": "grenzezank.com", "role": "fake_portal", "topic": "geopolitics, United States", "evidence": "aa_snapshot_2024-05-25"},
+              {"host": "besuchszweck.org", "role": "fake_portal", "topic": "migration, crime, asylum", "evidence": "aa_snapshot_2024-05-25"},
+              {"host": "derbayerischelowe.info", "role": "fake_portal", "topic": "Bavaria, identity", "evidence": "aa_snapshot_2024-05-25"},
+              {"host": "grunehummel.com", "role": "fake_portal", "topic": "climate", "evidence": "aa_snapshot_2024-05-25"},
+              {"host": "miastagebuch.com", "role": "fake_portal", "topic": "health, entertainment", "evidence": "aa_snapshot_2024-05-25"},
+              {"host": "derglaube.com", "role": "fake_portal", "topic": "religion", "evidence": "aa_snapshot_2024-05-25"},
+              {"host": "kaputteampel.com", "role": "fake_portal", "topic": "federal government", "evidence": "aa_snapshot_2024-05-25"},
+              {"host": "deintelligenz.com", "role": "fake_portal", "topic": "digitalisation", "evidence": "aa_snapshot_2024-05-25"},
+              {"host": "hauynescherben.net", "role": "fake_portal", "topic": "economy, energy", "evidence": "aa_snapshot_2024-05-25"},
+              {"host": "brennendefrage.com", "role": "fake_portal", "topic": "geopolitics, Ukraine", "evidence": "aa_snapshot_2024-05-25"},
+              {"host": "derleitstern.com", "role": "fake_portal", "topic": "astrology", "evidence": "aa_snapshot_2024-05-25"},
+              {"host": "derrattenfanger.net", "role": "fake_portal", "topic": "Ukraine, domestic politics", "evidence": "aa_snapshot_2024-05-25"}
+            ],
+            "evidence": [
+              {
+                "publisher": "Auswärtiges Amt",
+                "title": "Germany Targeted by the Pro-Russian Disinformation Campaign Doppelgänger",
+                "url": "https://www.auswaertiges-amt.de/resource/blob/2682484/2da31936d1cbeb9faec49df74d8bbe2e/technischer-berichtdesinformationskampagne-doppelgaenger-1-data.pdf",
+                "date": "2024-06-05"
+              },
+              {
+                "publisher": "EU DisinfoLab and Qurium",
+                "title": "Doppelganger",
+                "url": "https://www.disinfo.eu/doppelganger-operation/",
+                "date": "2022-09-27"
+              },
+              {
+                "publisher": "Qurium",
+                "title": "Under the hood of a Doppelgänger",
+                "url": "https://www.qurium.org/alerts/under-the-hood-of-a-doppelganger",
+                "date": "2022"
+              }
+            ]
+          },
+          {
+            "id": "pravda_de",
+            "name": "Pravda Deutschland (Portal Kombat)",
+            "operator": "Pravda / Portal Kombat network, documented by VIGINUM (SGDSN). German pages machine-translate Telegram and Russian media.",
+            "control": "covert_io",
+            "language": "de",
+            "status": "German nodes remained reachable after other language editions were blocked in some countries.",
+            "why_this_rank": "Industrial republisher of Russian state and proxy content into German. No newsroom, no imprint. One tier below Doppelgänger because it aggregates rather than impersonating Bild or Spiegel.",
+            "domains": [
+              {"host": "news-pravda.com", "role": "network_suffix", "evidence": "viginum"},
+              {"host": "germany.news-pravda.com", "role": "german_edition", "evidence": "viginum_and_live"},
+              {"host": "pravda-de.com", "role": "earlier_german_domain", "evidence": "registered 2024-02-18, cited by VIGINUM-era reporting"}
+            ],
+            "evidence": [
+              {
+                "publisher": "VIGINUM / SGDSN",
+                "title": "Portal Kombat",
+                "url": "https://www.sgdsn.gouv.fr/files/files/Publications/20240212_NP_SGDSN_VIGINUM_PORTAL-KOMBAT-NETWORK_ENG_VF.pdf",
+                "date": "2024-02"
+              },
+              {
+                "publisher": "dekoder",
+                "title": "Propaganda maßgeschneidert: So wirkt Russlands Pravda in Deutschland und Frankreich",
+                "url": "https://www.dekoder.org/de/article/russland-propaganda-pravda-deutschland-frankreich/",
+                "date": "2025"
+              }
+            ]
+          },
+          {
+            "id": "newsfront_de",
+            "name": "NewsFront, German desk",
+            "operator": "LLC Media Group NewsFront, Crimea, founded by Konstantin Knyrik",
+            "control": "covert_io",
+            "language": "de",
+            "status": "US sanctions from 2021 describe FSB direction. EU broadcast ban effective 8 April 2025 (16th sanctions package).",
+            "why_this_rank": "Secret-service-linked outlet with a dedicated German edition. Less infrastructure in Germany than Doppelgänger, clearer service tie than the Pravda clones.",
+            "domains": [
+              {"host": "news-front.su", "role": "eu_listed", "evidence": "regulation_eu_2025_395"},
+              {"host": "news-front.info", "role": "older_apex", "evidence": "observed"},
+              {"host": "de.news-front.info", "role": "german_edition", "evidence": "observed_german_desk"}
+            ],
+            "evidence": [
+              {
+                "publisher": "Council of the EU",
+                "title": "Notice of inclusion of NewsFront and seven other outlets",
+                "url": "https://eur-lex.europa.eu/eli/C/2025/1466/oj/eng",
+                "date": "2025-02"
+              },
+              {
+                "publisher": "WDR / Süddeutsche Zeitung via tagesschau",
+                "title": "Russische Propaganda: Sanktionen oft wirkungslos",
+                "url": "https://www.tagesschau.de/investigativ/wdr/russland-propaganda-newsfront-eu-usa-sanktionen-ukraine-100.html",
+                "date": "2023-08-24"
+              }
+            ]
+          },
+          {
+            "id": "voice_of_europe",
+            "name": "Voice of Europe",
+            "operator": "Prague company sanctioned by the EU together with Viktor Medvedchuk and Artem Marchevskyi",
+            "control": "covert_io",
+            "language": "en",
+            "status": "EU asset freeze and travel bans, May 2024. Site language is English. Included because the documented political target was German and other EU candidates, not a German newsroom.",
+            "why_this_rank": "Covert influence outlet aimed at German parliamentary politics. Ranked with covert operations, and flagged as not German-language.",
+            "domains": [
+              {"host": "voiceofeurope.com", "role": "primary", "evidence": "eu_sanctions_2024-05"}
+            ],
+            "evidence": [
+              {
+                "publisher": "Reuters",
+                "title": "EU imposes sanctions on Voice of Europe, businessmen over Russian disinformation",
+                "url": "https://www.reuters.com/world/europe/eu-sanctions-voice-europe-related-businessmen-czech-ministry-says-2024-05-27/",
+                "date": "2024-05-27"
+              },
+              {
+                "publisher": "tagesschau",
+                "title": "EU sperrt Plattform Voice of Europe",
+                "url": "https://www.tagesschau.de/inland/innenpolitik/voice-of-europe-sanktionen-eu-afd-100.html",
+                "date": "2024-05-17"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "rank": 3,
+        "id": "upstream_wires",
+        "label": "Sanctioned Russian wires that German desks translate",
+        "meaning": "These outlets are not German newsrooms. Rank 1 and rank 2 sites republish them. A link to one of these domains is a lineage signal.",
+        "entries": [
+          {
+            "id": "ria",
+            "name": "RIA Novosti",
+            "operator": "MIA Rossiya Segodnya",
+            "control": "state_media",
+            "language": "ru",
+            "status": "EU broadcast ban from May 2024, together with Izvestia and Rossiyskaya Gazeta.",
+            "domains": [{"host": "ria.ru", "role": "primary"}],
+            "evidence": [
+              {
+                "publisher": "tagesschau",
+                "title": "EU sperrt Plattform Voice of Europe",
+                "url": "https://www.tagesschau.de/inland/innenpolitik/voice-of-europe-sanktionen-eu-afd-100.html",
+                "date": "2024-05-17"
+              }
+            ]
+          },
+          {
+            "id": "tass",
+            "name": "TASS",
+            "operator": "Russian state news agency",
+            "control": "state_media",
+            "language": "ru",
+            "domains": [{"host": "tass.com", "role": "primary"}]
+          },
+          {
+            "id": "izvestia",
+            "name": "Izvestia",
+            "operator": "Sanctioned with RIA Novosti in May 2024",
+            "control": "state_media",
+            "language": "ru",
+            "domains": [{"host": "iz.ru", "role": "primary"}]
+          },
+          {
+            "id": "rg",
+            "name": "Rossiyskaya Gazeta",
+            "operator": "Official gazette of the Russian government; EU broadcast ban May 2024",
+            "control": "state_media",
+            "language": "ru",
+            "domains": [{"host": "rg.ru", "role": "primary"}]
+          },
+          {
+            "id": "lenta_south_strategic",
+            "name": "Lenta, SouthFront, Strategic Culture Foundation, EADaily, Fondsk, RuBaltic, Krasnaya Zvezda",
+            "operator": "Mixed state and proxy outlets added to the EU broadcast ban effective 8 April 2025",
+            "control": "state_or_proxy",
+            "language": "ru_en",
+            "status": "Mostly Russian or English. Listed because German-language operations cite and translate them. SouthFront's listed domain is southfront.press; Strategic Culture's listed domain is strategic-culture.su.",
+            "domains": [
+              {"host": "lenta.ru", "role": "eu_16th_package"},
+              {"host": "southfront.press", "role": "eu_16th_package"},
+              {"host": "strategic-culture.su", "role": "eu_16th_package"},
+              {"host": "fondsk.ru", "role": "eu_16th_package"},
+              {"host": "rubaltic.ru", "role": "eu_16th_package"},
+              {"host": "eadaily.com", "role": "eu_16th_package"},
+              {"host": "tvzvezda.ru", "role": "eu_16th_package"},
+              {"host": "tsargrad.tv", "role": "proxy_often_cited"}
+            ],
+            "evidence": [
+              {
+                "publisher": "Council of the EU",
+                "title": "Notice of inclusion, 16th package media list",
+                "url": "https://eur-lex.europa.eu/eli/C/2025/1466/oj/eng",
+                "date": "2025-02"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "rank": 4,
+        "id": "russia_based_german_operators",
+        "label": "German-speaking operators based in Russia",
+        "meaning": "Individuals who publish in German from Russia and who researchers have tied to Russian state media. They are not the state broadcaster.",
+        "entries": [
+          {
+            "id": "anti_spiegel",
+            "name": "Anti-Spiegel (Thomas Röper)",
+            "operator": "Thomas Röper, St. Petersburg",
+            "control": "russia_based_operator",
+            "language": "de",
+            "status": "Independent site. bpB Russland-Analysen 456 records him as a guest on Russian state media and RT DE, and as a self-described correspondent from occupied Ukraine. This catalogue does not assert that the Russian state funds the site.",
+            "why_this_rank": "Durable German-language brand inside the pro-Kremlin scene, one step removed from state editorial control.",
+            "domains": [{"host": "anti-spiegel.ru", "role": "primary"}],
+            "evidence": [
+              {
+                "publisher": "bpb / Russland-Analysen",
+                "title": "Russland-Analysen Nr. 456",
+                "url": "https://www.bpb.de/system/files/dokument_pdf/Russland-Analysen_Nr._456.pdf",
+                "date": "2024"
+              }
+            ]
+          },
+          {
+            "id": "alina_lipp",
+            "name": "Neues aus Russland (Alina Lipp)",
+            "operator": "Alina Lipp",
+            "control": "russia_based_operator",
+            "language": "de",
+            "status": "bpB Russland-Analysen 456: sold material to Russian state media and appeared as a correspondent from occupied areas. Distribution is mainly Telegram, not a stable news domain.",
+            "why_this_rank": "Same class as Anti-Spiegel: a German voice produced from the Russian side of the war, not an official service.",
+            "channels": ["Telegram: Neues aus Russland"],
+            "evidence": [
+              {
+                "publisher": "bpb / Russland-Analysen",
+                "title": "Russland-Analysen Nr. 456",
+                "url": "https://www.bpb.de/system/files/dokument_pdf/Russland-Analysen_Nr._456.pdf",
+                "date": "2024"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "rank": 5,
+        "id": "domestic_relays",
+        "label": "DACH outlets that relay the outlets above",
+        "meaning": "German, Austrian, or Swiss media. They are not Russian state organs. Included only for a documented relay or a documented personal tie to RT DE staff. Do not score them as state media.",
+        "entries": [
+          {
+            "id": "apolut",
+            "name": "Apolut (Ken Jebsen)",
+            "operator": "Kayvan Soufi-Siavash, formerly KenFM",
+            "control": "domestic_amplifier",
+            "language": "de",
+            "country": "DE",
+            "status": "bpB Russland-Analysen 456: personal relationship with Ivan Rodionov, former editor-in-chief of RT DE, and attendance at Kremlin-affiliated events unrelated to the outlet's own newsroom.",
+            "domains": [{"host": "apolut.net", "role": "primary"}],
+            "evidence": [
+              {
+                "publisher": "bpb / Russland-Analysen",
+                "title": "Russland-Analysen Nr. 456",
+                "url": "https://www.bpb.de/system/files/dokument_pdf/Russland-Analysen_Nr._456.pdf",
+                "date": "2024"
+              }
+            ]
+          },
+          {
+            "id": "klagemauer",
+            "name": "Klagemauer.TV",
+            "operator": "Swiss alternative outlet",
+            "control": "domestic_amplifier",
+            "language": "de",
+            "country": "CH",
+            "status": "bpB Russland-Analysen 456: promoted RT DE and redistributed material from Alina Lipp and Thomas Röper.",
+            "domains": [{"host": "klagemauer.tv", "role": "primary"}],
+            "evidence": [
+              {
+                "publisher": "bpb / Russland-Analysen",
+                "title": "Russland-Analysen Nr. 456",
+                "url": "https://www.bpb.de/system/files/dokument_pdf/Russland-Analysen_Nr._456.pdf",
+                "date": "2024"
+              }
+            ]
+          },
+          {
+            "id": "aam",
+            "name": "Alles Ausser Mainstream (Bodo Schiffmann)",
+            "operator": "Bodo Schiffmann",
+            "control": "domestic_amplifier",
+            "language": "de",
+            "country": "DE",
+            "status": "bpB Russland-Analysen 456: after the EU ban, his Telegram channel temporarily republished RT DE output. A relay episode, not an owned service.",
+            "evidence": [
+              {
+                "publisher": "bpb / Russland-Analysen",
+                "title": "Russland-Analysen Nr. 456",
+                "url": "https://www.bpb.de/system/files/dokument_pdf/Russland-Analysen_Nr._456.pdf",
+                "date": "2024"
+              }
+            ]
+          },
+          {
+            "id": "auf1",
+            "name": "AUF1 (Stefan Magnet)",
+            "operator": "Stefan Magnet",
+            "control": "domestic_amplifier",
+            "language": "de",
+            "country": "AT",
+            "status": "bpB Russland-Analysen 456 records a personal political trip to Moscow with FPÖ members. That is proximity, not proof the channel is a Russian editorial desk. Keep at the bottom of the catalogue.",
+            "domains": [{"host": "auf1.tv", "role": "primary"}],
+            "evidence": [
+              {
+                "publisher": "bpb / Russland-Analysen",
+                "title": "Russland-Analysen Nr. 456",
+                "url": "https://www.bpb.de/system/files/dokument_pdf/Russland-Analysen_Nr._456.pdf",
+                "date": "2024"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  
