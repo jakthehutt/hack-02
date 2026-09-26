@@ -1,0 +1,5 @@
+{
+  "article_path_re": "/",
+  "homepage_paths": ["/", "/politik", "/wirtschaft"],
+  "min_chars": 400
+}

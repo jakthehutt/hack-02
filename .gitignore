@@ -29,5 +29,9 @@ dist/
 # Logs & local data (keep seeds in git)
 data/cache/
 data/runs/
+data/raw/
+data/articles/
+data/embeddings/
 App_v01/data/runs/
 *.log
+*.html
