@@ -16,6 +16,28 @@ from pathlib import Path
 
 from services.narratives.codebook import PATTERNS
 
+# Same rule as claims.trailing_z. Kept local so the scanner does not import the crawl stack.
+BASELINE_WEEKS = 8
+MIN_COUNT = 5
+
+
+def trailing_z(shares: list[float], counts: list[int], baseline: int = BASELINE_WEEKS, min_count: int = MIN_COUNT) -> list[float | None]:
+    """Z of this week's share against the previous `baseline` weeks, excluding itself."""
+    scores: list[float | None] = []
+    for index, share in enumerate(shares):
+        if counts[index] < min_count or index < baseline:
+            scores.append(None)
+            continue
+        window = shares[index - baseline : index]
+        mean = sum(window) / baseline
+        variance = sum((value - mean) ** 2 for value in window) / baseline
+        sd = math.sqrt(variance)
+        if sd < 1e-12:
+            scores.append(None)
+            continue
+        scores.append((share - mean) / sd)
+    return scores
+
 ROOT = Path(__file__).resolve().parents[2]
 ARTICLES = ROOT / "crawler" / "data" / "rt_de" / "articles.jsonl"
 REPORT = ROOT / "crawler" / "data" / "rt_de" / "narratives_report.json"
@@ -85,13 +107,6 @@ def _pick_quotes(hits: list[dict]) -> list[dict]:
         if len(quotes) == 3:
             break
     return quotes
-
-
-def z_scores(shares: list[float]) -> list[float]:
-    mean = sum(shares) / len(shares)
-    variance = sum((share - mean) ** 2 for share in shares) / len(shares)
-    sd = math.sqrt(variance) or 1e-9
-    return [(share - mean) / sd for share in shares]
 
 
 def load_rows(path: Path) -> list[dict]:
@@ -190,8 +205,12 @@ def scan_rows(rows: list[dict], source: str) -> dict:
             round(100 * count / volume[week], 2) if volume[week] else 0
             for week, count in zip(weeks, weekly_n)
         ]
-        scores = z_scores(weekly_share)
-        peak_i = max(range(len(weeks)), key=lambda i: (scores[i], weekly_n[i]))
+        scores = trailing_z([share / 100 for share in weekly_share], weekly_n)
+        scored = [i for i, score in enumerate(scores) if score is not None]
+        if scored:
+            peak_i = max(scored, key=lambda i: (scores[i], weekly_n[i]))
+        else:
+            peak_i = max(range(len(weeks)), key=lambda i: (weekly_n[i], weekly_share[i]))
         peak_week = weeks[peak_i]
         peak_hits = [hit for hit in matched if hit["week"] == peak_week]
         quotes = _pick_quotes(peak_hits)
@@ -209,7 +228,7 @@ def scan_rows(rows: list[dict], source: str) -> dict:
                     "week_start": week_monday(peak_week).isoformat(),
                     "n": weekly_n[peak_i],
                     "share_pct": weekly_share[peak_i],
-                    "z": round(scores[peak_i], 2),
+                    "z": None if scores[peak_i] is None else round(scores[peak_i], 2),
                 },
                 "quotes": quotes,
             }
@@ -250,10 +269,11 @@ def _print_source(report: dict) -> None:
         print(f"  note: {span['note']}")
     for series in report["series"]:
         peak = series["peak"]
+        z_text = "–" if peak["z"] is None else f"{peak['z']:.2f}"
         print(
             f"  {series['kind']:7} {series['label']:28} "
             f"n={series['article_count']:4} share={series['share_pct']:5.1f}%  "
-            f"peak {peak['week_start']} {peak['share_pct']:5.1f}% z={peak['z']}"
+            f"peak {peak['week_start']} {peak['share_pct']:5.1f}% z={z_text}"
         )
 
 

@@ -1,15 +1,18 @@
 import React from 'react';
-import { Card } from '../ds/index.js';
-import { CardHead, useWidth } from './shared.jsx';
+import { useWidth } from './shared.jsx';
 import { shortName } from './Heatmap.jsx';
 import { fmtHours } from '../data/derive.js';
 
-const H = 440;
-const NODE_W = 148;
+const H = 400;
 const NODE_H = 46;
 
 // Columns follow the direction content usually travels: Moscow wires, then
 // official German services, covert networks, Russia-based operators, DACH relays.
+const fit = (label, w) => {
+  const max = Math.floor((w - 22) / 7.2);
+  return label.length > max ? label.slice(0, max - 1) + '…' : label;
+};
+
 export const COLUMNS = [
   { label: 'Upstream wires', test: s => s.rank === 3 },
   { label: 'State German', test: s => s.rank === 1 },
@@ -22,6 +25,8 @@ export function PropagationMap({ nodes, links, selected, onSelect }) {
   const [ref, width] = useWidth(900);
   const [hover, setHover] = React.useState(null);
 
+  // Nodes shrink to leave at least 40px of link run between columns.
+  const NODE_W = Math.max(96, Math.min(168, (width - 16 - (COLUMNS.length - 1) * 40) / COLUMNS.length));
   const colX = k => 8 + k * ((width - NODE_W - 16) / (COLUMNS.length - 1));
   const pos = {};
   COLUMNS.forEach((c, k) => {
@@ -100,7 +105,7 @@ export function PropagationMap({ nodes, links, selected, onSelect }) {
               <rect className="body" width={NODE_W} height={NODE_H} rx={12} fill={sel ? 'var(--accent-primary)' : n.rank === 3 ? 'var(--beige-100)' : 'var(--white)'}
                 stroke="var(--black)" strokeWidth={2.5} transform={sel ? 'translate(2,2)' : undefined} />
               <g transform={sel ? 'translate(2,2)' : undefined}>
-                <text x={12} y={19} style={{ font: '600 13px var(--font-body)', fill: sel ? 'var(--white)' : 'var(--black)' }}>{shortName(n)}</text>
+                <text x={12} y={19} style={{ font: '600 13px var(--font-body)', fill: sel ? 'var(--white)' : 'var(--black)' }}>{fit(shortName(n), NODE_W)}<title>{n.name}</title></text>
                 <text x={12} y={35} style={{ font: '500 11px var(--font-mono)', fill: sel ? 'var(--white)' : 'var(--text-muted)' }}>
                   {d.out ? `↗ ${d.out}` : ''}{d.out && d.in ? '  ' : ''}{d.in ? `↘ ${d.in}` : ''}{!d.in && !d.out ? 'no links' : ''}
                 </text>
@@ -128,8 +133,8 @@ export function LagHistogram({ bins, highlight }) {
           const bh = (b.count / max) * (h - m.t - m.b);
           const hi = highlight ? b.edges.filter(e => highlight.has(e)).length : 0;
           const hh = (hi / max) * (h - m.t - m.b);
-          const x = m.l + k * bw + 2;
-          const w = bw - 4;
+          const x = m.l + k * bw + (bw - Math.min(bw - 4, 72)) / 2;
+          const w = Math.min(bw - 4, 72);
           return (
             <g key={k} onPointerEnter={() => setHover(k)}>
               <rect className="bar-rect" x={x} y={h - m.b - bh} width={w} height={bh} rx={4} fill={highlight ? 'var(--grey-200)' : 'var(--black)'}

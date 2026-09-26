@@ -3,13 +3,16 @@ import { FileText, Crosshair, Radio as RadioIcon, Timer, TrendingUp, Zap } from 
 import { Card, Badge } from '../ds/index.js';
 import { AnimatedNumber, CardHead, Sparkline } from '../components/shared.jsx';
 import { Heatmap, shortName } from '../components/Heatmap.jsx';
-import { kpis, spikes, movers, visibleSeries, fmtWeek, fmtPct, fmtHours } from '../data/derive.js';
+import { kpis, spikes, movers, visibleSeries, fmtWeek, fmtPct } from '../data/derive.js';
 
 function Kpi({ icon: Icon, label, value, decimals, suffix, foot }) {
   return (
     <Card interactive padding={24}>
       <div className="kpi-label"><Icon size={14} strokeWidth={2.5} />{label}</div>
-      <div className="kpi-value"><AnimatedNumber value={value} decimals={decimals} />{suffix && <small>{suffix}</small>}</div>
+      <div className="kpi-value">
+        {value == null ? '–' : <AnimatedNumber value={value} decimals={decimals} />}
+        {suffix && value != null && <small>{suffix}</small>}
+      </div>
       {foot && <div className="kpi-foot">{foot}</div>}
     </Card>
   );
@@ -27,13 +30,15 @@ export function Overview({ data, filters, focus, onDrill }) {
     <>
       <div className="grid grid-kpi">
         <Kpi icon={FileText} label="Articles scanned" value={k.articles}
-          foot={<>{k.active} of {k.sources} outlets active</>} />
-        <Kpi icon={Crosshair} label="Frame matches" value={k.hits}
-          foot={<><Badge tone="primary">{fmtPct(k.hitRate, 1)}</Badge> of articles</>} />
+          foot={k.full
+            ? <>{k.active} of {k.sources} outlets active</>
+            : <>{k.active} of {k.sources} outlets have observed weeks in range</>} />
+        <Kpi icon={Crosshair} label="Frame hits" value={k.hits}
+          foot={<>{k.hitsPer100.toFixed(1)} per 100 articles</>} />
         <Kpi icon={RadioIcon} label="Propagation edges" value={k.edges}
-          foot={<>{data.edges.filter(e => !e.synthetic).length} observed · rest mocked</>} />
-        <Kpi icon={Timer} label="Median pickup lag" value={lagH >= 48 ? lagH / 24 : lagH} decimals={1} suffix={lagH >= 48 ? 'days' : 'hours'}
-          foot={<>from first publish to relay</>} />
+          foot={<>{k.observedEdges} observed · rest generated</>} />
+        <Kpi icon={Timer} label="Median pickup lag" value={lagH == null ? null : (lagH >= 48 ? lagH / 24 : lagH)} decimals={1} suffix={lagH == null ? null : (lagH >= 48 ? 'days' : 'hours')}
+          foot={<>observed edges, first publish to relay</>} />
       </div>
 
       <Heatmap data={data} seriesList={seriesList} lo={lo} hi={hi} metric={metric} selected={focus}
@@ -41,7 +46,7 @@ export function Overview({ data, filters, focus, onDrill }) {
 
       <div className="grid grid-2-even">
         <Card padding={28}>
-          <CardHead title="Spikes" sub="Weeks where a frame ran far above that outlet’s own baseline (z-score of weekly share, at least 4 articles)." />
+          <CardHead title="Spikes" sub="Trailing eight-week z-score of weekly share, current week excluded, at least 5 articles, z ≥ 1.8. Only outlets whose weekly counts were observed." />
           {sp.length === 0 ? <div className="empty">No spikes in this range. Widen the range or show all kinds.</div> : (
             <div className="list">
               {sp.map(s => (
@@ -63,7 +68,7 @@ export function Overview({ data, filters, focus, onDrill }) {
         </Card>
 
         <Card padding={28}>
-          <CardHead title="Movers" sub="Pooled share in the last 4 weeks (shaded) against the weeks before." />
+          <CardHead title="Movers" sub="Pooled share among outlets with observed weekly counts. The shaded band is the last 4 weeks, against the weeks before. Gaps are weeks with no crawled volume." />
           <div className="list">
             {mv.map(m => (
               <button key={m.series.id} className="list-row" style={{ gridTemplateColumns: '1fr auto auto' }}

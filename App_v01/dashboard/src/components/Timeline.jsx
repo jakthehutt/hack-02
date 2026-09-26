@@ -72,13 +72,13 @@ export function Timeline({ data, series, metric, lo, hi, focus, onFocus }) {
     e.preventDefault();
   };
 
-  const totals = Object.fromEntries(lines.map(l => [l.source.id, l.points.reduce((a, p) => a + (p.value == null ? 0 : p.n), 0)]));
+  const totals = Object.fromEntries(lines.map(l => [l.source.id, l.observed ? l.points.reduce((a, p) => a + (p.n || 0), 0) : null]));
 
   return (
     <Card padding={28}>
       <CardHead
         title={series.label}
-        sub={`Weekly ${metric === 'share' ? 'share of articles' : 'article count'} · ${fmtWeek(weeks[0])} – ${fmtWeek(weeks[n - 1])}. Gaps mean the outlet wasn’t crawled that week.`}
+        sub={`Weekly ${metric === 'share' ? 'share of articles' : 'article count'} · ${fmtWeek(weeks[0])} – ${fmtWeek(weeks[n - 1])}. Lines are drawn only where weekly counts were observed. Gaps are weeks with no crawled volume.`}
       >
         <TableToggle value={table} onChange={setTable} />
       </CardHead>
@@ -104,7 +104,7 @@ export function Timeline({ data, series, metric, lo, hi, focus, onFocus }) {
               </g>
             ))}
             <line className="axis-line" x1={M.l} x2={width - M.r} y1={y(0)} y2={y(0)} />
-            {weeks.map((w, k) => (k % every === 0 || k === n - 1) && (
+            {weeks.map((w, k) => (k % every === 0 || (k === n - 1 && (n - 1) % every >= every / 2)) && (
               <text key={w.week} className="axis-text" x={x(k)} y={H - 8} textAnchor="middle">{fmtWeek(w)}</text>
             ))}
 
@@ -166,7 +166,7 @@ export function Timeline({ data, series, metric, lo, hi, focus, onFocus }) {
       <div className="legend" role="group" aria-label="Focus an outlet">
         {lines.map(l => (
           <button key={l.source.id} className="chip" aria-pressed={l === focused} onClick={() => onFocus(l.source.id)}>
-            <span className="swatch" />{shortName(l.source)}<span className="n">{fmtNum(totals[l.source.id])}</span>
+            <span className="swatch" />{shortName(l.source)}<span className="n">{l.observed ? fmtNum(totals[l.source.id]) : (l.span?.total ? fmtNum(l.span.n) : 'n/c')}</span>
           </button>
         ))}
       </div>

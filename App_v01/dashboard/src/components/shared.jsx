@@ -62,18 +62,28 @@ export function ChartTip({ x, y, title, children }) {
 }
 
 export function Sparkline({ values, width = 120, height = 32, split }) {
-  const max = Math.max(...values, 0.0001);
+  const known = values.filter(v => v != null && Number.isFinite(v));
+  const max = Math.max(...known, 0.0001);
   const step = values.length > 1 ? width / (values.length - 1) : width;
-  const pts = values.map((v, i) => [i * step, height - 2 - (v / max) * (height - 4)]);
-  const d = pts.map((p, i) => `${i ? 'L' : 'M'}${p[0].toFixed(1)},${p[1].toFixed(1)}`).join('');
-  const last = pts[pts.length - 1];
+  const yOf = v => height - 2 - (v / max) * (height - 4);
+  let d = '';
+  let pen = false;
+  let last = null;
+  values.forEach((v, i) => {
+    if (v == null || !Number.isFinite(v)) { pen = false; return; }
+    const x = i * step;
+    const y = yOf(v);
+    d += `${pen ? 'L' : 'M'}${x.toFixed(1)},${y.toFixed(1)}`;
+    pen = true;
+    last = [x, y];
+  });
   return (
     <svg width={width} height={height} aria-hidden="true" style={{ overflow: 'visible' }}>
       {split != null && split > 0 && (
-        <rect x={split * step} y={0} width={width - split * step} height={height} fill="var(--accent-50)" rx={4} />
+        <rect x={split * step} y={0} width={Math.max(0, width - split * step)} height={height} fill="var(--accent-50)" rx={4} />
       )}
-      <path d={d} fill="none" stroke="var(--black)" strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" />
-      <circle cx={last[0]} cy={last[1]} r={3.5} fill="var(--accent-primary)" stroke="var(--white)" strokeWidth={2} />
+      {d && <path d={d} fill="none" stroke="var(--black)" strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" />}
+      {last && <circle cx={last[0]} cy={last[1]} r={3.5} fill="var(--accent-primary)" stroke="var(--white)" strokeWidth={2} />}
     </svg>
   );
 }
