@@ -1,0 +1,29 @@
+{
+  "version": "2026-09-26",
+  "description": "Outbound link targets used as source lineage signals. German state services plus the sanctioned wires they translate. See docs/DE-RU-PROPAGANDA-CATALOGUE.md rank 3.",
+  "domains": [
+    "rt.com",
+    "de.rt.com",
+    "deutsch.rt.com",
+    "russian.rt.com",
+    "rtde.xyz",
+    "freede.tech",
+    "sputniknews.com",
+    "snanews.de",
+    "tass.com",
+    "ria.ru",
+    "iz.ru",
+    "rg.ru",
+    "tsargrad.tv",
+    "lenta.ru",
+    "news-front.su",
+    "news-front.info",
+    "rrn.media",
+    "southfront.press",
+    "strategic-culture.su",
+    "fondsk.ru",
+    "rubaltic.ru",
+    "eadaily.com",
+    "tvzvezda.ru"
+  ]
+}
