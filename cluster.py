@@ -370,11 +370,12 @@ def assign_mothers(
                 continue
             origin_lang = (origin.get("extracted") or {}).get("language")
             member_lang = (member.get("extracted") or {}).get("language")
-            relation = (
-                "translation"
-                if origin_lang and member_lang and origin_lang != member_lang
-                else "near_duplicate"
-            )
+            if rule == "citation_wins":
+                relation = "citation"
+            elif origin_lang and member_lang and origin_lang != member_lang:
+                relation = "translation"
+            else:
+                relation = "near_duplicate"
             mothers.append(
                 _edge(
                     origin,
@@ -553,6 +554,62 @@ def label_topic(titles: list[str], origin: dict[str, Any]) -> tuple[str, str]:
     return label, description
 
 
+def lift_citation_origins(
+    topics: list[dict[str, Any]],
+    by_id: dict[str, dict[str, Any]],
+    cite_edges: list[dict[str, Any]],
+) -> None:
+    """Pull cited catalogue articles into a topic and let that citation win as origin."""
+    parents: dict[str, list[str]] = defaultdict(list)
+    for edge in cite_edges:
+        parents[edge["to_article_id"]].append(edge["from_article_id"])
+    for topic in topics:
+        member_ids = {member["article_id"] for member in topic["members"]}
+        found: list[dict[str, Any]] = []
+        seen: set[str] = set()
+        for member_id in list(member_ids):
+            for parent_id in parents.get(member_id, []):
+                if parent_id in member_ids or parent_id in seen:
+                    continue
+                parent = by_id.get(parent_id)
+                if parent is None:
+                    continue
+                seen.add(parent_id)
+                found.append(parent)
+        if not found:
+            continue
+        found.sort(
+            key=lambda article: (
+                0 if article.get("source_id") in RANK3_SOURCES else 1,
+                _dt(article.get("published_at")) or datetime.max.replace(tzinfo=timezone.utc),
+            )
+        )
+        origin = found[0]
+        topic["origin_source_id"] = origin.get("source_id")
+        topic["origin_article_id"] = origin["article_id"]
+        topic["origin_rule"] = "citation_wins"
+        topic["label"] = ((origin.get("extracted") or {}).get("title") or topic["label"])[:120]
+        for article in found:
+            topic["members"].append(
+                {
+                    "source_id": article.get("source_id"),
+                    "article_id": article["article_id"],
+                    "published_at": article.get("published_at"),
+                    "role": "relay",
+                }
+            )
+            article["topic_id"] = topic["topic_id"]
+        for member in topic["members"]:
+            member["role"] = "origin" if member.get("source_id") == origin.get("source_id") else "relay"
+        topic["downstream_source_ids"] = sorted(
+            {
+                member.get("source_id")
+                for member in topic["members"]
+                if member.get("source_id") and member.get("source_id") != origin.get("source_id")
+            }
+        )
+
+
 def topic_echo_edges(
     topics: list[dict[str, Any]],
     by_id: dict[str, dict[str, Any]],
@@ -612,6 +669,8 @@ def cluster() -> dict[str, int]:
     build_copy_clusters(unique, pairs)
     mothers = assign_mothers(unique, pairs, meta)
     topics = build_topics(unique, mothers)
+    by_id = {article["article_id"]: article for article in unique}
+    lift_citation_origins(topics, by_id, cite)
     topic_by_article = {
         member["article_id"]: topic["topic_id"]
         for topic in topics
