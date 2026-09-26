@@ -69,10 +69,10 @@ export default function App() {
   return (
     <div className="app">
       <nav className="sidebar" aria-label="Sections">
-        <div className="wordmark"><Radar size={22} strokeWidth={2.5} />Foreshock</div>
+        <button type="button" className="wordmark wordmark-btn" onClick={() => setLanding(true)} title="Back to the start page"><Radar size={22} strokeWidth={2.5} />Foreshock</button>
         <div className="wordmark-sub">DE · RU influence monitor</div>
         <button type="button" className="nav-item" onClick={() => setLanding(true)}>
-          <Home size={18} strokeWidth={2.25} />Start
+          <Home size={18} strokeWidth={2.25} />Start page
         </button>
         {VIEWS.map(x => (
           <button key={x.id} className="nav-item" aria-current={view === x.id ? 'page' : undefined} onClick={() => go(x.id)}>
