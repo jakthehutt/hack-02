@@ -15,7 +15,7 @@ export function Heatmap({ data, seriesList, lo, hi, metric, selected, onSelect }
 
   const rows = sources.map(src => ({
     src,
-    cells: seriesList.map(se => ({ se, ...cell(src, se.id, lo, hi) })),
+    cells: seriesList.map(se => ({ se, ...cell(src, se.id, lo, hi, data.weeks) })),
   }));
   const vals = rows.flatMap(r => r.cells.map(c => metricValue(c, metric))).filter(v => v != null && v > 0);
   const max = Math.max(...vals, 0.0001);
@@ -55,11 +55,11 @@ export function Heatmap({ data, seriesList, lo, hi, metric, selected, onSelect }
           </table>
         </div>
       ) : (
-        <div className="chart" ref={wrap} onMouseLeave={() => setTip(null)}>
+        <div className="chart heatmap-wrap" ref={wrap} onMouseLeave={() => setTip(null)}>
           <div className="heatmap" style={{ gridTemplateColumns: `minmax(150px, 190px) repeat(${seriesList.length}, minmax(44px, 1fr))` }}>
             <div />
             {seriesList.map(se => (
-              <div key={se.id} className={`hm-col-head${selected.series === se.id ? ' is-active' : ''}`}>
+              <div key={se.id} lang="de" className={`hm-col-head${selected.series === se.id ? ' is-active' : ''}`}>
                 {se.label}
               </div>
             ))}
@@ -83,7 +83,7 @@ export function Heatmap({ data, seriesList, lo, hi, metric, selected, onSelect }
                       onFocus={e => show(e, r, c)}
                       onBlur={() => setTip(null)}
                       onClick={() => !empty && onSelect(r.src.id, c.se.id)}
-                      aria-label={`${r.src.name}, ${c.se.label}: ${empty ? 'not crawled in range' : fmtValue(v, metric)}`}
+                      aria-label={`${r.src.name}, ${c.se.label}: ${empty ? (c.generated ? 'weekly counts not observed' : 'not crawled in range') : fmtValue(v, metric)}`}
                       disabled={empty}
                     >
                       {empty ? '' : (v >= labelCut || isSel) && v > 0 ? (metric === 'share' ? v.toFixed(1) : fmtNum(v)) : ''}
@@ -97,7 +97,7 @@ export function Heatmap({ data, seriesList, lo, hi, metric, selected, onSelect }
             <ChartTip x={tip.x} y={tip.y} title={tip.c.se.label}>
               <div className="tip-row is-focus"><span className="v">{tip.c.total ? fmtPct(tip.c.share, 2) : '–'}</span><span className="k">{tip.r.src.name}</span></div>
               <div className="tip-row"><span className="v">{fmtNum(tip.c.n)}</span><span className="k">of {fmtNum(tip.c.total)} articles</span></div>
-              {!tip.c.total && <div className="tip-row"><span className="k">Not crawled in this range</span></div>}
+              {!tip.c.total && <div className="tip-row"><span className="k">{tip.c.generated ? 'Weekly counts for this outlet are generated. All weeks shows the crawled total.' : 'Not crawled in this range'}</span></div>}
             </ChartTip>
           )}
         </div>
