@@ -1,4 +1,4 @@
-# Narrative radar — dashboard
+# Foreshock — dashboard
 
 React + Vite front end for the narrative scan. The components in `src/ds/` come from the
 Keypad design system (claude.ai/design); colors and type follow the brand palette in
