@@ -7,7 +7,7 @@
       "version": "2026-09-26",
       "kind": "frame",
       "label": "Kiewer Regime",
-      "pattern": "kiewer regime",
+      "pattern": "kiewer regime|киевск\\w* режим",
       "target": "Ukraine",
       "euvsdisinfo_id": null,
       "status": "active"
@@ -17,7 +17,7 @@
       "version": "2026-09-26",
       "kind": "frame",
       "label": "Russophobie",
-      "pattern": "russophob|russlandfeind|russlandhass",
+      "pattern": "russophob|russlandfeind|russlandhass|русофоб",
       "target": "Russland",
       "euvsdisinfo_id": null,
       "status": "active"
@@ -27,7 +27,7 @@
       "version": "2026-09-26",
       "kind": "frame",
       "label": "Ukraine als faschistisch",
-      "pattern": "(asow|asov|bander).{0,60}(faschist|nazi)|(faschist|nazi).{0,60}(asow|asov|bander|ukrain)",
+      "pattern": "(asow|asov|bander).{0,60}(faschist|nazi)|(faschist|nazi).{0,60}(asow|asov|bander|ukrain)|(?:азов|бандер)\\w*.{0,60}(?:фашист|нацист)|(?:фашист|нацист)\\w*.{0,60}(?:азов|бандер|украин)",
       "target": "Ukraine",
       "euvsdisinfo_id": null,
       "status": "active"
@@ -37,7 +37,7 @@
       "version": "2026-09-26",
       "kind": "frame",
       "label": "Vasall / Stellvertreterkrieg",
-      "pattern": "stellvertreterkrieg|vasallenmodus|vasallenstaat|vasall(?:en)? der ",
+      "pattern": "stellvertreterkrieg|vasallenmodus|vasallenstaat|vasall(?:en)? der |прокси-войн|вассал",
       "target": "Europa",
       "euvsdisinfo_id": null,
       "status": "active"
@@ -47,7 +47,7 @@
       "version": "2026-09-26",
       "kind": "frame",
       "label": "Deindustrialisierung",
-      "pattern": "deindustrial",
+      "pattern": "deindustrial|деиндустриал",
       "target": "Deutschland",
       "euvsdisinfo_id": null,
       "status": "active"
@@ -57,7 +57,7 @@
       "version": "2026-09-26",
       "kind": "frame",
       "label": "AfD-Verbot",
-      "pattern": "afd-verbot|verbotsverfahren gegen die afd",
+      "pattern": "afd-verbot|verbotsverfahren gegen die afd|запрет\\w{0,3} адг|адг.{0,30}запрет",
       "target": "AfD",
       "euvsdisinfo_id": null,
       "status": "active"
@@ -67,7 +67,7 @@
       "version": "2026-09-26",
       "kind": "frame",
       "label": "Nord Stream",
-      "pattern": "nord stream|nordstream",
+      "pattern": "nord stream|nordstream|северн\\w* поток",
       "target": "Deutschland",
       "euvsdisinfo_id": null,
       "status": "active"
@@ -77,7 +77,7 @@
       "version": "2026-09-26",
       "kind": "subject",
       "label": "Straße von Hormus",
-      "pattern": "straße von hormus|strasse von hormus",
+      "pattern": "straße von hormus|strasse von hormus|ормузск",
       "target": "Iran",
       "euvsdisinfo_id": null,
       "status": "active"
@@ -87,7 +87,7 @@
       "version": "2026-09-26",
       "kind": "subject",
       "label": "Sachsen-Anhalt",
-      "pattern": "sachsen-anhalt|sachsen anhalt",
+      "pattern": "sachsen-anhalt|sachsen anhalt|саксон\\w*-анхальт",
       "target": "Sachsen-Anhalt",
       "euvsdisinfo_id": null,
       "status": "active"

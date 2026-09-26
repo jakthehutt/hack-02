@@ -34,6 +34,7 @@ data/runs/
 data/raw/
 data/articles/
 data/embeddings/
-App_v01/data/runs/
+App_v01/data/runs/*
+!App_v01/data/runs/de_sources_2026-05-26_2026-09-26/
 *.log
 *.html

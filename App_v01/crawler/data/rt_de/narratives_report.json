@@ -1,8 +1,16 @@
 {
   "source": "rt_de",
-  "method": "sentence regex from services/narratives/codebook.py; one quote required",
+  "script": "de",
+  "method": "sentence regex from services/narratives/codebook.py; German and Russian wording; one quote required",
   "cutoff": "2026-05-26",
-  "article_count": 3730,
+  "article_count": 3729,
+  "date_span": {
+    "min": "2026-05-26",
+    "max": "2026-09-26",
+    "distinct_days": 124,
+    "timeline": true,
+    "note": null
+  },
   "weeks": [
     {
       "week": "2026-W22",
@@ -110,7 +118,7 @@
       "week": "2026-W39",
       "start": "2026-09-21",
       "end": "2026-09-27",
-      "articles": 149
+      "articles": 148
     }
   ],
   "series": [
@@ -158,7 +166,7 @@
         2.23,
         3.45,
         0.94,
-        4.03
+        4.05
       ],
       "peak": {
         "week": "2026-W22",
@@ -198,8 +206,8 @@
       "id": "russophobia",
       "kind": "frame",
       "label": "Russophobie",
-      "article_count": 105,
-      "share_pct": 2.82,
+      "article_count": 104,
+      "share_pct": 2.79,
       "weekly_n": [
         6,
         6,
@@ -218,7 +226,7 @@
         9,
         6,
         4,
-        8
+        7
       ],
       "weekly_share_pct": [
         3.09,
@@ -238,24 +246,16 @@
         4.02,
         2.96,
         1.88,
-        5.37
+        4.73
       ],
       "peak": {
         "week": "2026-W39",
         "week_start": "2026-09-21",
-        "n": 8,
-        "share_pct": 5.37,
-        "z": 2.53
+        "n": 7,
+        "share_pct": 4.73,
+        "z": 2.09
       },
       "quotes": [
-        {
-          "date": "2026-09-26",
-          "week": "2026-W39",
-          "url": "https://de.rt.com/meinung/292783-es-ist-noch-zu-frueh-nukleare-abschreckung-abzuschreiben/",
-          "title": "Es ist noch zu früh, die nukleare Abschreckung abzuschreiben",
-          "section": "meinung",
-          "quote": "Dabei verstehen selbst eingefleischte Russophobe, dass sich die Lage an der Front zugunsten Moskaus entwickelt."
-        },
         {
           "date": "2026-09-22",
           "week": "2026-W39",
@@ -271,6 +271,14 @@
           "title": "Waffenhandel, Remmo und Berliner Intrigen",
           "section": "meinung",
           "quote": "Auch wenn Krach kein Politiker ist, den ich schätze – er ist sogar leicht überdurchschnittlich russophob –, das, was da lief, war eine sehr eigenartige Nummer."
+        },
+        {
+          "date": "2026-09-22",
+          "week": "2026-W39",
+          "url": "https://de.rt.com/meinung/292588-fear-and-loathing-in-brussels-warum-wahlen-in-russland-der-alptraum-der-eu-sind/",
+          "title": "\"Fear and Loathing in Brussels\" – warum Wahlen in Russland Alptraum der EU-Eliten sind",
+          "section": "meinung",
+          "quote": "Diese russophobe Unverfrorenheit konnte niemanden überraschen, denn die allererste Volksabstimmung im Rahmen des Russischen Frühlings auf der Krim wurde genau so beschrieben."
         }
       ]
     },
@@ -318,7 +326,7 @@
         0.45,
         0.99,
         0.47,
-        0.67
+        0.68
       ],
       "peak": {
         "week": "2026-W23",
@@ -398,14 +406,14 @@
         0.45,
         0.99,
         1.41,
-        2.01
+        2.03
       ],
       "peak": {
         "week": "2026-W39",
         "week_start": "2026-09-21",
         "n": 3,
-        "share_pct": 2.01,
-        "z": 1.9
+        "share_pct": 2.03,
+        "z": 1.93
       },
       "quotes": [
         {
@@ -478,14 +486,14 @@
         0.0,
         0.49,
         0.94,
-        1.34
+        1.35
       ],
       "peak": {
         "week": "2026-W29",
         "week_start": "2026-07-13",
         "n": 3,
         "share_pct": 1.58,
-        "z": 1.66
+        "z": 1.65
       },
       "quotes": [
         {
@@ -558,14 +566,14 @@
         0.0,
         0.99,
         0.0,
-        1.34
+        1.35
       ],
       "peak": {
         "week": "2026-W26",
         "week_start": "2026-06-22",
         "n": 5,
         "share_pct": 2.14,
-        "z": 2.8
+        "z": 2.79
       },
       "quotes": [
         {
@@ -638,14 +646,14 @@
         1.34,
         0.49,
         0.94,
-        2.01
+        2.03
       ],
       "peak": {
         "week": "2026-W27",
         "week_start": "2026-06-29",
         "n": 6,
         "share_pct": 2.67,
-        "z": 2.32
+        "z": 2.31
       },
       "quotes": [
         {
@@ -718,7 +726,7 @@
         6.7,
         5.42,
         7.04,
-        6.04
+        6.08
       ],
       "peak": {
         "week": "2026-W25",
@@ -798,7 +806,7 @@
         7.59,
         16.75,
         7.98,
-        7.38
+        7.43
       ],
       "peak": {
         "week": "2026-W37",

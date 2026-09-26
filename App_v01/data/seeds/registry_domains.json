@@ -1,0 +1,411 @@
+{
+  "version": "2026-09-26-de-catalogue",
+  "description": "Operational subset of docs/DE-RU-PROPAGANDA-CATALOGUE.md plus the earlier Pravda seeds. Ranks 4–5 (German relays) are catalogue-only and are not scored as state media.",
+  "entries": [
+    {
+      "domain": "de.rt.com",
+      "match": "exact",
+      "category": "state_media",
+      "network": "rt_de",
+      "rank": 1,
+      "confidence": 0.99,
+      "source": "eu_regulation_2022_350"
+    },
+    {
+      "domain": "deutsch.rt.com",
+      "match": "exact",
+      "category": "state_media",
+      "network": "rt_de",
+      "rank": 1,
+      "confidence": 0.99,
+      "source": "eu_regulation_2022_350"
+    },
+    {
+      "domain": "rt.com",
+      "match": "suffix",
+      "category": "state_media",
+      "network": "rt",
+      "rank": 1,
+      "confidence": 0.95,
+      "source": "eu_regulation_2022_350"
+    },
+    {
+      "domain": "rtde.xyz",
+      "match": "exact",
+      "category": "state_media",
+      "network": "rt_de",
+      "rank": 1,
+      "confidence": 0.95,
+      "source": "bnetza_sanctions_dns_2025-02-24"
+    },
+    {
+      "domain": "rtde.site",
+      "match": "suffix",
+      "category": "state_media",
+      "network": "rt_de",
+      "rank": 1,
+      "confidence": 0.9,
+      "source": "bnetza_sanctions_dns_2025-02-24"
+    },
+    {
+      "domain": "rtde.team",
+      "match": "suffix",
+      "category": "state_media",
+      "network": "rt_de",
+      "rank": 1,
+      "confidence": 0.9,
+      "source": "bnetza_sanctions_dns_2025-02-24"
+    },
+    {
+      "domain": "rtde.live",
+      "match": "suffix",
+      "category": "state_media",
+      "network": "rt_de",
+      "rank": 1,
+      "confidence": 0.9,
+      "source": "bnetza_sanctions_dns_2025-02-24"
+    },
+    {
+      "domain": "rtde.life",
+      "match": "suffix",
+      "category": "state_media",
+      "network": "rt_de",
+      "rank": 1,
+      "confidence": 0.9,
+      "source": "bnetza_sanctions_dns_2025-02-24"
+    },
+    {
+      "domain": "rtde.website",
+      "match": "suffix",
+      "category": "state_media",
+      "network": "rt_de",
+      "rank": 1,
+      "confidence": 0.9,
+      "source": "bnetza_sanctions_dns_2025-02-24"
+    },
+    {
+      "domain": "freede.tech",
+      "match": "exact",
+      "category": "state_media",
+      "network": "rt_de",
+      "rank": 1,
+      "confidence": 0.85,
+      "source": "observed_mirror_2025-01"
+    },
+    {
+      "domain": "snanews.de",
+      "match": "exact",
+      "category": "state_media",
+      "network": "sputnik_de",
+      "rank": 1,
+      "confidence": 0.95,
+      "source": "bnetza_lists_under_regulation_2022_350"
+    },
+    {
+      "domain": "sputniknews.com",
+      "match": "suffix",
+      "category": "state_media",
+      "network": "sputnik",
+      "rank": 1,
+      "confidence": 0.95,
+      "source": "eu_regulation_2022_350"
+    },
+    {
+      "domain": "news-pravda.com",
+      "match": "suffix",
+      "category": "known_io_domain",
+      "network": "portal_kombat_pravda",
+      "rank": 2,
+      "confidence": 0.95,
+      "source": "viginum_asp_literature"
+    },
+    {
+      "domain": "fr.news-pravda.com",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "portal_kombat_pravda",
+      "rank": 2,
+      "confidence": 0.98,
+      "source": "viginum_asp_literature"
+    },
+    {
+      "domain": "france.news-pravda.com",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "portal_kombat_pravda",
+      "rank": 2,
+      "confidence": 0.98,
+      "source": "viginum_asp_literature"
+    },
+    {
+      "domain": "germany.news-pravda.com",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "portal_kombat_pravda",
+      "rank": 2,
+      "confidence": 0.98,
+      "source": "viginum_pravda_de"
+    },
+    {
+      "domain": "pravda-de.com",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "portal_kombat_pravda",
+      "rank": 2,
+      "confidence": 0.9,
+      "source": "viginum_era_german_domain_2024-02-18"
+    },
+    {
+      "domain": "news-front.su",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "newsfront",
+      "rank": 2,
+      "confidence": 0.95,
+      "source": "eu_regulation_2025_395"
+    },
+    {
+      "domain": "news-front.info",
+      "match": "suffix",
+      "category": "known_io_domain",
+      "network": "newsfront",
+      "rank": 2,
+      "confidence": 0.9,
+      "source": "newsfront_german_desk"
+    },
+    {
+      "domain": "rrn.media",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "rank": 2,
+      "confidence": 0.95,
+      "source": "aa_doppelganger_2024-06-05"
+    },
+    {
+      "domain": "voiceofeurope.com",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "voice_of_europe",
+      "rank": 2,
+      "confidence": 0.9,
+      "source": "eu_sanctions_2024-05_english_site_german_political_target"
+    },
+    {
+      "domain": "bild.pics",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "rank": 2,
+      "confidence": 0.85,
+      "source": "aa_snapshot_2024-05-25"
+    },
+    {
+      "domain": "spiegel.ltd",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "rank": 2,
+      "confidence": 0.85,
+      "source": "aa_snapshot_2024-05-25"
+    },
+    {
+      "domain": "welt.ltd",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "rank": 2,
+      "confidence": 0.85,
+      "source": "aa_snapshot_2024-05-25"
+    },
+    {
+      "domain": "faz.ltd",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "rank": 2,
+      "confidence": 0.85,
+      "source": "aa_snapshot_2024-05-25"
+    },
+    {
+      "domain": "sueddeutsche.ltd",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "rank": 2,
+      "confidence": 0.85,
+      "source": "aa_snapshot_2024-05-25"
+    },
+    {
+      "domain": "t-online.life",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "rank": 2,
+      "confidence": 0.85,
+      "source": "aa_snapshot_2024-05-25"
+    },
+    {
+      "domain": "morgenpost.ltd",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "rank": 2,
+      "confidence": 0.85,
+      "source": "aa_snapshot_2024-05-25"
+    },
+    {
+      "domain": "tagesspiegel.ltd",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "rank": 2,
+      "confidence": 0.85,
+      "source": "aa_snapshot_2024-05-25"
+    },
+    {
+      "domain": "nd-aktuell.net",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "rank": 2,
+      "confidence": 0.8,
+      "source": "aa_snapshot_2024-05-25"
+    },
+    {
+      "domain": "meisterurian.io",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "rank": 2,
+      "confidence": 0.85,
+      "source": "aa_snapshot_2024-05-25"
+    },
+    {
+      "domain": "arbeitspause.org",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "rank": 2,
+      "confidence": 0.85,
+      "source": "aa_snapshot_2024-05-25"
+    },
+    {
+      "domain": "wanderfalke.net",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "rank": 2,
+      "confidence": 0.85,
+      "source": "aa_snapshot_2024-05-25"
+    },
+    {
+      "domain": "grenzezank.com",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "rank": 2,
+      "confidence": 0.85,
+      "source": "aa_snapshot_2024-05-25"
+    },
+    {
+      "domain": "besuchszweck.org",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "rank": 2,
+      "confidence": 0.85,
+      "source": "aa_snapshot_2024-05-25"
+    },
+    {
+      "domain": "derbayerischelowe.info",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "rank": 2,
+      "confidence": 0.85,
+      "source": "aa_snapshot_2024-05-25"
+    },
+    {
+      "domain": "grunehummel.com",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "rank": 2,
+      "confidence": 0.85,
+      "source": "aa_snapshot_2024-05-25"
+    },
+    {
+      "domain": "miastagebuch.com",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "rank": 2,
+      "confidence": 0.85,
+      "source": "aa_snapshot_2024-05-25"
+    },
+    {
+      "domain": "derglaube.com",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "rank": 2,
+      "confidence": 0.85,
+      "source": "aa_snapshot_2024-05-25"
+    },
+    {
+      "domain": "kaputteampel.com",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "rank": 2,
+      "confidence": 0.85,
+      "source": "aa_snapshot_2024-05-25"
+    },
+    {
+      "domain": "deintelligenz.com",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "rank": 2,
+      "confidence": 0.85,
+      "source": "aa_snapshot_2024-05-25"
+    },
+    {
+      "domain": "hauynescherben.net",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "rank": 2,
+      "confidence": 0.85,
+      "source": "aa_snapshot_2024-05-25"
+    },
+    {
+      "domain": "brennendefrage.com",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "rank": 2,
+      "confidence": 0.85,
+      "source": "aa_snapshot_2024-05-25"
+    },
+    {
+      "domain": "derleitstern.com",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "rank": 2,
+      "confidence": 0.85,
+      "source": "aa_snapshot_2024-05-25"
+    },
+    {
+      "domain": "derrattenfanger.net",
+      "match": "exact",
+      "category": "known_io_domain",
+      "network": "doppelganger",
+      "rank": 2,
+      "confidence": 0.85,
+      "source": "aa_snapshot_2024-05-25"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "version": "2025-09-26",
+  "tags": [
+    {
+      "id": "ukraine_war",
+      "keywords": ["ukraine", "zelensky", "donbas", "crimea", "kyiv", "nato support"]
+    },
+    {
+      "id": "eu_institutions",
+      "keywords": ["european commission", "european parliament", "von der leyen", "brussels"]
+    },
+    {
+      "id": "eu_elections",
+      "keywords": ["european elections", "eu vote", "europarl"]
+    },
+    {
+      "id": "energy",
+      "keywords": ["nord stream", "gas prices", "energy crisis", "lng"]
+    },
+    {
+      "id": "migration",
+      "keywords": ["migration pact", "frontex", "asylum", "border"]
+    }
+  ]
+}

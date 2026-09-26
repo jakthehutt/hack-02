@@ -1,8 +1,8 @@
 """Closed lexical codebook.
 
 Patterns are loaded from data/codebook.json. Only status=active entries are
-exported. A hit is a sentence that contains the pattern. It is a provenance
-signal about wording, not a finding that the sentence is false.
+exported. A hit is a sentence that contains the pattern, in German or Russian.
+It is a provenance signal about wording, not a finding that the sentence is false.
 """
 
 from __future__ import annotations

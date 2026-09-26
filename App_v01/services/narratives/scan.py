@@ -19,6 +19,19 @@ from services.narratives.codebook import PATTERNS
 ROOT = Path(__file__).resolve().parents[2]
 ARTICLES = ROOT / "crawler" / "data" / "rt_de" / "articles.jsonl"
 REPORT = ROOT / "crawler" / "data" / "rt_de" / "narratives_report.json"
+RUN = ROOT / "data" / "runs" / "de_sources_2026-05-26_2026-09-26"
+CROSS_REPORT = ROOT / "crawler" / "data" / "narratives_cross.json"
+
+SOURCES: tuple[tuple[str, Path], ...] = (
+    ("rt_de", ARTICLES),
+    ("sputnik_de", RUN / "sputnik_de" / "articles.jsonl"),
+    ("pravda_de", RUN / "pravda_de" / "articles.jsonl"),
+    ("newsfront_de", RUN / "newsfront_de" / "articles.jsonl"),
+    ("anti_spiegel", RUN / "anti_spiegel" / "articles.jsonl"),
+    ("apolut", RUN / "apolut" / "articles.jsonl"),
+    ("klagemauer", RUN / "klagemauer" / "articles.jsonl"),
+    ("auf1", RUN / "auf1" / "articles.jsonl"),
+)
 
 SENTENCE = re.compile(r"(?<=[.!?])\s+")
 
@@ -81,18 +94,71 @@ def z_scores(shares: list[float]) -> list[float]:
     return [(share - mean) / sd for share in shares]
 
 
-def scan() -> dict:
+def load_rows(path: Path) -> list[dict]:
     rows: list[dict] = []
-    for line in ARTICLES.open(encoding="utf-8"):
+    for line in path.open(encoding="utf-8"):
         line = line.strip()
         if line:
             rows.append(json.loads(line))
+    return rows
 
-    dated = [row for row in rows if row.get("date")]
-    weeks = sorted({week_key(date.fromisoformat(row["date"])) for row in dated})
+
+def body_script(rows: list[dict]) -> str:
+    cyrillic = 0
+    letters = 0
+    for row in rows[:40]:
+        for char in row.get("text") or "":
+            if not char.isalpha():
+                continue
+            letters += 1
+            if "\u0400" <= char <= "\u04ff":
+                cyrillic += 1
+    if letters == 0:
+        return "unknown"
+    return "ru" if cyrillic / letters > 0.4 else "de"
+
+
+def date_span(rows: list[dict]) -> dict:
+    days = sorted({row["date"][:10] for row in rows if row.get("date")})
+    if not days:
+        return {"min": None, "max": None, "distinct_days": 0, "timeline": False, "note": "no dates"}
+    start = date.fromisoformat(days[0])
+    end = date.fromisoformat(days[-1])
+    span_days = (end - start).days
+    timeline = span_days >= 28 and len(days) >= 8
+    note = None
+    if len(days) == 1:
+        note = f"every item is dated {days[0]}"
+        timeline = False
+    elif span_days < 14:
+        note = f"dates only run {days[0]} to {days[-1]}"
+        timeline = False
+    return {
+        "min": days[0],
+        "max": days[-1],
+        "distinct_days": len(days),
+        "timeline": timeline,
+        "note": note,
+    }
+
+
+def scan_rows(rows: list[dict], source: str) -> dict:
+    dated = [row for row in rows if row.get("date") and len(row["date"]) >= 10]
+    weeks = sorted({week_key(date.fromisoformat(row["date"][:10])) for row in dated})
+    if not dated or not weeks:
+        return {
+            "source": source,
+            "script": "unknown",
+            "method": "sentence regex from services/narratives/codebook.py; German and Russian wording; one quote required",
+            "cutoff": "2026-05-26",
+            "article_count": 0,
+            "date_span": date_span(dated),
+            "weeks": [],
+            "series": [],
+        }
     volume = {week: 0 for week in weeks}
     for row in dated:
-        volume[week_key(date.fromisoformat(row["date"]))] += 1
+        volume[week_key(date.fromisoformat(row["date"][:10]))] += 1
 
     compiled = [(pattern, re.compile(pattern.pattern, re.IGNORECASE)) for pattern in PATTERNS]
     hits: dict[str, list[dict]] = defaultdict(list)
@@ -107,8 +173,8 @@ def scan() -> dict:
                 continue
             hits[pattern.id].append(
                 {
-                    "date": row["date"],
-                    "week": week_key(date.fromisoformat(row["date"])),
+                    "date": row["date"][:10],
+                    "week": week_key(date.fromisoformat(row["date"][:10])),
                     "url": row.get("url"),
                     "title": row.get("title"),
                     "section": row.get("section"),
@@ -149,11 +215,14 @@ def scan() -> dict:
             }
         )
 
+    span = date_span(dated)
     return {
-        "source": "rt_de",
-        "method": "sentence regex from services/narratives/codebook.py; one quote required",
+        "source": source,
+        "script": body_script(dated),
+        "method": "sentence regex from services/narratives/codebook.py; German and Russian wording; one quote required",
         "cutoff": "2026-05-26",
         "article_count": len(dated),
+        "date_span": span,
         "weeks": [
             {
                 "week": week,
@@ -167,18 +236,67 @@ def scan() -> dict:
     }
 
 
-def main() -> None:
-    report = scan()
-    REPORT.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"articles {report['article_count']}  weeks {len(report['weeks'])}")
-    print(f"wrote {REPORT}")
+def scan() -> dict:
+    return scan_rows(load_rows(ARTICLES), "rt_de")
+
+
+def _print_source(report: dict) -> None:
+    span = report["date_span"]
+    print(
+        f"\n{report['source']}  n={report['article_count']}  script={report['script']}  "
+        f"{span['min']}..{span['max']}  timeline={span['timeline']}"
+    )
+    if span["note"]:
+        print(f"  note: {span['note']}")
     for series in report["series"]:
         peak = series["peak"]
         print(
-            f"{series['kind']:7} {series['label']:28} "
+            f"  {series['kind']:7} {series['label']:28} "
             f"n={series['article_count']:4} share={series['share_pct']:5.1f}%  "
-            f"peak {peak['week']} {peak['share_pct']:5.1f}% z={peak['z']}"
+            f"peak {peak['week_start']} {peak['share_pct']:5.1f}% z={peak['z']}"
         )
+
+
+def main() -> None:
+    reports = []
+    for source, path in SOURCES:
+        if not path.exists():
+            print(f"missing {source}: {path}")
+            continue
+        report = scan_rows(load_rows(path), source)
+        reports.append(report)
+        _print_source(report)
+        if source == "rt_de":
+            REPORT.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    # Cross file keeps counts and one quote per pattern. Full weekly series stay on RT only.
+    cross = {
+        "method": reports[0]["method"] if reports else "",
+        "sources": [
+            {
+                "source": report["source"],
+                "script": report["script"],
+                "article_count": report["article_count"],
+                "date_span": report["date_span"],
+                "series": [
+                    {
+                        "id": series["id"],
+                        "kind": series["kind"],
+                        "label": series["label"],
+                        "article_count": series["article_count"],
+                        "share_pct": series["share_pct"],
+                        "peak": series["peak"],
+                        "quote": (series["quotes"] or [None])[0],
+                    }
+                    for series in report["series"]
+                ],
+            }
+            for report in reports
+        ],
+    }
+    CROSS_REPORT.write_text(json.dumps(cross, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"\nwrote {REPORT}")
+    print(f"wrote {CROSS_REPORT}")
 
 
 if __name__ == "__main__":

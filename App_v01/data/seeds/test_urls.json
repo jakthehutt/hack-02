@@ -1,0 +1,15 @@
+{
+  "version": "2025-09-26",
+  "tier_a_mainstream_eu": [
+    "https://www.reuters.com/",
+    "https://www.lemonde.fr/",
+    "https://www.tagesschau.de/"
+  ],
+  "tier_b_known_io": [
+    "https://france.news-pravda.com/",
+    "https://fr.news-pravda.com/"
+  ],
+  "tier_c_borderline": [
+    "https://www.globaltimes.cn/"
+  ]
+}
