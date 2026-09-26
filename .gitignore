@@ -26,6 +26,9 @@ dist/
 .vscode/
 .DS_Store
 
+# PocketBase local data
+pb_data/
+
 # Logs & local data (keep seeds in git)
 data/track.log
 data/watchlist_hits.jsonl

@@ -3,17 +3,22 @@
 from __future__ import annotations
 
 import argparse
+import os
 
 from catalogue import expand_targets
 from claims import build, write_outputs
 from cluster import cluster
 from crawl import crawl
 from extract import extract_all
+from pb_sync import format_stats, publish
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Narrative propagation pipeline")
-    parser.add_argument("command", choices=["expand", "crawl", "extract", "cluster", "claims", "all"])
+    parser.add_argument(
+        "command",
+        choices=["expand", "crawl", "extract", "cluster", "claims", "sync", "all"],
+    )
     parser.add_argument("--all-sources", action="store_true")
     parser.add_argument("--max-per-source", type=int, default=200)
     args = parser.parse_args()
@@ -38,6 +43,8 @@ def main() -> None:
         result = build()
         write_outputs(result)
         print(f"claims {len(result['claims'])}  other {len(result['others'])}")
+    if args.command == "sync" or (args.command == "all" and os.environ.get("POCKETBASE_EMAIL")):
+        print(format_stats(publish()))
 
 
 if __name__ == "__main__":

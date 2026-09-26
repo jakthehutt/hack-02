@@ -1,0 +1,65 @@
+:root{
+/* base */
+--black:#0a0a0a;
+--white:#ffffff;
+--grey-950:#141414;
+--grey-900:#1c1c1c;
+--grey-700:#3d3d3d;
+--grey-500:#6b6b6b;
+--grey-300:#a4a4a4;
+--grey-200:#d4d4d4;
+--grey-100:#e9e9e9;
+--grey-50:#f4f4f3;
+/* beige — soft warm neutral, used for section backgrounds and sunken surfaces */
+--beige-300:#d9c9ae;
+--beige-200:#e8dcc4;
+--beige-100:#f0e6d4;
+--beige-50:#f8f1e4;
+/* accent — burnt orange/brown, the one brand color */
+--accent-700:#7a3a12;
+--accent-600:#a04d17;
+--accent-500:#c2621d;
+--accent-400:#d68a4c;
+--accent-100:#f2ddc2;
+--accent-50:#faf0e3;
+--red-500:#e0102b;
+--red-100:#ffe1e4;
+--green-500:#0a8a4a;
+--green-100:#dbf4e6;
+--amber-500:#c77700;
+--amber-100:#fff0d6;
+/* semantic surfaces */
+--surface-page:var(--white);
+--surface-inverse:var(--black);
+--surface-card:var(--white);
+--surface-sunken:var(--beige-50);
+--surface-warm:var(--beige-100);
+--surface-raised:var(--white);
+--surface-overlay:rgba(10,10,10,.6);
+/* text */
+--text-primary:var(--black);
+--text-inverse:var(--white);
+--text-secondary:var(--grey-700);
+--text-muted:var(--grey-500);
+--text-on-accent:var(--white);
+--text-link:var(--accent-600);
+--text-link-hover:var(--accent-700);
+/* brand / accent */
+--accent-primary:var(--accent-500);
+--accent-primary-hover:var(--accent-600);
+--accent-primary-press:var(--accent-700);
+--accent-primary-soft:var(--accent-50);
+--accent-primary-soft-strong:var(--accent-100);
+/* semantic feedback */
+--semantic-success:var(--green-500);
+--semantic-success-soft:var(--green-100);
+--semantic-danger:var(--red-500);
+--semantic-danger-soft:var(--red-100);
+--semantic-warning:var(--amber-500);
+--semantic-warning-soft:var(--amber-100);
+/* borders */
+--border-default:var(--black);
+--border-subtle:var(--grey-200);
+--border-on-inverse:var(--white);
+--border-accent:var(--accent-primary);
+}

@@ -1,0 +1,14 @@
+:root{
+/* brutalist hard-offset shadows, no blur — the "haptic" system.
+   shadow shrinks/element sinks on press for tactile feedback. */
+--border-width-sm:1.5px;
+--border-width-md:2.5px;
+--border-width-lg:3.5px;
+--shadow-hard-sm:3px 3px 0 var(--black);
+--shadow-hard-md:5px 5px 0 var(--black);
+--shadow-hard-lg:8px 8px 0 var(--black);
+--shadow-hard-press:2px 2px 0 var(--black);
+--shadow-hard-accent-md:5px 5px 0 var(--accent-primary);
+--shadow-soft-card:0 1px 0 var(--grey-200);
+--shadow-focus-ring:0 0 0 3px var(--accent-primary-soft-strong);
+}

@@ -1,0 +1,9 @@
+.git
+.venv
+venv
+data
+App_v01
+__pycache__
+pb_data
+**/*.html
+*.pyc
