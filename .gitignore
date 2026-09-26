@@ -27,6 +27,8 @@ dist/
 .DS_Store
 
 # Logs & local data (keep seeds in git)
+data/track.log
+data/watchlist_hits.jsonl
 data/cache/
 data/runs/
 data/raw/

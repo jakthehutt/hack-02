@@ -9,11 +9,11 @@
     "programme",
     "tag"
   ],
-  "discovered_urls": 3863,
-  "article_count": 3729,
-  "written_this_run": 10,
+  "discovered_urls": 3864,
+  "article_count": 3730,
+  "written_this_run": 1,
   "rejected_this_run": 134,
   "errors_this_run": 0,
   "articles_file": "crawler/data/rt_de/articles.jsonl",
-  "finished_at": "2026-09-26T14:00:08.061695+00:00"
+  "finished_at": "2026-09-26T14:53:45.793270+00:00"
 }

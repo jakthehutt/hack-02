@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import unittest
 from datetime import datetime, timedelta, timezone
 
@@ -160,6 +161,68 @@ class LineageTests(unittest.TestCase):
             datetime.fromisoformat(origin["published_at"]),
             datetime.now(timezone.utc) - timedelta(days=0),
         )
+
+
+class SeedTests(unittest.TestCase):
+    def test_checker_seeds_exist_and_load(self):
+        from pathlib import Path
+
+        seeds = Path(__file__).resolve().parent / "data" / "seeds"
+        for name in (
+            "registry_domains.json",
+            "source_media_domains.json",
+            "eu_topic_keywords.json",
+            "eu_resources.json",
+        ):
+            self.assertTrue((seeds / name).exists(), name)
+        registry = json.loads((seeds / "registry_domains.json").read_text(encoding="utf-8"))
+        self.assertTrue(registry.get("entries"))
+        topics = json.loads((seeds / "eu_topic_keywords.json").read_text(encoding="utf-8"))
+        self.assertTrue(topics.get("tags"))
+
+    def test_checker_signals_without_network(self):
+        import sys
+        from pathlib import Path
+
+        checker = Path(__file__).resolve().parent / "App_v01" / "services" / "checker"
+        sys.path.insert(0, str(checker))
+        from app.pipeline import signal_eu_topics, signal_registry
+
+        hits = signal_registry("de.rt.com")
+        self.assertTrue(hits)
+        self.assertEqual(hits[0].id, "registry_hit")
+        topic_signals, tags = signal_eu_topics("Berichte über Wahlfälschungen und das Kiewer Regime")
+        self.assertIn("elections", tags)
+        self.assertIn("ukraine_war", tags)
+        self.assertTrue(topic_signals)
+
+
+class WatchlistTests(unittest.TestCase):
+    def test_keyword_joins_topic_and_edges(self):
+        from watchlist import match_article, run_watchlist
+
+        hits = run_watchlist(
+            [
+                {
+                    "id": "observers",
+                    "label": "observers",
+                    "pattern": "beobacht|наблюдател|wahlfälschung",
+                }
+            ]
+        )
+        self.assertEqual(len(hits), 1)
+        row = hits[0]
+        self.assertGreater(row["article_count"], 0)
+        self.assertGreater(row["topic_count"], 0)
+        self.assertTrue(any(t.get("downstream_source_ids") for t in row["topics"]))
+
+        sample = {
+            "extracted": {"title": "Wahlfälschungen", "text": "Erfindungen", "excerpt": ""},
+            "url": "",
+        }
+        import re
+
+        self.assertTrue(match_article(sample, re.compile("wahlfälschung", re.I)))
 
 
 if __name__ == "__main__":

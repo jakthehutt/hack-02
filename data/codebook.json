@@ -1,0 +1,126 @@
+{
+  "version": "2026-09-26",
+  "note": "Only status=active entries are counted. Wording that matches no active entry is appended to data/frame_other.jsonl and stays out of the weekly counts. Promote it by adding a frame here with a pattern and status active. Set status to retired to drop a frame from later counts without deleting its id. euvsdisinfo_id is filled when the EUvsDisinfo narrative is known.",
+  "frames": [
+    {
+      "id": "kiewer_regime",
+      "version": "2026-09-26",
+      "kind": "frame",
+      "label": "Kiewer Regime",
+      "pattern": "kiewer regime",
+      "target": "Ukraine",
+      "euvsdisinfo_id": null,
+      "status": "active"
+    },
+    {
+      "id": "russophobia",
+      "version": "2026-09-26",
+      "kind": "frame",
+      "label": "Russophobie",
+      "pattern": "russophob|russlandfeind|russlandhass",
+      "target": "Russland",
+      "euvsdisinfo_id": null,
+      "status": "active"
+    },
+    {
+      "id": "ukraine_fascist",
+      "version": "2026-09-26",
+      "kind": "frame",
+      "label": "Ukraine als faschistisch",
+      "pattern": "(asow|asov|bander).{0,60}(faschist|nazi)|(faschist|nazi).{0,60}(asow|asov|bander|ukrain)",
+      "target": "Ukraine",
+      "euvsdisinfo_id": null,
+      "status": "active"
+    },
+    {
+      "id": "vassal_proxy",
+      "version": "2026-09-26",
+      "kind": "frame",
+      "label": "Vasall / Stellvertreterkrieg",
+      "pattern": "stellvertreterkrieg|vasallenmodus|vasallenstaat|vasall(?:en)? der ",
+      "target": "Europa",
+      "euvsdisinfo_id": null,
+      "status": "active"
+    },
+    {
+      "id": "deindustrialization",
+      "version": "2026-09-26",
+      "kind": "frame",
+      "label": "Deindustrialisierung",
+      "pattern": "deindustrial",
+      "target": "Deutschland",
+      "euvsdisinfo_id": null,
+      "status": "active"
+    },
+    {
+      "id": "afd_ban",
+      "version": "2026-09-26",
+      "kind": "frame",
+      "label": "AfD-Verbot",
+      "pattern": "afd-verbot|verbotsverfahren gegen die afd",
+      "target": "AfD",
+      "euvsdisinfo_id": null,
+      "status": "active"
+    },
+    {
+      "id": "nord_stream",
+      "version": "2026-09-26",
+      "kind": "frame",
+      "label": "Nord Stream",
+      "pattern": "nord stream|nordstream",
+      "target": "Deutschland",
+      "euvsdisinfo_id": null,
+      "status": "active"
+    },
+    {
+      "id": "hormuz",
+      "version": "2026-09-26",
+      "kind": "subject",
+      "label": "Straße von Hormus",
+      "pattern": "straße von hormus|strasse von hormus",
+      "target": "Iran",
+      "euvsdisinfo_id": null,
+      "status": "active"
+    },
+    {
+      "id": "sachsen_anhalt",
+      "version": "2026-09-26",
+      "kind": "subject",
+      "label": "Sachsen-Anhalt",
+      "pattern": "sachsen-anhalt|sachsen anhalt",
+      "target": "Sachsen-Anhalt",
+      "euvsdisinfo_id": null,
+      "status": "active"
+    },
+    {
+      "id": "denazification",
+      "version": "2026-09-26",
+      "kind": "frame",
+      "label": "Entnazifizierung",
+      "pattern": "entnazifizier|denazif",
+      "target": "Ukraine",
+      "euvsdisinfo_id": null,
+      "status": "active"
+    },
+    {
+      "id": "biolabs",
+      "version": "2026-09-26",
+      "kind": "frame",
+      "label": "Biolabore",
+      "pattern": "biolabor|biowaffenlabor|us-labor",
+      "target": "Ukraine",
+      "euvsdisinfo_id": null,
+      "status": "active"
+    },
+    {
+      "id": "election_fraud_ru",
+      "version": "2026-09-26",
+      "kind": "frame",
+      "label": "Wahlfälschung",
+      "pattern": "wahlfälschung|wahlbetrug|wahlmanipulation",
+      "target": "Russland",
+      "euvsdisinfo_id": null,
+      "status": "active"
+    }
+  ]
+}
