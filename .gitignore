@@ -32,6 +32,15 @@ App_v01/services/narratives/.llm_cache/
 App_v01/services/narratives/roadmap/runs/
 App_v01/services/narratives/roadmap/.llm_cache/
 
+# Presentation build and report output
+.vite/
+presentation/.render-dist/
+presentation/reports/out/
+
+# Published bundles: only latest.json is tracked
+bundles/*.json
+!bundles/latest.json
+
 # PocketBase local data
 pb_data/
 
@@ -47,4 +56,4 @@ App_v01/data/runs/*
 !App_v01/data/runs/de_sources_2026-05-26_2026-09-26/
 *.log
 *.html
-!App_v01/dashboard/index.html
+!presentation/*.html

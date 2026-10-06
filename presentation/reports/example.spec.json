@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "title": "Narrative brief",
+  "subtitle": "Which pro-Kremlin narratives the scanned outlets carried, and where they spiked",
+  "filters": { "range": "all", "metric": "share" },
+  "page": { "paper": "tinted" },
+  "blocks": [
+    { "id": "kpis", "viz": "kpi-row", "x": 0, "y": 0, "w": 6, "h": 1 },
+    { "id": "trend", "viz": "timeline", "x": 0, "y": 1, "w": 6, "h": 3 },
+    { "id": "matrix", "viz": "heatmap", "x": 0, "y": 4, "w": 6, "h": 3 },
+    { "id": "note", "viz": "text", "x": 0, "y": 7, "w": 6, "h": 1, "title": "How to read this",
+      "params": { "md": "Articles match a narrative when their text hits the codebook pattern. **Share** is matching articles per 100 the outlet published. Weekly curves are drawn only where weekly counts were observed." } }
+  ]
+}

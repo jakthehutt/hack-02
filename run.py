@@ -1,10 +1,11 @@
-"""Run expand → crawl → extract → cluster."""
+"""Run expand → crawl → extract → cluster, and publish the bundle."""
 
 from __future__ import annotations
 
 import argparse
 import os
 
+from bundle import format_publish, publish as publish_bundle
 from catalogue import expand_targets
 from claims import build, write_outputs
 from cluster import cluster
@@ -17,10 +18,11 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Narrative propagation pipeline")
     parser.add_argument(
         "command",
-        choices=["expand", "crawl", "extract", "cluster", "claims", "sync", "all"],
+        choices=["expand", "crawl", "extract", "cluster", "claims", "sync", "bundle", "all"],
     )
     parser.add_argument("--all-sources", action="store_true")
     parser.add_argument("--max-per-source", type=int, default=200)
+    parser.add_argument("--promote", action="store_true", help="bundle: also replace bundles/latest.json")
     args = parser.parse_args()
 
     mvp_only = not args.all_sources
@@ -43,6 +45,8 @@ def main() -> None:
         result = build()
         write_outputs(result)
         print(f"claims {len(result['claims'])}  other {len(result['others'])}")
+    if args.command == "bundle":
+        print(format_publish(publish_bundle(promote=args.promote)))
     if args.command == "sync" or (args.command == "all" and os.environ.get("POCKETBASE_EMAIL")):
         print(format_stats(publish()))
 

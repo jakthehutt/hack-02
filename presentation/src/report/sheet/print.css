@@ -1,0 +1,133 @@
+/* The A4 sheet. Everything the sheet needs is in this file, so an exported HTML
+   page only has to carry it plus the fonts. Colours are literal (see palette.js),
+   sizes are physical: mm for layout, pt for type. */
+
+@page { size: A4 portrait; margin: 0; }
+
+.fs-sheet {
+  position: relative;
+  width: 210mm;
+  height: 297mm;
+  overflow: hidden;
+  background: #faf8f4;
+  color: #14110f;
+  font-family: 'Foreshock Inter', 'Inter', system-ui, sans-serif;
+  font-size: 8pt;
+  line-height: 1.35;
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+  break-inside: avoid;
+}
+.fs-sheet[data-paper='plain'] { background: none; }
+.fs-sheet *, .fs-sheet *::before, .fs-sheet *::after {
+  box-sizing: border-box;
+  animation: none !important;
+  transition: none !important;
+}
+.fs-sheet h1, .fs-sheet h2, .fs-sheet h3, .fs-sheet p, .fs-sheet ul, .fs-sheet ol { margin: 0; padding: 0; }
+.fs-sheet svg { display: block; overflow: hidden; }
+.fs-mono { font-family: 'Foreshock Plex Mono', 'IBM Plex Mono', ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+.fs-display { font-family: 'Foreshock Geist', 'Geist', 'Foreshock Inter', system-ui, sans-serif; }
+
+/* Header band: 12mm from the top, 16mm tall. */
+.fs-head {
+  position: absolute; left: 12mm; top: 12mm; width: 186mm; height: 16mm;
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 6mm;
+  border-bottom: 0.75pt solid #14110f; padding-bottom: 1.8mm;
+}
+.fs-head-text { min-width: 0; flex: 1; }
+.fs-title {
+  font: 800 18pt/1.05 'Foreshock Geist', 'Geist', system-ui, sans-serif;
+  color: #7a1f2b; letter-spacing: -0.01em;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.fs-subtitle {
+  margin-top: 1.2mm; font-size: 8pt; line-height: 1.25; color: #3c3732;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.fs-brand { flex: none; text-align: right; }
+.fs-wordmark {
+  display: flex; align-items: center; justify-content: flex-end; gap: 1.2mm;
+  font: 800 10pt/1 'Foreshock Geist', 'Geist', system-ui, sans-serif; color: #7a1f2b;
+}
+.fs-brand-meta {
+  margin-top: 1.2mm; font: 500 6.5pt/1.35 'Foreshock Plex Mono', 'IBM Plex Mono', monospace;
+  color: #6a615a; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap;
+}
+
+/* Body grid: 6 × 8 cells of 27.7 × 27.1mm with 4mm gutters (grid.js). */
+.fs-body { position: absolute; left: 12mm; top: 31mm; width: 186mm; height: 245mm; }
+
+/* Footer band: provenance on the left, where it came from on the right. */
+.fs-foot {
+  position: absolute; left: 12mm; top: 279mm; width: 186mm; height: 6mm;
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 6mm;
+  border-top: 0.5pt solid #d0cbc6; padding-top: 1.3mm;
+  font-size: 6.5pt; line-height: 1.3; color: #6a615a;
+}
+.fs-foot-prov { min-width: 0; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fs-foot-src { flex: none; white-space: nowrap; }
+
+/* Blocks. FRAME in grid.js mirrors the padding, title and caption heights. */
+.fs-blk {
+  position: absolute; display: flex; flex-direction: column;
+  padding: 2.4mm; overflow: hidden;
+  background: #faf8f4; border: 0.75pt solid #14110f; border-radius: 1.6mm;
+}
+.fs-sheet[data-paper='plain'] .fs-blk { background: none; }
+.fs-blk[data-bare] { border-color: transparent; background: none; }
+.fs-blk-title {
+  flex: none; height: 5mm; display: flex; align-items: flex-start; justify-content: space-between; gap: 2mm;
+  font: 600 9pt/1.2 'Foreshock Geist', 'Geist', 'Foreshock Inter', system-ui, sans-serif; color: #14110f;
+}
+.fs-blk-title > span:first-child { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fs-blk-body { flex: none; position: relative; overflow: hidden; }
+.fs-blk-cap {
+  flex: none; height: 4mm; padding-top: 1mm;
+  font-size: 6.5pt; line-height: 1.3; color: #6a615a;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.fs-chip {
+  flex: none; display: inline-flex; align-items: center; height: 3.4mm; padding: 0 1.2mm;
+  border: 0.5pt solid #6a615a; border-radius: 0.8mm;
+  font: 500 6.5pt/1 'Foreshock Plex Mono', 'IBM Plex Mono', monospace; letter-spacing: 0.04em;
+  color: #3c3732; text-transform: uppercase;
+  background-image: repeating-linear-gradient(135deg, transparent 0 1.1mm, #e5dfd8 1.1mm 1.5mm);
+}
+.fs-empty {
+  height: 100%; display: flex; align-items: center; justify-content: center; text-align: center;
+  padding: 2mm; color: #6a615a; font-size: 7pt; line-height: 1.35;
+}
+.fs-error { color: #a3261e; }
+
+/* Shared view typography (HTML views). */
+.fs-label {
+  font: 500 6.5pt/1.25 'Foreshock Plex Mono', 'IBM Plex Mono', monospace;
+  letter-spacing: 0.06em; text-transform: uppercase; color: #6a615a;
+}
+.fs-prose { font-size: 8pt; line-height: 1.4; color: #14110f; }
+.fs-prose p + p, .fs-prose p + ul, .fs-prose ul + p, .fs-prose h3 + p, .fs-prose p + h3 { margin-top: 0.45em; }
+.fs-prose h3 { font: 600 1.1em/1.25 'Foreshock Geist', 'Geist', system-ui, sans-serif; color: #7a1f2b; }
+.fs-prose ul { padding-left: 1.1em; }
+.fs-prose li + li { margin-top: 0.2em; }
+.fs-prose strong { font-weight: 600; }
+.fs-prose em { font-style: italic; }
+.fs-prose mark { background: #ead9d5; color: inherit; padding: 0 0.15em; border-radius: 0.3mm; }
+
+/* Render check: clipped blocks get a red outline in the PNG the renderer writes. */
+[data-show-clips] .fs-blk[data-clipped] { outline: 0.8mm solid #e0001b; outline-offset: -0.4mm; }
+
+/* A standalone page (exported HTML or /sheet.html) on screen: the sheet on a desk. */
+@media screen {
+  body.fs-page { margin: 0; min-height: 100vh; background: #e4ded5; display: flex; justify-content: center; align-items: flex-start; padding: 24px 0; }
+  body.fs-page .fs-sheet { box-shadow: 0 1px 2px rgba(20, 17, 15, 0.08), 0 16px 40px rgba(20, 17, 15, 0.16); }
+}
+@media print {
+  html, body { margin: 0 !important; padding: 0 !important; background: none !important; }
+  body.fs-page { display: block; }
+  .fs-noprint { display: none !important; }
+}
